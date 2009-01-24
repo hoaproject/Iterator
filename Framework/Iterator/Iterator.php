@@ -146,8 +146,7 @@ class Hoa_Iterator implements Hoa_Iterator_Interface_Iterator {
     }
 
     /**
-     * Rewind the internal collection pointer, and return the first
-     * collection.
+     * Rewind the internal collection pointer, and return the first collection.
      *
      * @access  public
      * @return  mixed
