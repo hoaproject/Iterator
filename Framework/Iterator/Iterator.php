@@ -47,6 +47,11 @@ import('Iterator.Exception');
 import('Iterator.Interface.Iterator');
 
 /**
+ * Hoa_Iterator_Interface_Seekable
+ */
+import('Iterator.Interface.Seekable');
+
+/**
  * Class Hoa_Iterator.
  *
  * Make a simple and quick iterator of any types.
@@ -59,7 +64,9 @@ import('Iterator.Interface.Iterator');
  * @package     Hoa_Iterator
  */
 
-class Hoa_Iterator implements Hoa_Iterator_Interface_Iterator {
+class Hoa_Iterator implements Hoa_Iterator_Interface_Iterator,
+                              Hoa_Iterator_Interface_Seekable,
+                              Countable {
 
     /**
      * Collection of elements.
@@ -180,5 +187,36 @@ class Hoa_Iterator implements Hoa_Iterator_Interface_Iterator {
         }
 
         return $return;
+    }
+
+    /**
+     * Seek to a position.
+     *
+     * @access  public
+     * @param   mixed   $position    Position to seek.
+     * @return  void
+     */
+    public function seek ( $position ) {
+
+        if(!array_key_exists($position, $this->_collection))
+            return;
+
+        $this->rewind();
+
+        while($position != $this->key())
+            $this->next();
+
+        return;
+    }
+
+    /**
+     * Count number of elements in collection.
+     *
+     * @access  public
+     * @return  int
+     */
+    public function count ( ) {
+
+        return count($this->_collection);
     }
 }
