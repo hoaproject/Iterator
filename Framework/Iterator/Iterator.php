@@ -176,7 +176,7 @@ class Hoa_Iterator implements Hoa_Iterator_Interface_Iterator,
             return false;
 
         $key    = key($this->_collection);
-        $return = (next($this->_collection) ? true : false);
+        $return = (bool) next($this->_collection);
         prev($this->_collection);
 
         if(false === $return) {
