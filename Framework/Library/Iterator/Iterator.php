@@ -95,7 +95,7 @@ class Hoa_Iterator implements Hoa_Iterator_Interface_Iterator,
         if(!is_array($collection))
             throw new Hoa_Iterator_Exception(
                 'Cannot make a stable iterator. Need a well-formed collection, ' .
-                'i.e. an array (or a list) ; given %s.', 0, gettype($collection));
+                'i.e. an array (or a list); given %s.', 0, gettype($collection));
 
         $this->setCollection($collection);
 
