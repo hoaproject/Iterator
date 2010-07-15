@@ -28,7 +28,7 @@
  *
  * @category    Framework
  * @package     Hoa_Iterator
- * @subpackage  Hoa_Iterator_Interface_Aggregate
+ * @subpackage  Hoa_Iterator_Aggregate
  *
  */
 
@@ -38,7 +38,7 @@
 require_once 'Core.php';
 
 /**
- * Interface Hoa_Iterator_Interface_Aggregate.
+ * Interface Hoa_Iterator_Aggregate.
  *
  * Extending the SPL IteratorAggregate interface.
  *
@@ -48,7 +48,7 @@ require_once 'Core.php';
  * @since       PHP 5
  * @version     0.1
  * @package     Hoa_Iterator
- * @subpackage  Hoa_Iterator_Interface_Aggregate
+ * @subpackage  Hoa_Iterator_Aggregate
  */
 
-interface Hoa_Iterator_Interface_Aggregate extends IteratorAggregate { }
+interface Hoa_Iterator_Aggregate extends IteratorAggregate { }

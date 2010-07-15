@@ -28,6 +28,7 @@
  *
  * @category    Framework
  * @package     Hoa_Iterator
+ * @subpackage  Hoa_Iterator_Filter
  *
  */
 
@@ -37,9 +38,9 @@
 require_once 'Core.php';
 
 /**
- * Interface Hoa_Iterator.
+ * Interface Hoa_Iterator_Filter.
  *
- * Extending the SPL Iterator interface.
+ * Extending the SPL FilterIterator interface.
  *
  * @author      Ivan ENDERLIN <ivan.enderlin@hoa-project.net>
  * @copyright   Copyright (c) 2007, 2010 Ivan ENDERLIN.
@@ -47,6 +48,7 @@ require_once 'Core.php';
  * @since       PHP 5
  * @version     0.1
  * @package     Hoa_Iterator
+ * @subpackage  Hoa_Iterator_Filter
  */
 
-interface Hoa_Iterator extends Iterator { }
+interface Hoa_Iterator_Filter extends FilterIterator { }

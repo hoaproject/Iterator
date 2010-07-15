@@ -28,6 +28,7 @@
  *
  * @category    Framework
  * @package     Hoa_Iterator
+ * @subpackage  Hoa_Iterator_Seekable
  *
  */
 
@@ -37,9 +38,9 @@
 require_once 'Core.php';
 
 /**
- * Interface Hoa_Iterator.
+ * Interface Hoa_IteratorSeekable.
  *
- * Extending the SPL Iterator interface.
+ * Extending the SPL SeekableIterator interface.
  *
  * @author      Ivan ENDERLIN <ivan.enderlin@hoa-project.net>
  * @copyright   Copyright (c) 2007, 2010 Ivan ENDERLIN.
@@ -47,6 +48,7 @@ require_once 'Core.php';
  * @since       PHP 5
  * @version     0.1
  * @package     Hoa_Iterator
+ * @subpackage  Hoa_Iterator_Seekable
  */
 
-interface Hoa_Iterator extends Iterator { }
+interface Hoa_Iterator_Seekable extends SeekableIterator { }

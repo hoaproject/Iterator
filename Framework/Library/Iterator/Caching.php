@@ -28,7 +28,7 @@
  *
  * @category    Framework
  * @package     Hoa_Iterator
- * @subpackage  Hoa_Iterator_Interface_Iterator
+ * @subpackage  Hoa_Iterator_Caching
  *
  */
 
@@ -38,9 +38,9 @@
 require_once 'Core.php';
 
 /**
- * Interface Hoa_Iterator_Interface_Iterator.
+ * Class Hoa_Iterator_Caching.
  *
- * Extending the SPL Iterator interface.
+ * Extending the SPL CachingIterator interface.
  *
  * @author      Ivan ENDERLIN <ivan.enderlin@hoa-project.net>
  * @copyright   Copyright (c) 2007, 2010 Ivan ENDERLIN.
@@ -48,7 +48,7 @@ require_once 'Core.php';
  * @since       PHP 5
  * @version     0.1
  * @package     Hoa_Iterator
- * @subpackage  Hoa_Iterator_Interface_Iterator
+ * @subpackage  Hoa_Iterator_Caching
  */
 
-interface Hoa_Iterator_Interface_Iterator extends Iterator { }
+class Hoa_Iterator_Caching extends CachingIterator { }
