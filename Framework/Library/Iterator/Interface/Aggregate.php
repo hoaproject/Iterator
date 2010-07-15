@@ -38,7 +38,7 @@
 require_once 'Core.php';
 
 /**
- * Interface Hoa_IteratorAggregate.
+ * Interface Hoa_Iterator_Interface_Aggregate.
  *
  * Extending the SPL IteratorAggregate interface.
  *
