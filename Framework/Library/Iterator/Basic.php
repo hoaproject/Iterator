@@ -166,8 +166,8 @@ class Hoa_Iterator_Basic implements Hoa_Iterator,
     }
 
     /**
-     * Check if there is a current element after calls to the rewind or the next
-     * methods.
+     * Check if there is a current element after calls to the rewind() or the
+     * next() methods.
      *
      * @access  public
      * @return  bool
