@@ -33,11 +33,6 @@
  */
 
 /**
- * Hoa_Core
- */
-require_once 'Core.php';
-
-/**
  * Interface Hoa_IteratorSeekable.
  *
  * Extending the SPL SeekableIterator interface.

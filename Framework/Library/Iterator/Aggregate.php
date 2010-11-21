@@ -33,11 +33,6 @@
  */
 
 /**
- * Hoa_Core
- */
-require_once 'Core.php';
-
-/**
  * Interface Hoa_Iterator_Aggregate.
  *
  * Extending the SPL IteratorAggregate interface.

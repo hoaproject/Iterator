@@ -33,11 +33,6 @@
  */
 
 /**
- * Hoa_Core
- */
-require_once 'Core.php';
-
-/**
  * Class Hoa_Iterator_RegularExpression.
  *
  * Extending the SPL RegexIterator interface.

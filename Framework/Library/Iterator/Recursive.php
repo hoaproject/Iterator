@@ -33,11 +33,6 @@
  */
 
 /**
- * Hoa_Core
- */
-require_once 'Core.php';
-
-/**
  * Class Hoa_Iterator_Recursive.
  *
  * Extending the SPL RecursiveIterator interface.
@@ -51,4 +46,4 @@ require_once 'Core.php';
  * @subpackage  Hoa_Iterator_Recursive
  */
 
-class Hoa_Iterator_Recursive extends RecursiveIterator { }
+class Hoa_Iterator_Recursive implements RecursiveIterator { }
