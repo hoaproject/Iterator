@@ -179,6 +179,7 @@ class Hoa_Iterator_Basic implements Hoa_Iterator,
         if(false === $return) {
 
             end($this->_collection);
+
             if($key === key($this->_collection))
                 $return = true;
         }
