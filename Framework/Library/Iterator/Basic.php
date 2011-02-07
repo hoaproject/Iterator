@@ -24,51 +24,47 @@
  * You should have received a copy of the GNU General Public License
  * along with HOA Open Accessibility; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
- *
- *
- * @category    Framework
- * @package     Hoa_Iterator
- * @subpackage  Hoa_Iterator_Basic
- *
  */
 
-/**
- * Hoa_Iterator_Exception
- */
-import('Iterator.Exception');
+namespace {
+
+from('Hoa')
 
 /**
- * Hoa_Iterator
+ * \Hoa\Iterator\Exception
  */
-import('Iterator.~');
+-> import('Iterator.Exception')
 
 /**
- * Hoa_Iterator_Seekable
+ * \Hoa\Iterator
  */
-import('Iterator.Seekable');
+-> import('Iterator.~')
 
 /**
- * Class Hoa_Iterator_Basic.
+ * \Hoa\Iterator\Seekable
+ */
+-> import('Iterator.Seekable');
+
+}
+
+namespace Hoa\Iterator {
+
+/**
+ * Class \Hoa\Iterator\Basic.
  *
  * Make a simple and quick iterator of any types.
  *
- * @author      Ivan ENDERLIN <ivan.enderlin@hoa-project.net>
- * @copyright   Copyright (c) 2007, 2010 Ivan ENDERLIN.
- * @license     http://gnu.org/licenses/gpl.txt GNU GPL
- * @since       PHP 5
- * @version     0.1
- * @package     Hoa_Iterator
- * @subpackage  Hoa_Iterator_Basic
+ * @author     Ivan ENDERLIN <ivan.enderlin@hoa-project.net>
+ * @copyright  Copyright (c) 2007, 2010 Ivan ENDERLIN.
+ * @license    http://gnu.org/licenses/gpl.txt GNU GPL
  */
 
-class Hoa_Iterator_Basic implements Hoa_Iterator,
-                                    Hoa_Iterator_Seekable,
-                                    Countable {
+class Basic implements Iterator, Seekable, \Countable {
 
     /**
      * Collection of elements.
      *
-     * @var Hoa_Iterator array
+     * @var \Hoa\Iterator array
      */
     protected $_collection = array();
 
@@ -82,7 +78,7 @@ class Hoa_Iterator_Basic implements Hoa_Iterator,
      * @access  public
      * @param   mixed  $collection    Could be a string or an array.
      * @return  void
-     * @throw   Hoa_Iterator_Exception
+     * @throw   \Hoa\Iterator\Exception
      */
     public function __construct ( $collection ) {
 
@@ -90,7 +86,7 @@ class Hoa_Iterator_Basic implements Hoa_Iterator,
             $collection = array($collection);
 
         if(!is_array($collection))
-            throw new Hoa_Iterator_Exception(
+            throw new Exception(
                 'Cannot make a stable iterator. Need a well-formed collection, ' .
                 'i.e. an array (or a list); given %s.', 0, gettype($collection));
 
@@ -217,4 +213,6 @@ class Hoa_Iterator_Basic implements Hoa_Iterator,
 
         return count($this->_collection);
     }
+}
+
 }

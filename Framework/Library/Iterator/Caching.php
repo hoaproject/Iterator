@@ -24,26 +24,20 @@
  * You should have received a copy of the GNU General Public License
  * along with HOA Open Accessibility; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
- *
- *
- * @category    Framework
- * @package     Hoa_Iterator
- * @subpackage  Hoa_Iterator_Caching
- *
  */
 
+namespace Hoa\Iterator {
+
 /**
- * Class Hoa_Iterator_Caching.
+ * Class \Hoa\Iterator\Caching.
  *
  * Extending the SPL CachingIterator interface.
  *
- * @author      Ivan ENDERLIN <ivan.enderlin@hoa-project.net>
- * @copyright   Copyright (c) 2007, 2010 Ivan ENDERLIN.
- * @license     http://gnu.org/licenses/gpl.txt GNU GPL
- * @since       PHP 5
- * @version     0.1
- * @package     Hoa_Iterator
- * @subpackage  Hoa_Iterator_Caching
+ * @author     Ivan ENDERLIN <ivan.enderlin@hoa-project.net>
+ * @copyright  Copyright (c) 2007, 2010 Ivan ENDERLIN.
+ * @license    http://gnu.org/licenses/gpl.txt GNU GPL
  */
 
-class Hoa_Iterator_Caching extends CachingIterator { }
+class Caching extends \CachingIterator { }
+
+}
