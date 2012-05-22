@@ -37,15 +37,15 @@
 namespace Hoa\Iterator {
 
 /**
- * Class \Hoa\Iterator\Caching.
+ * Class \Hoa\Iterator\Directory.
  *
- * Extending the SPL CachingIterator class.
+ * Extending the SPL DirectoryIterator class.
  *
  * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
  * @copyright  Copyright © 2007-2012 Ivan Enderlin.
  * @license    New BSD License
  */
 
-class Caching extends \CachingIterator { }
+class Directory extends \DirectoryIterator { }
 
 }

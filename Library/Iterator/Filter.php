@@ -37,15 +37,15 @@
 namespace Hoa\Iterator {
 
 /**
- * Interface \Hoa\Iterator\Filter.
+ * Class \Hoa\Iterator\Filter.
  *
- * Extending the SPL FilterIterator interface.
+ * Extending the SPL FilterIterator class.
  *
  * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
  * @copyright  Copyright © 2007-2012 Ivan Enderlin.
  * @license    New BSD License
  */
 
-interface Filter extends \FilterIterator { }
+abstract class Filter extends \FilterIterator { }
 
 }

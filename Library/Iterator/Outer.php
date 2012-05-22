@@ -37,15 +37,15 @@
 namespace Hoa\Iterator {
 
 /**
- * Class \Hoa\Iterator\Caching.
+ * Interface \Hoa\Iterator\Outer.
  *
- * Extending the SPL CachingIterator class.
+ * Extending the SPL OuterIterator interface.
  *
  * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
  * @copyright  Copyright © 2007-2012 Ivan Enderlin.
  * @license    New BSD License
  */
 
-class Caching extends \CachingIterator { }
+interface Outer extends \OuterIterator { }
 
 }

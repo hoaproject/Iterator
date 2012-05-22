@@ -34,18 +34,18 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace Hoa\Iterator {
+namespace Hoa\Iterator\Recursive {
 
 /**
- * Class \Hoa\Iterator\Caching.
+ * Class \Hoa\Iterator\Recursive\Caching.
  *
- * Extending the SPL CachingIterator class.
+ * Extending the SPL RecursiveCachingIterator class.
  *
  * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
  * @copyright  Copyright © 2007-2012 Ivan Enderlin.
  * @license    New BSD License
  */
 
-class Caching extends \CachingIterator { }
+class Caching extends \RecursiveCachingIterator { }
 
 }

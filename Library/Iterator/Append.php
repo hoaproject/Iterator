@@ -39,7 +39,7 @@ namespace Hoa\Iterator {
 /**
  * Class \Hoa\Iterator\Append.
  *
- * Extending the SPL AppendIterator interface.
+ * Extending the SPL AppendIterator class.
  *
  * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
  * @copyright  Copyright © 2007-2012 Ivan Enderlin.

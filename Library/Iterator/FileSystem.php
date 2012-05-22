@@ -37,15 +37,15 @@
 namespace Hoa\Iterator {
 
 /**
- * Class \Hoa\Iterator\Caching.
+ * Class \Hoa\Iterator\FileSystem.
  *
- * Extending the SPL CachingIterator class.
+ * Extending the SPL FileSystemIterator class.
  *
  * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
  * @copyright  Copyright © 2007-2012 Ivan Enderlin.
  * @license    New BSD License
  */
 
-class Caching extends \CachingIterator { }
+class FileSystem extends \FilesystemIterator { }
 
 }

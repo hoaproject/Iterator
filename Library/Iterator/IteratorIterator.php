@@ -37,15 +37,15 @@
 namespace Hoa\Iterator {
 
 /**
- * Class \Hoa\Iterator\Recursive.
+ * Class \Hoa\Iterator\IteratorIterator.
  *
- * Extending the SPL RecursiveIterator interface.
+ * Extending the SPL IteratorIterator class.
  *
  * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
  * @copyright  Copyright © 2007-2012 Ivan Enderlin.
  * @license    New BSD License
  */
 
-class Recursive implements \RecursiveIterator { }
+class IteratorIterator extends \IteratorIterator { }
 
 }

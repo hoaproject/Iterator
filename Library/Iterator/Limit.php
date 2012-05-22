@@ -39,7 +39,7 @@ namespace Hoa\Iterator {
 /**
  * Class \Hoa\Iterator\Limit.
  *
- * Extending the SPL LimitIterator interface.
+ * Extending the SPL LimitIterator class.
  *
  * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
  * @copyright  Copyright © 2007-2012 Ivan Enderlin.
