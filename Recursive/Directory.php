@@ -46,6 +46,90 @@ namespace Hoa\Iterator\Recursive {
  * @license    New BSD License
  */
 
-class Directory extends \RecursiveDirectoryIterator { }
+class Directory extends \RecursiveDirectoryIterator {
+
+    /**
+     * SplFileInfo classname.
+     *
+     * @var \Hoa\Iterator\Recursive\Directory string
+     */
+    protected $_splFileInfoClass = null;
+
+
+
+    /**
+     * Constructor.
+     * Please, see \RecursiveDirectoryIterator::__construct() method.
+     * We add the $splFileInfoClass parameter.
+     *
+     * @access  public
+     * @param   string  $path                Path.
+     * @param   int     $flags               Flags.
+     * @param   string  $splFileInfoClass    SplFileInfo classname.
+     */
+    public function __construct ( $path, $flags = null, $splFileInfoClass = null ) {
+
+        $this->_splFileInfoClass = $splFileInfoClass;
+
+        if(null === $flags)
+            parent::__construct($path);
+        else
+            parent::__construct($path, $flags);
+
+        return;
+    }
+
+    /**
+     * Current.
+     * Please, see \RecursiveDirectoryIterator::current() method.
+     *
+     * @access  public
+     * @return  mixed
+     */
+    public function current ( ) {
+
+        $out = parent::current();
+
+        if(   null !== $this->_splFileInfoClass
+           && $out instanceof \SplFileInfo) {
+
+            $out->setInfoClass($this->_splFileInfoClass);
+            $out = $out->getFileInfo();
+        }
+
+        return $out;
+    }
+
+    /**
+     * Get children.
+     * Please, see \RecursiveDirectoryIterator::getChildren() method.
+     *
+     * @access  public
+     * @return  mixed
+     */
+    public function getChildren ( ) {
+
+        $out = parent::getChildren();
+
+        if($out instanceof \RecursiveDirectoryIterator)
+            $out->setSplFileInfoClass($this->_splFileInfoClass);
+
+        return $out;
+    }
+
+    /**
+     * Set SplFileInfo classname.
+     *
+     * @access  public
+     * @param   string  $splFileInfoClass    SplFileInfo classname.
+     * @return  void
+     */
+    public function setSplFileInfoClass ( $splFileInfoClass ) {
+
+        $this->_splFileInfoClass = $splFileInfoClass;
+
+        return;
+    }
+}
 
 }

@@ -46,6 +46,50 @@ namespace Hoa\Iterator {
  * @license    New BSD License
  */
 
-class Directory extends \DirectoryIterator { }
+class Directory extends \DirectoryIterator {
+
+    /**
+     * SplFileInfo classname.
+     *
+     * @var \Hoa\Iterator\Directory string
+     */
+    protected $_splFileInfoClass = null;
+
+
+
+    /**
+     * Constructor.
+     * Please, see \DirectoryIterator::__construct() method.
+     * We add the $splFileInfoClass parameter.
+     *
+     * @access  public
+     * @param   string  $path                Path.
+     * @param   string  $splFileInfoClass    SplFileInfo classname.
+     */
+    public function __construct ( $path, $splFileInfoClass = null ) {
+
+        $this->_splFileInfoClass = $splFileInfoClass;
+        parent::__construct($path);
+
+        return;
+    }
+
+    /**
+     * Current.
+     * Please, see \DirectoryIterator::current() method.
+     *
+     * @access  public
+     * @return  mixed
+     */
+    public function current ( ) {
+
+        $out = parent::current();
+
+        if(null !== $this->_splFileInfoClass)
+            $out->setInfoClass($this->_splFileInfoClass);
+
+        return $out;
+    }
+}
 
 }
