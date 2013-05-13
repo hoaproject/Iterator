@@ -23,5 +23,6 @@
     },
     "require": {
         "hoa/core": "dev-master"
-    }
+    },
+    "minimum-stability": "dev"
 }
