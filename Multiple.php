@@ -46,6 +46,57 @@ namespace Hoa\Iterator {
  * @license    New BSD License
  */
 
-class Multiple extends \MultipleIterator { }
+class Multiple extends \MultipleIterator {
+
+    /**
+     * Default value for each $infos.
+     *
+     * @var \Hoa\Iterator\Multiple array
+     */
+    protected $_infos = array();
+
+
+
+    /**
+     * Attach iterator informations.
+     * Add the $default argument that will be use when the iterator has reached
+     * its end.
+     *
+     * @access  public
+     * @param   \Iterator  $iterator    Iterator.
+     * @param   string     $infos       Informations to attach.
+     * @param   mixed      $default     Default value.
+     * @return  void
+     */
+    public function attachIterator ( \Iterator $iterator, $infos = null,
+                                     $default = null ) {
+
+        $out = parent::attachIterator($iterator, $infos);
+
+        if(null === $infos)
+            $this->_infos[]       = $default;
+        else
+            $this->_infos[$infos] = $default;
+
+        return $out;
+    }
+
+    /**
+     * Get the registered iterator instances.
+     *
+     * @access  public
+     * @return  array
+     */
+    public function current ( ) {
+
+        $out = parent::current();
+
+        foreach($out as $key => &$value)
+            if(null === $value)
+                $value = $this->_infos[$key];
+
+        return $out;
+    }
+}
 
 }
