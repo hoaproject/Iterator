@@ -85,8 +85,12 @@ class Directory extends \DirectoryIterator {
 
         $out = parent::current();
 
-        if(null !== $this->_splFileInfoClass)
+        if(   null !== $this->_splFileInfoClass
+           && $out instanceof \SplFileInfo) {
+
             $out->setInfoClass($this->_splFileInfoClass);
+            $out = $out->getFileInfo();
+        }
 
         return $out;
     }
