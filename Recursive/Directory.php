@@ -55,6 +55,13 @@ class Directory extends \RecursiveDirectoryIterator {
      */
     protected $_splFileInfoClass = null;
 
+    /**
+     * Relative path.
+     *
+     * @var \Hoa\Iterator\Recursive\Directory string
+     */
+    protected $_relativePath     = null;
+
 
 
     /**
@@ -76,6 +83,8 @@ class Directory extends \RecursiveDirectoryIterator {
         else
             parent::__construct($path, $flags);
 
+        $this->setRelativePath($path);
+
         return;
     }
 
@@ -95,6 +104,9 @@ class Directory extends \RecursiveDirectoryIterator {
 
             $out->setInfoClass($this->_splFileInfoClass);
             $out = $out->getFileInfo();
+
+            if($out instanceof \Hoa\Iterator\SplFileInfo)
+                $out->setRelativePath($this->getRelativePath());
         }
 
         return $out;
@@ -110,6 +122,7 @@ class Directory extends \RecursiveDirectoryIterator {
     public function getChildren ( ) {
 
         $out = parent::getChildren();
+        $out->setRelativePath($this->getRelativePath());
 
         if($out instanceof \RecursiveDirectoryIterator)
             $out->setSplFileInfoClass($this->_splFileInfoClass);
@@ -129,6 +142,32 @@ class Directory extends \RecursiveDirectoryIterator {
         $this->_splFileInfoClass = $splFileInfoClass;
 
         return;
+    }
+
+    /**
+     * Set relative path.
+     *
+     * @access  public
+     * @param   string  $relativePath    Relative path.
+     * @return  string
+     */
+    public function setRelativePath ( $path ) {
+
+        $old                 = $this->_relativePath;
+        $this->_relativePath = $path;
+
+        return $old;
+    }
+
+    /**
+     * Get relative path (if given).
+     *
+     * @access  public
+     * @return  string
+     */
+    public function getRelativePath ( ) {
+
+        return $this->_relativePath;
     }
 }
 

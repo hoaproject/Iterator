@@ -37,86 +37,76 @@
 namespace Hoa\Iterator {
 
 /**
- * Class \Hoa\Iterator\Directory.
+ * Class \Hoa\Iterator\SplFileInfo.
  *
- * Extending the SPL DirectoryIterator class.
+ * Enhance SplFileInfo implementation.
  *
  * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
  * @copyright  Copyright © 2007-2013 Ivan Enderlin.
  * @license    New BSD License
  */
 
-class Directory extends \DirectoryIterator {
+class SplFileInfo extends \SplFileInfo {
 
     /**
-     * SplFileInfo classname.
+     * Hash.
      *
-     * @var \Hoa\Iterator\Directory string
+     * @var \Hoa\Iterator\SplFileInfo string
      */
-    protected $_splFileInfoClass = null;
+    protected $_hash         = null;
 
     /**
      * Relative path.
      *
-     * @var \Hoa\Iterator\Recursive\Directory string
+     * @var \Hoa\Iterator\SplFileInfo string
      */
-    protected $_relativePath     = null;
+    protected $_relativePath = null;
 
 
 
     /**
-     * Constructor.
-     * Please, see \DirectoryIterator::__construct() method.
-     * We add the $splFileInfoClass parameter.
+     * Construct.
      *
      * @access  public
-     * @param   string  $path                Path.
-     * @param   string  $splFileInfoClass    SplFileInfo classname.
+     * @param   string  $filename        Filename.
+     * @param   string  $relativePath    Relative path.
+     * @return  void
      */
-    public function __construct ( $path, $splFileInfoClass = null ) {
+    public function __construct ( $filename, $relativePath = null ) {
 
-        $this->_splFileInfoClass = $splFileInfoClass;
-        parent::__construct($path);
-        $this->setRelativePath($path);
+        parent::__construct($filename);
+
+        $this->_hash = md5(
+            $this->getPathname() .
+            $this->getCTime()
+        );
+        $this->_relativePath = $relativePath;
 
         return;
     }
 
     /**
-     * Current.
-     * Please, see \DirectoryIterator::current() method.
+     * Get the hash.
      *
      * @access  public
-     * @return  mixed
+     * @return  string
      */
-    public function current ( ) {
+    public function getHash ( ) {
 
-        $out = parent::current();
-
-        if(   null !== $this->_splFileInfoClass
-           && $out instanceof \SplFileInfo) {
-
-            $out->setInfoClass($this->_splFileInfoClass);
-            $out = $out->getFileInfo();
-
-            if($out instanceof \Hoa\Iterator\SplFileInfo)
-                $out->setRelativePath($this->getRelativePath());
-        }
-
-        return $out;
+        return $this->_hash;
     }
 
     /**
      * Set relative path.
      *
-     * @access  protected
+     * @access  public
      * @param   string  $relativePath    Relative path.
      * @return  string
      */
-    protected function setRelativePath ( $path ) {
+    public function setRelativePath ( $relativePath ) {
 
         $old                 = $this->_relativePath;
-        $this->_relativePath = $path;
+        $this->_relativePath = $relativePath;
 
         return $old;
     }
@@ -130,6 +120,20 @@ class Directory extends \DirectoryIterator {
     public function getRelativePath ( ) {
 
         return $this->_relativePath;
+    }
+
+    /**
+     * Get relative pathname (if possible).
+     *
+     * @access  public
+     * @return  string
+     */
+    public function getRelativePathname ( ) {
+
+        if(null === $relative = $this->getRelativePath())
+            return $this->getPathname();
+
+        return substr($this->getPathname(), strlen($relative));
     }
 }
 
