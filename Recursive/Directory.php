@@ -153,10 +153,9 @@ class Directory extends \RecursiveDirectoryIterator {
      */
     public function setRelativePath ( $path ) {
 
-        $old                 = $this->_relativePath;
         $this->_relativePath = $path;
 
-        return $old;
+        return;
     }
 
     /**
