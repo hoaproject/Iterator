@@ -53,14 +53,21 @@ class Directory extends \RecursiveDirectoryIterator {
      *
      * @var \Hoa\Iterator\Recursive\Directory string
      */
-    protected $_splFileInfoClass = null;
+    protected $_splFileInfoClass  = null;
 
     /**
      * Relative path.
      *
      * @var \Hoa\Iterator\Recursive\Directory string
      */
-    protected $_relativePath     = null;
+    protected $_relativePath      = null;
+
+    /**
+     * Relative path (workaround for the bug #65136).
+     *
+     * @var \Hoa\Iterator\Recursive\Directory string
+     */
+    protected $_childRelativePath = null;
 
 
 
@@ -76,13 +83,12 @@ class Directory extends \RecursiveDirectoryIterator {
      */
     public function __construct ( $path, $flags = null, $splFileInfoClass = null ) {
 
-        $this->_splFileInfoClass = $splFileInfoClass;
-
         if(null === $flags)
             parent::__construct($path);
         else
             parent::__construct($path, $flags);
 
+        $this->setSplFileInfoClass($splFileInfoClass);
         $this->setRelativePath($path);
 
         return;
@@ -122,7 +128,7 @@ class Directory extends \RecursiveDirectoryIterator {
     public function getChildren ( ) {
 
         $out = parent::getChildren();
-        $out->setRelativePath($this->getRelativePath());
+        $out->setChildRelativePath($this->getRelativePath());
 
         if($out instanceof \RecursiveDirectoryIterator)
             $out->setSplFileInfoClass($this->_splFileInfoClass);
@@ -159,6 +165,20 @@ class Directory extends \RecursiveDirectoryIterator {
     }
 
     /**
+     * Set relative path (workaround for the bug #65136).
+     *
+     * @access  private
+     * @param   string  $relativePath    Relative path.
+     * @return  string
+     */
+    private function setChildRelativePath ( $path ) {
+
+        $this->_childRelativePath = $path;
+
+        return;
+    }
+
+    /**
      * Get relative path (if given).
      *
      * @access  public
@@ -166,7 +186,9 @@ class Directory extends \RecursiveDirectoryIterator {
      */
     public function getRelativePath ( ) {
 
-        return $this->_relativePath;
+        return isset($this->_childRelativePath)
+                   ? $this->_childRelativePath // workaround for the bug #65136.
+                   : $this->_relativePath;
     }
 }
 
