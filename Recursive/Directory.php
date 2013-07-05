@@ -53,21 +53,15 @@ class Directory extends \RecursiveDirectoryIterator {
      *
      * @var \Hoa\Iterator\Recursive\Directory string
      */
-    protected $_splFileInfoClass  = null;
+    protected $_splFileInfoClass = null;
 
     /**
      * Relative path.
+     * Using an array is a workaround for the bug #65136.
      *
      * @var \Hoa\Iterator\Recursive\Directory string
      */
-    protected $_relativePath      = null;
-
-    /**
-     * Relative path (workaround for the bug #65136).
-     *
-     * @var \Hoa\Iterator\Recursive\Directory string
-     */
-    protected $_childRelativePath = null;
+    protected $_relativePath     = array();
 
 
 
@@ -128,7 +122,7 @@ class Directory extends \RecursiveDirectoryIterator {
     public function getChildren ( ) {
 
         $out = parent::getChildren();
-        $out->setChildRelativePath($this->getRelativePath());
+        $out->setRelativePath($this->getRelativePath());
 
         if($out instanceof \RecursiveDirectoryIterator)
             $out->setSplFileInfoClass($this->_splFileInfoClass);
@@ -159,21 +153,7 @@ class Directory extends \RecursiveDirectoryIterator {
      */
     public function setRelativePath ( $path ) {
 
-        $this->_relativePath = $path;
-
-        return;
-    }
-
-    /**
-     * Set relative path (workaround for the bug #65136).
-     *
-     * @access  private
-     * @param   string  $relativePath    Relative path.
-     * @return  string
-     */
-    private function setChildRelativePath ( $path ) {
-
-        $this->_childRelativePath = $path;
+        $this->_relativePath[0] = $path;
 
         return;
     }
@@ -186,9 +166,7 @@ class Directory extends \RecursiveDirectoryIterator {
      */
     public function getRelativePath ( ) {
 
-        return isset($this->_childRelativePath)
-                   ? $this->_childRelativePath // workaround for the bug #65136.
-                   : $this->_relativePath;
+        return $this->_relativePath[0];
     }
 }
 
