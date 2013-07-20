@@ -57,11 +57,17 @@ class Directory extends \RecursiveDirectoryIterator {
 
     /**
      * Relative path.
-     * Using an array is a workaround for the bug #65136.
      *
      * @var \Hoa\Iterator\Recursive\Directory string
      */
-    protected $_relativePath     = array();
+    protected $_relativePath     = 0;
+
+    /**
+     * Workaround for the bug #65136.
+     *
+     * @var \Hoa\Iterator\Recursive\Directory string
+     */
+    private static $_handlePath  = null;
 
 
 
@@ -82,8 +88,15 @@ class Directory extends \RecursiveDirectoryIterator {
         else
             parent::__construct($path, $flags);
 
+        if(null !== static::$_handlePath) {
+
+            $this->_relativePath = static::$_handlePath;
+            static::$_handlePath = null;
+        }
+        else
+            $this->_relativePath = $path;
+
         $this->setSplFileInfoClass($splFileInfoClass);
-        $this->setRelativePath($path);
 
         return;
     }
@@ -121,8 +134,8 @@ class Directory extends \RecursiveDirectoryIterator {
      */
     public function getChildren ( ) {
 
-        $out = parent::getChildren();
-        $out->setRelativePath($this->getRelativePath());
+        static::$_handlePath = $this->getRelativePath();
+        $out                 = parent::getChildren();
 
         if($out instanceof \RecursiveDirectoryIterator)
             $out->setSplFileInfoClass($this->_splFileInfoClass);
@@ -145,20 +158,6 @@ class Directory extends \RecursiveDirectoryIterator {
     }
 
     /**
-     * Set relative path.
-     *
-     * @access  public
-     * @param   string  $relativePath    Relative path.
-     * @return  string
-     */
-    public function setRelativePath ( $path ) {
-
-        $this->_relativePath[0] = $path;
-
-        return;
-    }
-
-    /**
      * Get relative path (if given).
      *
      * @access  public
@@ -166,7 +165,7 @@ class Directory extends \RecursiveDirectoryIterator {
      */
     public function getRelativePath ( ) {
 
-        return $this->_relativePath[0];
+        return $this->_relativePath;
     }
 }
 
