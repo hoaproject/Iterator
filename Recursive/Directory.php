@@ -88,10 +88,10 @@ class Directory extends \RecursiveDirectoryIterator {
         else
             parent::__construct($path, $flags);
 
-        if(null !== static::$_handlePath) {
+        if(null !== self::$_handlePath) {
 
-            $this->_relativePath = static::$_handlePath;
-            static::$_handlePath = null;
+            $this->_relativePath = self::$_handlePath;
+            self::$_handlePath   = null;
         }
         else
             $this->_relativePath = $path;
@@ -134,8 +134,8 @@ class Directory extends \RecursiveDirectoryIterator {
      */
     public function getChildren ( ) {
 
-        static::$_handlePath = $this->getRelativePath();
-        $out                 = parent::getChildren();
+        self::$_handlePath = $this->getRelativePath();
+        $out               = parent::getChildren();
 
         if($out instanceof \RecursiveDirectoryIterator)
             $out->setSplFileInfoClass($this->_splFileInfoClass);
