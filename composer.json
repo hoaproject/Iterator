@@ -23,5 +23,11 @@
     "require": {
         "hoa/core": "dev-master"
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "target-dir": "Hoa/Iterator",
+    "autoload": {
+        "psr-0": {
+            "Hoa\\Iterator": "."
+        }
+    }
 }
