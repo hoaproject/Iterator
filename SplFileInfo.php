@@ -78,7 +78,7 @@ class SplFileInfo extends \SplFileInfo {
 
         $this->_hash = md5(
             $this->getPathname() .
-            (OS_WIN) ? $this->getMTime() : $this->getCTime()
+            $this->getMTime()
         );
         $this->_relativePath = $relativePath;
 
