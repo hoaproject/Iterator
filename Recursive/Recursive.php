@@ -49,3 +49,12 @@ namespace Hoa\Iterator\Recursive {
 interface Recursive extends \RecursiveIterator { }
 
 }
+
+namespace {
+
+/**
+ * Flex entity.
+ */
+Hoa\Core\Consistency::flexEntity('Hoa\Iterator\Recursive\Recursive');
+
+}
