@@ -74,11 +74,14 @@ class SplFileInfo extends \SplFileInfo {
      */
     public function __construct ( $filename, $relativePath = null ) {
 
+        if(false === file_exists($filename))
+            return;
+
         parent::__construct($filename);
 
         $this->_hash = md5(
             $this->getPathname() .
-            ( $this->isFile() ? $this->getMTime() : 0 )
+            $this->getMTime()
         );
         $this->_relativePath = $relativePath;
 
