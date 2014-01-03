@@ -39,12 +39,12 @@ namespace {
 from('Hoa')
 
 /**
- * Hoa\Iterator\Exception
+ * \Hoa\Iterator\Exception
  */
 -> import('Iterator.Exception')
 
 /**
- * Hoa\Iterator
+ * \Hoa\Iterator
  */
 -> import('Iterator.~');
 

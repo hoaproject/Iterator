@@ -39,7 +39,7 @@ namespace {
 from('Hoa')
 
 /**
- * Hoa\Iterator
+ * \Hoa\Iterator
  */
 -> import('Iterator.~');
 
