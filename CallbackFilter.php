@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2013, Ivan Enderlin. All rights reserved.
+ * Copyright © 2007-2014, Ivan Enderlin. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -47,7 +47,7 @@ if(PHP_VERSION_ID < 50400) {
  * A callback filter iterator.
  *
  * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
- * @copyright  Copyright © 2007-2013 Ivan Enderlin.
+ * @copyright  Copyright © 2007-2014 Ivan Enderlin.
  * @license    New BSD License
  */
 class CallbackFilterIterator extends FilterIterator {
@@ -111,7 +111,7 @@ namespace Hoa\Iterator {
  * Extending the SPL CallbackFilterIterator class.
  *
  * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
- * @copyright  Copyright © 2007-2013 Ivan Enderlin.
+ * @copyright  Copyright © 2007-2014 Ivan Enderlin.
  * @license    New BSD License
  */
 
