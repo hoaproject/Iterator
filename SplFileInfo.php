@@ -76,10 +76,14 @@ class SplFileInfo extends \SplFileInfo {
 
         parent::__construct($filename);
 
-        $this->_hash = md5(
-            $this->getPathname() .
-            $this->getMTime()
-        );
+        if($this->getMTime() !== -1)
+            $this->_hash = md5(
+                $this->getPathname() .
+                $this->getMTime()
+            );
+        else
+            $this->_hash = null;
+
         $this->_relativePath = $relativePath;
 
         return;
@@ -94,6 +98,24 @@ class SplFileInfo extends \SplFileInfo {
     public function getHash ( ) {
 
         return $this->_hash;
+    }
+
+    /**
+     * Get the MTime.
+     *
+     * @access  public
+     * @return  int
+     */
+    public function getMTime ( ) {
+
+        try {
+
+            return parent::getMTime();
+        }
+        catch ( \RuntimeException $e ) {
+
+            return -1;
+        }
     }
 
     /**
