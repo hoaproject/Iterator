@@ -76,13 +76,8 @@ class SplFileInfo extends \SplFileInfo {
 
         parent::__construct($filename);
 
-        if($this->getMTime() !== -1)
-            $this->_hash = md5(
-                $this->getPathname() .
-                $this->getMTime()
-            );
-        else
-            $this->_hash = null;
+        if(-1 !== $mtime = $this->getMTime())
+            $this->_hash = md5($this->getPathname() . $mtime);
 
         $this->_relativePath = $relativePath;
 
