@@ -37,7 +37,7 @@
 namespace Hoa\Iterator {
 
 /**
- * Class \Hoa\Iterator\Caching.
+ * Class \Hoa\Iterator\Lookahead.
  *
  * Extending the SPL CachingIterator class.
  *
@@ -46,6 +46,6 @@ namespace Hoa\Iterator {
  * @license    New BSD License
  */
 
-class Caching extends \CachingIterator { }
+class Lookahead extends \CachingIterator { }
 
 }

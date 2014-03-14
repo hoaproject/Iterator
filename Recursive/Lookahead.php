@@ -37,7 +37,7 @@
 namespace Hoa\Iterator\Recursive {
 
 /**
- * Class \Hoa\Iterator\Recursive\Caching.
+ * Class \Hoa\Iterator\Recursive\Lookahead.
  *
  * Extending the SPL RecursiveCachingIterator class.
  *
@@ -46,6 +46,6 @@ namespace Hoa\Iterator\Recursive {
  * @license    New BSD License
  */
 
-class Caching extends \RecursiveCachingIterator { }
+class Lookahead extends \RecursiveCachingIterator { }
 
 }
