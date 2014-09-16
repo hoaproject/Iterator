@@ -21,9 +21,8 @@
         "source": "http://git.hoa-project.net/"
     },
     "require": {
-        "hoa/core": "dev-master"
+        "hoa/core": "~1.0"
     },
-    "minimum-stability": "dev",
-    "target-dir"       : "Hoa/Iterator",
-    "autoload"         : { "psr-0": { "Hoa\\Iterator": "." } }
+    "target-dir": "Hoa/Iterator",
+    "autoload"  : { "psr-0": { "Hoa\\Iterator": "." } }
 }
