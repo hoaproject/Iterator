@@ -9,6 +9,23 @@ This library provides a set of useful iterator (compatible with PHP iterators).
 Existing PHP iterators have been updated to get new features and prior PHP
 versions compatibility.
 
+## Installation
+
+With [Composer](http://getcomposer.org/), to include this library into your
+dependencies, you need to require
+[`hoa/iterator`](https://packagist.org/packages/hoa/iterator):
+
+```json
+{
+    "require": {
+        "hoa/iterator": "~0.0"
+    }
+}
+```
+
+Please, read the website to [get more informations about how to
+install](http://hoa-project.net/Source.html).
+
 ## Quick usage
 
 We propose a quick overview of the list all iterators.
