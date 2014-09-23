@@ -24,5 +24,10 @@
         "hoa/core": "~2.0"
     },
     "target-dir": "Hoa/Iterator",
-    "autoload"  : { "psr-0": { "Hoa\\Iterator": "." } }
+    "autoload"  : { "psr-0": { "Hoa\\Iterator": "." } },
+    "extra"     : {
+        "branch-alias": {
+            "dev-master": "0.x-dev"
+        }
+    }
 }
