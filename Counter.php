@@ -56,6 +56,13 @@ class Counter implements Iterator {
     protected $_from = 0;
 
     /**
+     * Current key.
+     *
+     * @var \Hoa\Iterator\Counter int
+     */
+    protected $_key  = 0;
+
+    /**
      * Current index.
      *
      * @var \Hoa\Iterator\Counter int
@@ -122,7 +129,7 @@ class Counter implements Iterator {
      */
     public function key ( ) {
 
-        return $this->_i;
+        return $this->_key;
     }
 
     /**
@@ -133,6 +140,7 @@ class Counter implements Iterator {
      */
     public function next ( ) {
 
+        ++$this->_key;
         $this->_i += $this->_step;
 
         return;
@@ -146,7 +154,8 @@ class Counter implements Iterator {
      */
     public function rewind ( ) {
 
-        $this->_i = $this->_from;
+        $this->_key = 0;
+        $this->_i   = $this->_from;
 
         return;
     }
