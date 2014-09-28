@@ -34,7 +34,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace Hoa\Iterator {
+namespace Hoa\Iterator;
 
 /**
  * Class \Hoa\Iterator\Directory.
@@ -131,6 +131,4 @@ class Directory extends \DirectoryIterator {
 
         return $this->_relativePath;
     }
-}
-
 }

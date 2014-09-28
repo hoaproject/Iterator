@@ -34,7 +34,9 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace Hoa\Iterator {
+namespace Hoa\Iterator;
+
+use Hoa\Core;
 
 /**
  * Interface \Hoa\Iterator.
@@ -48,13 +50,7 @@ namespace Hoa\Iterator {
 
 interface Iterator extends \Iterator { }
 
-}
-
-namespace {
-
 /**
  * Flex entity.
  */
-Hoa\Core\Consistency::flexEntity('Hoa\Iterator\Iterator');
-
-}
+Core\Consistency::flexEntity('Hoa\Iterator\Iterator');

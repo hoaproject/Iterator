@@ -34,7 +34,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace Hoa\Iterator {
+namespace Hoa\Iterator;
 
 /**
  * Interface \Hoa\Iterator\Aggregate.
@@ -47,5 +47,3 @@ namespace Hoa\Iterator {
  */
 
 interface Aggregate extends \IteratorAggregate { }
-
-}

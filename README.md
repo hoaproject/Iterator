@@ -68,7 +68,7 @@ extends [`OuterIterator`](http://php.net/outeriterator).
 [`ArrayIterator`](http://php.net/arrayiterator).
 
 ```php
-$foobar = new Hoa\Iterator\Map(array('f', 'o', 'o', 'b', 'a', 'r'));
+$foobar = new Hoa\Iterator\Map(['f', 'o', 'o', 'b', 'a', 'r']);
 
 foreach($foobar as $value)
     echo $value;
@@ -92,7 +92,7 @@ $filter = new Hoa\Iterator\CallbackFilter(
     $foobar,
     function ( $value, $key, $iterator ) {
 
-        return false === in_array($value, array('a', 'e', 'i', 'o', 'u'));
+        return false === in_array($value, ['a', 'e', 'i', 'o', 'u']);
     }
 );
 
@@ -212,8 +212,8 @@ foreach($append as $value)
 times. It extends [`MultipleIterator`](http://php.net/multipleiterator).
 
 ```php
-$foobar   = new Hoa\Iterator\Map(array('f', 'o', 'o', 'b', 'a', 'r'));
-$baz      = new Hoa\Iterator\Map(array('b', 'a', 'z'));
+$foobar   = new Hoa\Iterator\Map(['f', 'o', 'o', 'b', 'a', 'r']);
+$baz      = new Hoa\Iterator\Map(['b', 'a', 'z']);
 $multiple = new Hoa\Iterator\Multiple(
     Hoa\Iterator\Multiple::MIT_NEED_ANY
   | Hoa\Iterator\Multiple::MIT_KEYS_ASSOC

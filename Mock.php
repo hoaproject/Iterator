@@ -34,7 +34,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace Hoa\Iterator {
+namespace Hoa\Iterator;
 
 /**
  * Class \Hoa\Iterator\Mock.
@@ -47,5 +47,3 @@ namespace Hoa\Iterator {
  */
 
 class Mock extends \EmptyIterator { }
-
-}

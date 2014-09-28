@@ -34,18 +34,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace {
-
-from('Hoa')
-
-/**
- * \Hoa\Iterator
- */
--> import('Iterator.~');
-
-}
-
-namespace Hoa\Iterator {
+namespace Hoa\Iterator;
 
 /**
  * Class \Hoa\Iterator\Demultiplexer.
@@ -164,6 +153,4 @@ class Demultiplexer implements Iterator {
 
         return $this->_iterator->valid();
     }
-}
-
 }

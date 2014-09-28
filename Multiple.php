@@ -34,7 +34,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace Hoa\Iterator {
+namespace Hoa\Iterator;
 
 /**
  * Class \Hoa\Iterator\Multiple.
@@ -53,7 +53,7 @@ class Multiple extends \MultipleIterator {
      *
      * @var \Hoa\Iterator\Multiple array
      */
-    protected $_infos = array();
+    protected $_infos = [];
 
 
 
@@ -97,6 +97,4 @@ class Multiple extends \MultipleIterator {
 
         return $out;
     }
-}
-
 }

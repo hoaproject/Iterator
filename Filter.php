@@ -34,7 +34,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace Hoa\Iterator {
+namespace Hoa\Iterator;
 
 /**
  * Class \Hoa\Iterator\Filter.
@@ -47,5 +47,3 @@ namespace Hoa\Iterator {
  */
 
 abstract class Filter extends \FilterIterator { }
-
-}

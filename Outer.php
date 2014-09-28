@@ -34,7 +34,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace Hoa\Iterator {
+namespace Hoa\Iterator;
 
 /**
  * Interface \Hoa\Iterator\Outer.
@@ -47,5 +47,3 @@ namespace Hoa\Iterator {
  */
 
 interface Outer extends \OuterIterator { }
-
-}

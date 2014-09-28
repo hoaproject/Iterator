@@ -34,7 +34,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace Hoa\Iterator {
+namespace Hoa\Iterator;
 
 /**
  * Interface \Hoa\IteratorSeekable.
@@ -47,5 +47,3 @@ namespace Hoa\Iterator {
  */
 
 interface Seekable extends \SeekableIterator { }
-
-}

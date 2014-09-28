@@ -34,91 +34,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace {
-
-/**
- * Offering a PHP5.4 feature to prior versions.
- */
-if(PHP_VERSION_ID < 50400) {
-
-/**
- * Class RecursiveCallbackFilterIterator.
- *
- * A recursive callback filter iterator.
- *
- * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
- * @copyright  Copyright © 2007-2014 Ivan Enderlin.
- * @license    New BSD License
- */
-class RecursiveCallbackFilterIterator extends RecursiveFilterIterator {
-
-    /**
-     * Callback.
-     *
-     * @var Closure object
-     */
-    protected $_callback = null;
-
-
-
-    /**
-     * Create a filtered iterator from another iterator.
-     *
-     * @access  public
-     * @param   \Iterator  $iterator    The iterator to be filtered.
-     * @param   \Closure   $callback    The callback, which should return true
-     *                                  to accept the current item false
-     *                                  otherwise.
-     * @return  void
-     */
-    public function __construct ( Iterator $iterator,
-                                  Closure  $callback = null ) {
-
-        $this->_callback = $callback;
-        parent::__construct($iterator);
-
-        return;
-    }
-
-    /**
-     * Cals the callback with the current value, the current key and the inner
-     * iterator as arguments.
-     *
-     * @access  public
-     * @return  bool
-     */
-    public function accept ( ) {
-
-        $callback = $this->_callback;
-
-        return $callback(
-            $this->current(),
-            $this->key(),
-            $this->getInnerIterator()
-        );
-    }
-
-    /**
-     * Return the inner iterator's children contained in a
-     * RecursiveCallbackFilterIterator.
-     *
-     * @access  public
-     * @return  \RecursiveCallbackFilterIterator
-     */
-    public function getChildren ( ) {
-
-        return new static(
-            $this->getInnerIterator()->getChildren(),
-            $this->_callback
-        );
-    }
-}
-
-}
-
-}
-
-namespace Hoa\Iterator\Recursive {
+namespace Hoa\Iterator\Recursive;
 
 /**
  * Class \Hoa\Iterator\Recursive\CallbackFilter.
@@ -131,5 +47,3 @@ namespace Hoa\Iterator\Recursive {
  */
 
 class CallbackFilter extends \RecursiveCallbackFilterIterator { }
-
-}

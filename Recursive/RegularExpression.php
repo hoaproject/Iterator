@@ -34,7 +34,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace Hoa\Iterator\Recursive {
+namespace Hoa\Iterator\Recursive;
 
 /**
  * Class \Hoa\Iterator\Recursive\RegularExpression.
@@ -47,5 +47,3 @@ namespace Hoa\Iterator\Recursive {
  */
 
 class RegularExpression extends \RecursiveRegexIterator { }
-
-}

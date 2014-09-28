@@ -34,23 +34,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace {
-
-from('Hoa')
-
-/**
- * \Hoa\Iterator
- */
--> import('Iterator.~')
-
-/**
- * \Hoa\Iterator\Exception
- */
--> import('Iterator.Exception');
-
-}
-
-namespace Hoa\Iterator {
+namespace Hoa\Iterator;
 
 /**
  * Class \Hoa\Iterator\Counter.
@@ -177,6 +161,4 @@ class Counter implements Iterator {
 
         return $this->_i < $this->_to;
     }
-}
-
 }

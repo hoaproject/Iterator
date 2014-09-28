@@ -34,23 +34,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace {
-
-from('Hoa')
-
-/**
- * \Hoa\Iterator\Exception
- */
--> import('Iterator.Exception')
-
-/**
- * \Hoa\Iterator
- */
--> import('Iterator.~');
-
-}
-
-namespace Hoa\Iterator {
+namespace Hoa\Iterator;
 
 /**
  * Class \Hoa\Iterator\Repeater.
@@ -194,6 +178,4 @@ class Repeater implements Iterator {
 
         return true;
     }
-}
-
 }

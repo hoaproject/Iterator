@@ -34,7 +34,9 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace Hoa\Iterator\Recursive {
+namespace Hoa\Iterator\Recursive;
+
+use Hoa\Core;
 
 /**
  * Class \Hoa\Iterator\Recursive.
@@ -48,13 +50,7 @@ namespace Hoa\Iterator\Recursive {
 
 interface Recursive extends \RecursiveIterator { }
 
-}
-
-namespace {
-
 /**
  * Flex entity.
  */
-Hoa\Core\Consistency::flexEntity('Hoa\Iterator\Recursive\Recursive');
-
-}
+Core\Consistency::flexEntity('Hoa\Iterator\Recursive\Recursive');

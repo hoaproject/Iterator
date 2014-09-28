@@ -34,18 +34,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace {
-
-from('Hoa')
-
-/**
- * \Hoa\Iterator\Recursive
- */
--> import('Iterator.Recursive.~');
-
-}
-
-namespace Hoa\Iterator\Recursive {
+namespace Hoa\Iterator\Recursive;
 
 /**
  * Class \Hoa\Iterator\Recursive\Mock.
@@ -164,6 +153,4 @@ class Mock implements Recursive {
 
         return false;
     }
-}
-
 }

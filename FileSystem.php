@@ -34,7 +34,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace Hoa\Iterator {
+namespace Hoa\Iterator;
 
 /**
  * Class \Hoa\Iterator\FileSystem.
@@ -97,6 +97,4 @@ class FileSystem extends \FilesystemIterator {
             $out = $out->getFileInfo();
         }
     }
-}
-
 }

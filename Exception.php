@@ -34,7 +34,9 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace Hoa\Iterator {
+namespace Hoa\Iterator;
+
+use Hoa\Core;
 
 /**
  * Class \Hoa\Iterator\Exception.
@@ -46,6 +48,4 @@ namespace Hoa\Iterator {
  * @license    New BSD License
  */
 
-class Exception extends \Hoa\Core\Exception { }
-
-}
+class Exception extends Core\Exception { }

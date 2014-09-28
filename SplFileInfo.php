@@ -34,7 +34,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace Hoa\Iterator {
+namespace Hoa\Iterator;
 
 /**
  * Class \Hoa\Iterator\SplFileInfo.
@@ -152,6 +152,4 @@ class SplFileInfo extends \SplFileInfo {
 
         return substr($this->getPathname(), strlen($relative));
     }
-}
-
 }
