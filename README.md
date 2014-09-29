@@ -338,6 +338,28 @@ foreach($lookahead as $value) {
  */
 ```
 
+### Callback generator
+
+`Hoa\Iterator\CallbackGenerator` allows to transform any callable into an
+iterator. This is very useful when combined with other iterators, for instance
+with `Hoa\Iterator\Limit`:
+
+```php
+$generator = new Hoa\Iterator\CallbackGenerator(function ( $key ) {
+
+    return mt_rand($key, $key * 2);
+});
+$limit     = new Hoa\Iterator\Limit($generator, 0, 10);
+
+foreach($limit as $value)
+    echo $value, ' ';
+
+/**
+ * Could output:
+ *     0 2 3 4 4 7 8 10 12 18 
+ */
+```
+
 ### Recursive iterators
 
 A recursive iterator is an iterator where its values is other iterators. The
