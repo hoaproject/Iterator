@@ -39,11 +39,169 @@ namespace Hoa\Iterator;
 /**
  * Class \Hoa\Iterator\Lookahead.
  *
- * Extending the SPL CachingIterator class.
+ * Look ahead iterator.
  *
  * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
  * @copyright  Copyright © 2007-2014 Ivan Enderlin.
  * @license    New BSD License
  */
 
-class Lookahead extends \CachingIterator { }
+class          Lookahead
+    extends    IteratorIterator
+    implements Outer {
+
+    /**
+     * Current iterator.
+     *
+     * @var \Hoa\Iterator\Lookahead object
+     */
+    protected $_iterator = null;
+
+    /**
+     * Current key.
+     *
+     * @var \Hoa\Iterator\Lookahead mixed
+     */
+    protected $_key      = 0;
+
+    /**
+     * Current value.
+     *
+     * @var \Hoa\Iterator\Lookahead mixed
+     */
+    protected $_current  = null;
+
+    /**
+     * Whether the current element is valid or not.
+     *
+     * @var \Hoa\Iterator\Lookahead bool
+     */
+    protected $_valid    = false;
+
+
+
+    /**
+     * Construct.
+     *
+     * @access  public
+     * @param   \Iterator  $iterator    Iterator.
+     * @return  void
+     */
+    public function __construct ( \Iterator $iterator ) {
+
+        $this->_iterator = $iterator;
+
+        return;
+    }
+
+    /**
+     * Get inner iterator.
+     *
+     * @access  public
+     * @return  \Iterator
+     */
+    public function getInnerIterator ( ) {
+
+        return $this->_iterator;
+    }
+
+    /**
+     * Return the current element.
+     *
+     * @access  public
+     * @return  mixed
+     */
+    public function current ( ) {
+
+        return $this->_current;
+    }
+
+    /**
+     * Return the key of the current element.
+     *
+     * @access  public
+     * @return  mixed
+     */
+    public function key ( ) {
+
+        return $this->_key;
+    }
+
+    /**
+     * Move forward to next element.
+     *
+     * @access  public
+     * @return  void
+     */
+    public function next ( ) {
+
+        $innerIterator = $this->getInnerIterator();
+        $this->_valid  = $innerIterator->valid();
+
+        if(false === $this->_valid)
+            return;
+
+        $this->_key     = $innerIterator->key();
+        $this->_current = $innerIterator->current();
+
+        return $innerIterator->next();
+    }
+
+    /**
+     * Rewind the iterator to the first element.
+     *
+     * @access  public
+     * @return  void
+     */
+    public function rewind ( ) {
+
+        $out = $this->getInnerIterator()->rewind();
+        $this->next();
+
+        return $out;
+    }
+
+    /**
+     * Check if current position is valid.
+     *
+     * @access  public
+     * @return  bool
+     */
+    public function valid ( ) {
+
+        return $this->_valid;
+    }
+
+    /**
+     * Check whether there is a next element.
+     *
+     * @access  public
+     * @return  bool
+     */
+    public function hasNext ( ) {
+
+        return $this->getInnerIterator()->valid();
+    }
+
+    /**
+     * Get next value.
+     *
+     * @access  public
+     * @return  mixed
+     */
+    public function getNext ( ) {
+
+        return $this->getInnerIterator()->current();
+    }
+
+    /**
+     * Get next key.
+     *
+     * @access  public
+     * @return  mixed
+     */
+    public function getNextKey ( ) {
+
+        return $this->getInnerIterator()->key();
+    }
+}

@@ -311,8 +311,7 @@ foreach($glob as $value)
 
 ### Look ahead
 
-`Hoa\Iterator\Lookahead` allows to look ahead for the next element. It extends
-[`CachingIterator`](http://php.net/cachingiterator).
+`Hoa\Iterator\Lookahead` allows to look ahead for the next element:
 
 ```php
 $counter   = new Hoa\Iterator\Counter(0, 5, 1);
@@ -323,7 +322,7 @@ foreach($lookahead as $value) {
     echo $value;
 
     if(true === $lookahead->hasNext())
-        echo ' (next: ', $lookahead->getInnerIterator()->current(), ')';
+        echo ' (next: ', $lookahead->getNext(), ')';
 
     echo "\n";
 }
