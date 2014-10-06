@@ -36,14 +36,91 @@
 
 namespace Hoa\Iterator\Recursive;
 
+use Hoa\Iterator;
+
 /**
  * Class \Hoa\Iterator\Recursive\RegularExpression.
  *
- * Extending the SPL RecursiveRegexIterator class.
+ * Re-implement the SPL RecursiveRegexIterator class.
+ * There are too many bugs in php-src and HHVM, so we re-implement it from
+ * scratch without extending the existing class.
+ *
+ * Inspired by hhvm://hphp/system/php/spl/iterators/RecursiveRegexIterator.php
  *
  * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
  * @copyright  Copyright © 2007-2014 Ivan Enderlin.
  * @license    New BSD License
  */
 
-class RegularExpression extends \RecursiveRegexIterator { }
+class          RegularExpression
+    extends    Iterator\RegularExpression
+    implements Recursive {
+
+    /**
+     * Constructor.
+     *
+     * @access  public
+     * @param   \RecursiveIterator  $iterator     The recursive iterator to
+     *                                            apply this regex filter to.
+     * @param   string              $regex        The regular expression to
+     *                                            match.
+     * @param   int                 $mode         Operation mode, please see the
+     *                                            \RegexIterator::setMode method.
+     * @param   int                 $flags        Special flags, please see the
+     *                                            \RegexIterator::setFlags method.
+     * @param   int                 $pregFlags    Regular expression flags,
+     *                                            please see
+     *                                            \RegexIterator constants.
+     * @return  void
+     */
+    public function __construct( \RecursiveIterator $iterator, $regex,
+                                 $mode = self::MATCH, $flags = 0,
+                                 $pregFlags = 0) {
+
+        parent::__construct($iterator, $regex, $mode, $flags, $pregFlags);
+
+        return;
+    }
+
+    /**
+     * Get accept status.
+     *
+     * @access  public
+     * @return  bool
+     */
+    public function accept ( ) {
+
+        return    true === $this->hasChildren()
+               || true === parent::accept();
+    }
+
+    /**
+     * Get an iterator for the current entry.
+     *
+     * @access  public
+     * @return  \Hoa\Iterator\Recursive\RegularExpression
+     */
+    public function getChildren ( ) {
+
+        return new static(
+            true === $this->hasChildren()
+                ? $this->getInnerIterator()->getChildren()
+                : null,
+            $this->getRegex(),
+            $this->getMode(),
+            $this->getFlags(),
+            $this->getPregFlags()
+        );
+    }
+
+    /**
+     * Check whether an iterator can be obtained for the current entry.
+     *
+     * @access  public
+     * @return  bool
+     */
+    public function hasChildren ( ) {
+
+        return $this->getInnerIterator()->hasChildren();
+    }
+}
