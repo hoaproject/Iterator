@@ -53,53 +53,53 @@ namespace Hoa\Iterator;
 class RegularExpression extends Filter {
 
     /**
-     * Only execute match (filter) for the current entry.
-     *
-     * @const int
-     */
-    const MATCH        = 0;
-
-    /**
-     * First match for the current entry.
-     *
-     * @const int
-     */
-    const GET_MATCH    = 1;
-
-    /**
-     * All matches for the current entry.
-     *
-     * @const int
-     */
-    const ALL_MATCHES  = 2;
-
-    /**
-     * Split values for the current entry.
-     *
-     * @const int
-     */
-    const SPLIT        = 3;
-
-    /**
-     * Replace the current entry.
-     *
-     * @const int
-     */
-    const REPLACE      = 4;
-
-    /**
-     * Special flag: match the entry key instead of the entry value.
+     * Flag: match the entry key instead of the entry value.
      *
      * @const int
      */
     const USE_KEY      = 1;
 
     /**
-     * Invert match.
+     * Flag: invert match.
      *
      * @const int
      */
     const INVERT_MATCH = 2;
+
+    /**
+     * Mode and preg flag: only execute match (filter) for the current entry.
+     *
+     * @const int
+     */
+    const MATCH        = 0;
+
+    /**
+     * Mode and preg flag: first match for the current entry.
+     *
+     * @const int
+     */
+    const GET_MATCH    = 1;
+
+    /**
+     * Mode and preg flag: all matches for the current entry.
+     *
+     * @const int
+     */
+    const ALL_MATCHES  = 2;
+
+    /**
+     * Mode and preg flag: split values for the current entry.
+     *
+     * @const int
+     */
+    const SPLIT        = 3;
+
+    /**
+     * Mode and preg flag: replace the current entry.
+     *
+     * @const int
+     */
+    const REPLACE      = 4;
 
     /**
      * The regular expression to match.
