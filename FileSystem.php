@@ -51,7 +51,7 @@ class FileSystem extends \FilesystemIterator {
     /**
      * SplFileInfo classname.
      *
-     * @var \Hoa\Iterator\Recursive\Director string
+     * @var \Hoa\Iterator\FileSystem string
      */
     protected $_splFileInfoClass = null;
 
