@@ -96,5 +96,7 @@ class FileSystem extends \FilesystemIterator {
             $out->setInfoClass($this->_splFileInfoClass);
             $out = $out->getFileInfo();
         }
+
+        return $out;
     }
 }
