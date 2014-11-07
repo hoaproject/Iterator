@@ -85,7 +85,6 @@ foreach($foobar as $value)
 content of an iterator. It extends
 [`FilterIterator`](http://php.net/filteriterator) and
 [`CallbackFilterIterator`](http://php.net/callbackfilteriterator).
-`Hoa\Iterator\CallbackFilter` adds support for prior PHP5.4 versions.
 
 ```php
 $filter = new Hoa\Iterator\CallbackFilter(
