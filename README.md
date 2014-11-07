@@ -376,8 +376,6 @@ alphabetic order):
     [`RecursiveFilterIterator`](http://php.net/recursivefilteriterator)),
   * `Hoa\Iterator\Recursive\Iterator` (it extends
     [`RecursiveIteratorIterator`](http://php.net/recursiveiteratoriterator)),
-  * `Hoa\Iterator\Recursive\Lookahead` (it extends
-    [`RecursiveCachingIterator`](http://php.net/recursivecachingiterator)),
   * `Hoa\Iterator\Recursive\Map` (it extends
     [`RecursiveArrayIterator`](http://php.net/recursivearrayiterator)),
   * `Hoa\Iterator\Recursive\Mock`,
