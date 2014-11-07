@@ -105,7 +105,7 @@ foreach($filter as $value)
 ```
 
 Also, `Hoa\Iterator\RegularExpression` allows to filter based on a regular
-expression. It extends [`RegexIterator`](http://php.net/regexiterator).
+expression.
 
 ### Limit
 
