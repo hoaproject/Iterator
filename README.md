@@ -380,13 +380,7 @@ alphabetic order):
     [`RecursiveArrayIterator`](http://php.net/recursivearrayiterator)),
   * `Hoa\Iterator\Recursive\Mock`,
   * `Hoa\Iterator\Recursive\RegularExpression`
-    (it extends [`RecursiveRegularExpression`](http://php.net/recursiveregexiterator)),
-  * `Hoa\Iterator\Recursive\Tree` (it extends
-    [`RecursiveTreeIterator`](http://php.net/recursivetreeiterator)).
-
-Also, there is the `Hoa\Iterator\HasChildren` iterator that represents an
-iterator with children (it extends
-[`ParentIterator`](http://php.net/parentiterator)).
+    (it extends [`RecursiveRegularExpression`](http://php.net/recursiveregexiterator)).
 
 ## Documentation
 
