@@ -336,6 +336,9 @@ foreach($lookahead as $value) {
  */
 ```
 
+The `Hoa\Iterator\Lookbehind` also exists and allows to look behind for the
+previous element.
+
 ### Callback generator
 
 `Hoa\Iterator\CallbackGenerator` allows to transform any callable into an
