@@ -23,6 +23,9 @@
     "require": {
         "hoa/core": "~2.0"
     },
+    "require-dev": {
+        "hoa/test": "~1.0"
+    },
     "target-dir": "Hoa/Iterator",
     "autoload"  : { "psr-0": { "Hoa\\Iterator": "." } },
     "extra"     : {
