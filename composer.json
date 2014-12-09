@@ -26,9 +26,12 @@
     "require-dev": {
         "hoa/test": "~1.0"
     },
-    "target-dir": "Hoa/Iterator",
-    "autoload"  : { "psr-0": { "Hoa\\Iterator": "." } },
-    "extra"     : {
+    "autoload": {
+        "psr-4": {
+            "Hoa\\Iterator\\": "."
+        }
+    },
+    "extra": {
         "branch-alias": {
             "dev-master": "1.x-dev"
         }
