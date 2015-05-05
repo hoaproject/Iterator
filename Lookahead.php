@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2015, Ivan Enderlin. All rights reserved.
+ * Copyright © 2007-2015, Hoa community. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -41,40 +41,38 @@ namespace Hoa\Iterator;
  *
  * Look ahead iterator.
  *
- * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
- * @copyright  Copyright © 2007-2015 Ivan Enderlin.
+ * @copyright  Copyright © 2007-2015 Hoa community
  * @license    New BSD License
  */
-
 class          Lookahead
     extends    IteratorIterator
-    implements Outer {
-
+    implements Outer
+{
     /**
      * Current iterator.
      *
-     * @var \Hoa\Iterator\Lookahead object
+     * @var \Hoa\Iterator\Lookahead
      */
     protected $_iterator = null;
 
     /**
      * Current key.
      *
-     * @var \Hoa\Iterator\Lookahead mixed
+     * @var mixed
      */
     protected $_key      = 0;
 
     /**
      * Current value.
      *
-     * @var \Hoa\Iterator\Lookahead mixed
+     * @var mixed
      */
     protected $_current  = null;
 
     /**
      * Whether the current element is valid or not.
      *
-     * @var \Hoa\Iterator\Lookahead bool
+     * @var bool
      */
     protected $_valid    = false;
 
@@ -83,12 +81,11 @@ class          Lookahead
     /**
      * Construct.
      *
-     * @access  public
      * @param   \Iterator  $iterator    Iterator.
      * @return  void
      */
-    public function __construct ( \Iterator $iterator ) {
-
+    public function __construct(\Iterator $iterator)
+    {
         $this->_iterator = $iterator;
 
         return;
@@ -97,49 +94,46 @@ class          Lookahead
     /**
      * Get inner iterator.
      *
-     * @access  public
      * @return  \Iterator
      */
-    public function getInnerIterator ( ) {
-
+    public function getInnerIterator()
+    {
         return $this->_iterator;
     }
 
     /**
      * Return the current element.
      *
-     * @access  public
      * @return  mixed
      */
-    public function current ( ) {
-
+    public function current()
+    {
         return $this->_current;
     }
 
     /**
      * Return the key of the current element.
      *
-     * @access  public
      * @return  mixed
      */
-    public function key ( ) {
-
+    public function key()
+    {
         return $this->_key;
     }
 
     /**
      * Move forward to next element.
      *
-     * @access  public
      * @return  void
      */
-    public function next ( ) {
-
+    public function next()
+    {
         $innerIterator = $this->getInnerIterator();
         $this->_valid  = $innerIterator->valid();
 
-        if(false === $this->_valid)
+        if (false === $this->_valid) {
             return;
+        }
 
         $this->_key     = $innerIterator->key();
         $this->_current = $innerIterator->current();
@@ -150,11 +144,10 @@ class          Lookahead
     /**
      * Rewind the iterator to the first element.
      *
-     * @access  public
      * @return  void
      */
-    public function rewind ( ) {
-
+    public function rewind()
+    {
         $out = $this->getInnerIterator()->rewind();
         $this->next();
 
@@ -164,44 +157,40 @@ class          Lookahead
     /**
      * Check if current position is valid.
      *
-     * @access  public
      * @return  bool
      */
-    public function valid ( ) {
-
+    public function valid()
+    {
         return $this->_valid;
     }
 
     /**
      * Check whether there is a next element.
      *
-     * @access  public
      * @return  bool
      */
-    public function hasNext ( ) {
-
+    public function hasNext()
+    {
         return $this->getInnerIterator()->valid();
     }
 
     /**
      * Get next value.
      *
-     * @access  public
      * @return  mixed
      */
-    public function getNext ( ) {
-
+    public function getNext()
+    {
         return $this->getInnerIterator()->current();
     }
 
     /**
      * Get next key.
      *
-     * @access  public
      * @return  mixed
      */
-    public function getNextKey ( ) {
-
+    public function getNextKey()
+    {
         return $this->getInnerIterator()->key();
     }
 }

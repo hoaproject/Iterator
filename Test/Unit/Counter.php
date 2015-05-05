@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2015, Ivan Enderlin. All rights reserved.
+ * Copyright © 2007-2015, Hoa community. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -36,23 +36,21 @@
 
 namespace Hoa\Iterator\Test\Unit;
 
-use Hoa\Test;
 use Hoa\Iterator as LUT;
+use Hoa\Test;
 
 /**
  * Class \Hoa\Iterator\Test\Unit\Counter.
  *
  * Test suite of the counter iterator.
  *
- * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
- * @copyright  Copyright © 2007-2015 Ivan Enderlin.
+ * @copyright  Copyright © 2007-2015 Hoa community
  * @license    New BSD License
  */
-
-class Counter extends Test\Unit\Suite {
-
-    public function case_classic ( ) {
-
+class Counter extends Test\Unit\Suite
+{
+    public function case_classic()
+    {
         $this
             ->given($iterator = new LUT\Counter(0, 12, 3))
             ->when($result = iterator_to_array($iterator))
@@ -61,8 +59,8 @@ class Counter extends Test\Unit\Suite {
                     ->isEqualTo([0, 3, 6, 9]);
     }
 
-    public function case_offset ( ) {
-
+    public function case_offset()
+    {
         $this
             ->given($iterator = new LUT\Counter(6, 12, 3))
             ->when($result = iterator_to_array($iterator))
@@ -71,18 +69,17 @@ class Counter extends Test\Unit\Suite {
                     ->isEqualTo([6, 9]);
     }
 
-    public function case_too_small ( ) {
-
+    public function case_too_small()
+    {
         $this
-            ->exception(function ( ) {
-
+            ->exception(function () {
                 new LUT\Counter(0, 0, 0);
             })
                 ->isInstanceOf('Hoa\Iterator\Exception');
     }
 
-    public function case_too_big ( ) {
-
+    public function case_too_big()
+    {
         $this
             ->given($iterator = new LUT\Counter(0, 12, 13))
             ->when($result = iterator_to_array($iterator))

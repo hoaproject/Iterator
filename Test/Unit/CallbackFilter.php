@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2015, Ivan Enderlin. All rights reserved.
+ * Copyright © 2007-2015, Hoa community. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -36,30 +36,27 @@
 
 namespace Hoa\Iterator\Test\Unit;
 
-use Hoa\Test;
 use Hoa\Iterator as LUT;
+use Hoa\Test;
 
 /**
  * Class \Hoa\Iterator\Test\Unit\CallbackFilter.
  *
  * Test suite of the callback filter iterator.
  *
- * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
- * @copyright  Copyright © 2007-2015 Ivan Enderlin.
+ * @copyright  Copyright © 2007-2015 Hoa community
  * @license    New BSD License
  */
-
-class CallbackFilter extends Test\Unit\Suite {
-
-    public function case_classic ( ) {
-
+class CallbackFilter extends Test\Unit\Suite
+{
+    public function case_classic()
+    {
         $this
             ->given(
                 $foobar = $this->getDummyIterator(),
                 $filter = new LUT\CallbackFilter(
                     $foobar,
-                    function ( $value ) {
-
+                    function ($value) {
                         return false === in_array($value, ['a', 'e', 'i', 'o', 'u']);
                     }
                 )
@@ -74,8 +71,8 @@ class CallbackFilter extends Test\Unit\Suite {
                     ]);
     }
 
-    public function case_all_callback_parameters ( ) {
-
+    public function case_all_callback_parameters()
+    {
         $self = $this;
 
         $this
@@ -85,9 +82,12 @@ class CallbackFilter extends Test\Unit\Suite {
                 $values = [],
                 $filter = new LUT\CallbackFilter(
                     $foobar,
-                    function ( $value, $key, $iterator )
-                         use ( $self, $foobar, &$keys, &$values ) {
-
+                    function ($value, $key, $iterator) use (
+                        $self,
+                        $foobar,
+                        &$keys,
+                        &$values
+                    ) {
                         $self
                             ->object($iterator)
                                 ->isIdenticalTo($foobar);
@@ -111,15 +111,14 @@ class CallbackFilter extends Test\Unit\Suite {
                     ->isEqualTo(iterator_to_array($foobar));
     }
 
-    public function case_remove_all ( ) {
-
+    public function case_remove_all()
+    {
         $this
             ->given(
                 $foobar = $this->getDummyIterator(),
                 $filter = new LUT\CallbackFilter(
                     $foobar,
-                    function ( ) {
-
+                    function () {
                         return false;
                     }
                 )
@@ -130,15 +129,14 @@ class CallbackFilter extends Test\Unit\Suite {
                     ->isEmpty();
     }
 
-    public function case_remove_none ( ) {
-
+    public function case_remove_none()
+    {
         $this
             ->given(
                 $foobar = $this->getDummyIterator(),
                 $filter = new LUT\CallbackFilter(
                     $foobar,
-                    function ( ) {
-
+                    function () {
                         return true;
                     }
                 )
@@ -152,15 +150,14 @@ class CallbackFilter extends Test\Unit\Suite {
                     ->isEqualTo($filterResult);
     }
 
-    public function case_recursive ( ) {
-
+    public function case_recursive()
+    {
         $this
             ->given(
                 $foobar = $this->getDummyRecursiveIterator(),
                 $filter = new LUT\Recursive\CallbackFilter(
                     $foobar,
-                    function ( $value ) {
-
+                    function ($value) {
                         return false === in_array($value, ['a', 'e', 'i', 'o', 'u']);
                     }
                 ),
@@ -176,15 +173,14 @@ class CallbackFilter extends Test\Unit\Suite {
                     ]);
     }
 
-    public function case_recursive_remove_all ( ) {
-
+    public function case_recursive_remove_all()
+    {
         $this
             ->given(
                 $foobar = $this->getDummyRecursiveIterator(),
                 $filter = new LUT\Recursive\CallbackFilter(
                     $foobar,
-                    function ( ) {
-
+                    function () {
                         return false;
                     }
                 ),
@@ -196,15 +192,14 @@ class CallbackFilter extends Test\Unit\Suite {
                     ->isEmpty();
     }
 
-    public function case_recursive_remove_none ( ) {
-
+    public function case_recursive_remove_none()
+    {
         $this
             ->given(
                 $foobar = $this->getDummyRecursiveIterator(),
                 $filter = new LUT\Recursive\CallbackFilter(
                     $foobar,
-                    function ( ) {
-
+                    function () {
                         return true;
                     }
                 ),
@@ -220,13 +215,13 @@ class CallbackFilter extends Test\Unit\Suite {
                     ->isEqualTo($filterResult);
     }
 
-    protected function getDummyIterator ( ) {
-
+    protected function getDummyIterator()
+    {
         return new LUT\Map(['f', 'o', 'o', 'b', 'a', 'r']);
     }
 
-    protected function getDummyRecursiveIterator ( ) {
-
+    protected function getDummyRecursiveIterator()
+    {
         return new LUT\Recursive\Map([['f', 'o', 'o'], ['b', 'a', 'r']]);
     }
 }

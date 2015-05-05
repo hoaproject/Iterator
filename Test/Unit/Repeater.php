@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2015, Ivan Enderlin. All rights reserved.
+ * Copyright © 2007-2015, Hoa community. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -36,27 +36,25 @@
 
 namespace Hoa\Iterator\Test\Unit;
 
-use Hoa\Test;
 use Hoa\Iterator as LUT;
+use Hoa\Test;
 
 /**
  * Class \Hoa\Iterator\Test\Unit\Repeater.
  *
  * Test suite of the repeater iterator.
  *
- * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
- * @copyright  Copyright © 2007-2015 Ivan Enderlin.
+ * @copyright  Copyright © 2007-2015 Hoa community
  * @license    New BSD License
  */
-
-class Repeater extends Test\Unit\Suite {
-
+class Repeater extends Test\Unit\Suite
+{
     private static $_dummyArray = ['f', 'o', 'o', 'b', 'a', 'r'];
 
 
 
-    public function case_classic ( ) {
-
+    public function case_classic()
+    {
         $this
             ->given(
                 $iterator = new LUT\Map(self::$_dummyArray),
@@ -72,8 +70,8 @@ class Repeater extends Test\Unit\Suite {
                     );
     }
 
-    public function case_with_body ( ) {
-
+    public function case_with_body()
+    {
         $self = $this;
 
         $this
@@ -83,8 +81,7 @@ class Repeater extends Test\Unit\Suite {
                 $repeater = new LUT\Repeater(
                     $iterator,
                     3,
-                    function ( $repetition ) use ( $self, &$count ) {
-
+                    function ($repetition) use ($self, &$count) {
                         $this
                             ->integer($repetition)
                                 ->isEqualTo($count + 1);

@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2015, Ivan Enderlin. All rights reserved.
+ * Copyright © 2007-2015, Hoa community. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -36,23 +36,21 @@
 
 namespace Hoa\Iterator\Test\Unit;
 
-use Hoa\Test;
 use Hoa\Iterator as LUT;
+use Hoa\Test;
 
 /**
  * Class \Hoa\Iterator\Test\Unit\Demultiplexer.
  *
  * Test suite of the demultiplexer iterator.
  *
- * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
- * @copyright  Copyright © 2007-2015 Ivan Enderlin.
+ * @copyright  Copyright © 2007-2015 Hoa community
  * @license    New BSD License
  */
-
-class Demultiplexer extends Test\Unit\Suite {
-
-    public function case_classic ( ) {
-
+class Demultiplexer extends Test\Unit\Suite
+{
+    public function case_classic()
+    {
         $this
             ->given(
                 $counter  = new LUT\Counter(0, 10, 1),
@@ -61,8 +59,7 @@ class Demultiplexer extends Test\Unit\Suite {
                 $multiple->attachIterator(clone $counter),
                 $demultiplexer = new LUT\Demultiplexer(
                     $multiple,
-                    function ( $current ) {
-
+                    function ($current) {
                         return $current[0] * $current[1];
                     }
                 )
@@ -84,8 +81,8 @@ class Demultiplexer extends Test\Unit\Suite {
                     ]);
     }
 
-    public function case_associative_keys ( ) {
-
+    public function case_associative_keys()
+    {
         $this
             ->given(
                 $counter  = new LUT\Counter(0, 10, 1),
@@ -97,8 +94,7 @@ class Demultiplexer extends Test\Unit\Suite {
                 $multiple->attachIterator(clone $counter, 'two'),
                 $demultiplexer = new LUT\Demultiplexer(
                     $multiple,
-                    function ( $current ) {
-
+                    function ($current) {
                         return $current['one'] * $current['two'];
                     }
                 )

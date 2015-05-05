@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2015, Ivan Enderlin. All rights reserved.
+ * Copyright © 2007-2015, Hoa community. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -36,23 +36,21 @@
 
 namespace Hoa\Iterator\Test\Unit;
 
-use Hoa\Test;
 use Hoa\Iterator as LUT;
+use Hoa\Test;
 
 /**
  * Class \Hoa\Iterator\Test\Unit\FileSystem.
  *
  * Test suite of the filesystem iterator.
  *
- * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
- * @copyright  Copyright © 2007-2015 Ivan Enderlin.
+ * @copyright  Copyright © 2007-2015 Hoa community
  * @license    New BSD License
  */
-
-class FileSystem extends Test\Unit\Suite {
-
-    public function case_classic ( ) {
-
+class FileSystem extends Test\Unit\Suite
+{
+    public function case_classic()
+    {
         $this
             ->given(
                 $root = resolve('hoa://Test/Vfs/Root?type=directory'),
@@ -63,10 +61,8 @@ class FileSystem extends Test\Unit\Suite {
                 $iterator = new LUT\FileSystem($root),
                 $result   = []
             )
-            ->when(function ( ) use ( $iterator, &$result ) {
-
-                foreach($iterator as $pathname => $file) {
-
+            ->when(function () use ($iterator, &$result) {
+                foreach ($iterator as $pathname => $file) {
                     $this
                         ->object($file)
                             ->isInstanceOf('SplFileInfo');
@@ -81,8 +77,8 @@ class FileSystem extends Test\Unit\Suite {
                 ]);
     }
 
-    public function case_splFileClassInfo ( ) {
-
+    public function case_splFileClassInfo()
+    {
         $this
             ->given(
                 $splFileInfo = 'Hoa\Iterator\SplFileInfo',
@@ -100,10 +96,8 @@ class FileSystem extends Test\Unit\Suite {
                 ),
                 $result   = []
             )
-            ->when(function ( ) use ( $iterator, $splFileInfo, &$result ) {
-
-                foreach($iterator as $file) {
-
+            ->when(function () use ($iterator, $splFileInfo, &$result) {
+                foreach ($iterator as $file) {
                     $this
                         ->object($file)
                             ->isInstanceOf($splFileInfo);

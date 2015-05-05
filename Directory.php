@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2015, Ivan Enderlin. All rights reserved.
+ * Copyright © 2007-2015, Hoa community. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -41,24 +41,22 @@ namespace Hoa\Iterator;
  *
  * Extending the SPL DirectoryIterator class.
  *
- * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
- * @copyright  Copyright © 2007-2015 Ivan Enderlin.
+ * @copyright  Copyright © 2007-2015 Hoa community
  * @license    New BSD License
  */
-
-class Directory extends \DirectoryIterator {
-
+class Directory extends \DirectoryIterator
+{
     /**
      * SplFileInfo classname.
      *
-     * @var \Hoa\Iterator\Directory string
+     * @var string
      */
     protected $_splFileInfoClass = null;
 
     /**
      * Relative path.
      *
-     * @var \Hoa\Iterator\Recursive\Directory string
+     * @var string
      */
     protected $_relativePath     = null;
 
@@ -69,12 +67,11 @@ class Directory extends \DirectoryIterator {
      * Please, see \DirectoryIterator::__construct() method.
      * We add the $splFileInfoClass parameter.
      *
-     * @access  public
      * @param   string  $path                Path.
      * @param   string  $splFileInfoClass    SplFileInfo classname.
      */
-    public function __construct ( $path, $splFileInfoClass = null ) {
-
+    public function __construct($path, $splFileInfoClass = null)
+    {
         $this->_splFileInfoClass = $splFileInfoClass;
         parent::__construct($path);
         $this->setRelativePath($path);
@@ -86,21 +83,20 @@ class Directory extends \DirectoryIterator {
      * Current.
      * Please, see \DirectoryIterator::current() method.
      *
-     * @access  public
      * @return  mixed
      */
-    public function current ( ) {
-
+    public function current()
+    {
         $out = parent::current();
 
-        if(   null !== $this->_splFileInfoClass
-           && $out instanceof \SplFileInfo) {
-
+        if (null !== $this->_splFileInfoClass &&
+            $out instanceof \SplFileInfo) {
             $out->setInfoClass($this->_splFileInfoClass);
             $out = $out->getFileInfo();
 
-            if($out instanceof \Hoa\Iterator\SplFileInfo)
+            if ($out instanceof \Hoa\Iterator\SplFileInfo) {
                 $out->setRelativePath($this->getRelativePath());
+            }
         }
 
         return $out;
@@ -109,12 +105,11 @@ class Directory extends \DirectoryIterator {
     /**
      * Set relative path.
      *
-     * @access  protected
      * @param   string  $relativePath    Relative path.
      * @return  string
      */
-    protected function setRelativePath ( $path ) {
-
+    protected function setRelativePath($path)
+    {
         $old                 = $this->_relativePath;
         $this->_relativePath = $path;
 
@@ -124,11 +119,10 @@ class Directory extends \DirectoryIterator {
     /**
      * Get relative path (if given).
      *
-     * @access  public
      * @return  string
      */
-    public function getRelativePath ( ) {
-
+    public function getRelativePath()
+    {
         return $this->_relativePath;
     }
 }

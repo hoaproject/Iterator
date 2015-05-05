@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2015, Ivan Enderlin. All rights reserved.
+ * Copyright © 2007-2015, Hoa community. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -36,27 +36,25 @@
 
 namespace Hoa\Iterator\Test\Unit;
 
-use Hoa\Test;
 use Hoa\Iterator as LUT;
+use Hoa\Test;
 
 /**
  * Class \Hoa\Iterator\Test\Unit\Limit.
  *
  * Test suite of the limit iterator.
  *
- * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
- * @copyright  Copyright © 2007-2015 Ivan Enderlin.
+ * @copyright  Copyright © 2007-2015 Hoa community
  * @license    New BSD License
  */
-
-class Limit extends Test\Unit\Suite {
-
+class Limit extends Test\Unit\Suite
+{
     private static $_dummyArray = ['f', 'o', 'o', 'b', 'a', 'r'];
 
 
 
-    public function case_classic ( ) {
-
+    public function case_classic()
+    {
         $this
             ->given(
                 $iterator = new LUT\Map(self::$_dummyArray),
@@ -72,26 +70,24 @@ class Limit extends Test\Unit\Suite {
                     ]);
     }
 
-    public function case_negative_offset ( ) {
-
+    public function case_negative_offset()
+    {
         $this
             ->given($iterator = new LUT\Map(self::$_dummyArray))
-            ->exception(function ( ) use ( $iterator ) {
-
+            ->exception(function () use ($iterator) {
                 new LUT\Limit($iterator, -2, 3);
             })
                 ->isInstanceOf('OutOfRangeException');
     }
 
-    public function case_empty ( ) {
-
+    public function case_empty()
+    {
         $this
             ->given(
                 $iterator = new LUT\Map(self::$_dummyArray),
                 $limit    = new LUT\Limit($iterator, 0, 0)
             )
-            ->exception(function ( ) use ( $limit ) {
-
+            ->exception(function () use ($limit) {
                 iterator_to_array($limit);
             })
                 ->isInstanceOf('OutOfBoundsException');

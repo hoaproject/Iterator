@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2015, Ivan Enderlin. All rights reserved.
+ * Copyright © 2007-2015, Hoa community. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -41,33 +41,31 @@ namespace Hoa\Iterator;
  *
  * Look behind iterator.
  *
- * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
- * @copyright  Copyright © 2007-2015 Ivan Enderlin.
+ * @copyright  Copyright © 2007-2015 Hoa community
  * @license    New BSD License
  */
-
 class          Lookbehind
     extends    IteratorIterator
-    implements Outer {
-
+    implements Outer
+{
     /**
      * Current iterator.
      *
-     * @var \Hoa\Iterator\Lookbehind object
+     * @var \Hoa\Iterator\Lookbehind
      */
     protected $_iterator        = null;
 
     /**
      * Previous key.
      *
-     * @var \Hoa\Iterator\Lookbehind mixed
+     * @var mixed
      */
     protected $_previousKey     = -1;
 
     /**
      * Previous value.
      *
-     * @var \Hoa\Iterator\Lookbehind mixed
+     * @var mixed
      */
     protected $_previousCurrent = null;
 
@@ -76,12 +74,11 @@ class          Lookbehind
     /**
      * Construct.
      *
-     * @access  public
      * @param   \Iterator  $iterator    Iterator.
      * @return  void
      */
-    public function __construct ( \Iterator $iterator ) {
-
+    public function __construct(\Iterator $iterator)
+    {
         $this->_iterator = $iterator;
 
         return;
@@ -90,44 +87,40 @@ class          Lookbehind
     /**
      * Get inner iterator.
      *
-     * @access  public
      * @return  \Iterator
      */
-    public function getInnerIterator ( ) {
-
+    public function getInnerIterator()
+    {
         return $this->_iterator;
     }
 
     /**
      * Return the current element.
      *
-     * @access  public
      * @return  mixed
      */
-    public function current ( ) {
-
+    public function current()
+    {
         return $this->getInnerIterator()->current();
     }
 
     /**
      * Return the key of the current element.
      *
-     * @access  public
      * @return  mixed
      */
-    public function key ( ) {
-
+    public function key()
+    {
         return $this->getInnerIterator()->key();
     }
 
     /**
      * Move forward to next element.
      *
-     * @access  public
      * @return  void
      */
-    public function next ( ) {
-
+    public function next()
+    {
         $this->_previousKey     = $this->key();
         $this->_previousCurrent = $this->current();
 
@@ -137,11 +130,10 @@ class          Lookbehind
     /**
      * Rewind the iterator to the first element.
      *
-     * @access  public
      * @return  void
      */
-    public function rewind ( ) {
-
+    public function rewind()
+    {
         $this->_previousKey     = -1;
         $this->_previousCurrent = null;
 
@@ -151,44 +143,40 @@ class          Lookbehind
     /**
      * Check if current position is valid.
      *
-     * @access  public
      * @return  bool
      */
-    public function valid ( ) {
-
+    public function valid()
+    {
         return $this->getInnerIterator()->valid();
     }
 
     /**
      * Check whether there is a previous element.
      *
-     * @access  public
      * @return  bool
      */
-    public function hasPrevious ( ) {
-
+    public function hasPrevious()
+    {
         return -1 !== $this->_previousKey;
     }
 
     /**
      * Get previous value.
      *
-     * @access  public
      * @return  mixed
      */
-    public function getPrevious ( ) {
-
+    public function getPrevious()
+    {
         return $this->_previousCurrent;
     }
 
     /**
      * Get previous key.
      *
-     * @access  public
      * @return  mixed
      */
-    public function getPreviousKey ( ) {
-
+    public function getPreviousKey()
+    {
         return $this->_previousKey;
     }
 }

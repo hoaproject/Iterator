@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2015, Ivan Enderlin. All rights reserved.
+ * Copyright © 2007-2015, Hoa community. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -41,31 +41,29 @@ namespace Hoa\Iterator\Recursive;
  *
  * Extending the SPL RecursiveDirectoryIterator class.
  *
- * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
- * @copyright  Copyright © 2007-2015 Ivan Enderlin.
+ * @copyright  Copyright © 2007-2015 Hoa community
  * @license    New BSD License
  */
-
-class Directory extends \RecursiveDirectoryIterator {
-
+class Directory extends \RecursiveDirectoryIterator
+{
     /**
      * SplFileInfo classname.
      *
-     * @var \Hoa\Iterator\Recursive\Directory string
+     * @var string
      */
     protected $_splFileInfoClass = null;
 
     /**
      * Relative path.
      *
-     * @var \Hoa\Iterator\Recursive\Directory string
+     * @var string
      */
     protected $_relativePath     = 0;
 
     /**
      * Workaround for the bug #65136.
      *
-     * @var \Hoa\Iterator\Recursive\Directory string
+     * @var string
      */
     private static $_handlePath  = null;
 
@@ -76,25 +74,24 @@ class Directory extends \RecursiveDirectoryIterator {
      * Please, see \RecursiveDirectoryIterator::__construct() method.
      * We add the $splFileInfoClass parameter.
      *
-     * @access  public
      * @param   string  $path                Path.
      * @param   int     $flags               Flags.
      * @param   string  $splFileInfoClass    SplFileInfo classname.
      */
-    public function __construct ( $path, $flags = null, $splFileInfoClass = null ) {
-
-        if(null === $flags)
+    public function __construct($path, $flags = null, $splFileInfoClass = null)
+    {
+        if (null === $flags) {
             parent::__construct($path);
-        else
+        } else {
             parent::__construct($path, $flags);
+        }
 
-        if(null !== self::$_handlePath) {
-
+        if (null !== self::$_handlePath) {
             $this->_relativePath = self::$_handlePath;
             self::$_handlePath   = null;
-        }
-        else
+        } else {
             $this->_relativePath = $path;
+        }
 
         $this->setSplFileInfoClass($splFileInfoClass);
 
@@ -105,21 +102,20 @@ class Directory extends \RecursiveDirectoryIterator {
      * Current.
      * Please, see \RecursiveDirectoryIterator::current() method.
      *
-     * @access  public
      * @return  mixed
      */
-    public function current ( ) {
-
+    public function current()
+    {
         $out = parent::current();
 
-        if(   null !== $this->_splFileInfoClass
-           && $out instanceof \SplFileInfo) {
-
+        if (null !== $this->_splFileInfoClass &&
+            $out instanceof \SplFileInfo) {
             $out->setInfoClass($this->_splFileInfoClass);
             $out = $out->getFileInfo();
 
-            if($out instanceof \Hoa\Iterator\SplFileInfo)
+            if ($out instanceof \Hoa\Iterator\SplFileInfo) {
                 $out->setRelativePath($this->getRelativePath());
+            }
         }
 
         return $out;
@@ -129,16 +125,16 @@ class Directory extends \RecursiveDirectoryIterator {
      * Get children.
      * Please, see \RecursiveDirectoryIterator::getChildren() method.
      *
-     * @access  public
      * @return  mixed
      */
-    public function getChildren ( ) {
-
+    public function getChildren()
+    {
         self::$_handlePath = $this->getRelativePath();
         $out               = parent::getChildren();
 
-        if($out instanceof \RecursiveDirectoryIterator)
+        if ($out instanceof \RecursiveDirectoryIterator) {
             $out->setSplFileInfoClass($this->_splFileInfoClass);
+        }
 
         return $out;
     }
@@ -146,12 +142,11 @@ class Directory extends \RecursiveDirectoryIterator {
     /**
      * Set SplFileInfo classname.
      *
-     * @access  public
      * @param   string  $splFileInfoClass    SplFileInfo classname.
      * @return  void
      */
-    public function setSplFileInfoClass ( $splFileInfoClass ) {
-
+    public function setSplFileInfoClass($splFileInfoClass)
+    {
         $this->_splFileInfoClass = $splFileInfoClass;
 
         return;
@@ -160,11 +155,10 @@ class Directory extends \RecursiveDirectoryIterator {
     /**
      * Get relative path (if given).
      *
-     * @access  public
      * @return  string
      */
-    public function getRelativePath ( ) {
-
+    public function getRelativePath()
+    {
         return $this->_relativePath;
     }
 }

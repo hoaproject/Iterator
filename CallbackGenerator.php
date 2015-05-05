@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2015, Ivan Enderlin. All rights reserved.
+ * Copyright © 2007-2015, Hoa community. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -41,31 +41,29 @@ namespace Hoa\Iterator;
  *
  * Yield a value based on a callback.
  *
- * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
- * @copyright  Copyright © 2007-2015 Ivan Enderlin.
+ * @copyright  Copyright © 2007-2015 Hoa community
  * @license    New BSD License
  */
-
-class CallbackGenerator implements Iterator {
-
+class CallbackGenerator implements Iterator
+{
     /**
      * Callback.
      *
-     * @var \Hoa\Iterator\CallbackGenerator callable
+     * @var callable
      */
     protected $_callback = null;
 
     /**
      * Current key.
      *
-     * @var \Hoa\Iterator\Demultiplexer mixed
+     * @var mixed
      */
     protected $_key      = 0;
 
     /**
      * Current computed value.
      *
-     * @var \Hoa\Iterator\Demultiplexer mixed
+     * @var mixed
      */
     protected $_current  = null;
 
@@ -74,12 +72,11 @@ class CallbackGenerator implements Iterator {
     /**
      * Constructor.
      *
-     * @access  public
      * @param   callable  $callback    Callback.
      * @return  void
      */
-    public function __construct ( Callable $callback ) {
-
+    public function __construct(callable $callback)
+    {
         $this->_callback = $callback;
 
         return;
@@ -88,11 +85,10 @@ class CallbackGenerator implements Iterator {
     /**
      * Return the current element.
      *
-     * @access  public
      * @return  mixed
      */
-    public function current ( ) {
-
+    public function current()
+    {
         $handle = $this->_callback;
 
         return $this->_current = $handle($this->_key);
@@ -101,22 +97,20 @@ class CallbackGenerator implements Iterator {
     /**
      * Return the key of the current element.
      *
-     * @access  public
      * @return  mixed
      */
-    public function key ( ) {
-
+    public function key()
+    {
         return $this->_key;
     }
 
     /**
      * Move forward to next element.
      *
-     * @access  public
      * @return  void
      */
-    public function next ( ) {
-
+    public function next()
+    {
         ++$this->_key;
 
         return;
@@ -125,11 +119,10 @@ class CallbackGenerator implements Iterator {
     /**
      * Rewind the iterator to the first element.
      *
-     * @access  public
      * @return  void
      */
-    public function rewind ( ) {
-
+    public function rewind()
+    {
         $this->_key     = 0;
         $this->_current = null;
 
@@ -139,11 +132,10 @@ class CallbackGenerator implements Iterator {
     /**
      * Check if current position is valid.
      *
-     * @access  public
      * @return  bool
      */
-    public function valid ( ) {
-
+    public function valid()
+    {
         return true;
     }
 }

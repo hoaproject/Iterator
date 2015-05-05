@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2015, Ivan Enderlin. All rights reserved.
+ * Copyright © 2007-2015, Hoa community. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -36,23 +36,21 @@
 
 namespace Hoa\Iterator\Test\Unit;
 
-use Hoa\Test;
 use Hoa\Iterator as LUT;
+use Hoa\Test;
 
 /**
  * Class \Hoa\Iterator\Test\Unit\MyFilter.
  *
  * Basic filter.
  *
- * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
- * @copyright  Copyright © 2007-2015 Ivan Enderlin.
+ * @copyright  Copyright © 2007-2015 Hoa community
  * @license    New BSD License
  */
-
-class MyFilter extends LUT\Filter {
-
-    public function accept ( ) {
-
+class MyFilter extends LUT\Filter
+{
+    public function accept()
+    {
         return true;
     }
 }
@@ -62,21 +60,18 @@ class MyFilter extends LUT\Filter {
  *
  * Test suite of the filter iterator.
  *
- * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
- * @copyright  Copyright © 2007-2015 Ivan Enderlin.
+ * @copyright  Copyright © 2007-2015 Hoa community
  * @license    New BSD License
  */
-
-class Filter extends Test\Unit\Suite {
-
-    public function case_classic ( ) {
-
+class Filter extends Test\Unit\Suite
+{
+    public function case_classic()
+    {
         $this
             ->given(
                 $foobar = $this->getDummyIterator(),
                 $filter = new \Mock\Hoa\Iterator\Test\Unit\MyFilter($foobar),
-                $this->calling($filter)->accept = function ( ) {
-
+                $this->calling($filter)->accept = function () {
                     $value = $this->current();
 
                     return false === in_array($value, ['a', 'e', 'i', 'o', 'u']);
@@ -92,8 +87,8 @@ class Filter extends Test\Unit\Suite {
                     ]);
     }
 
-    public function case_remove_all ( ) {
-
+    public function case_remove_all()
+    {
         $this
             ->given(
                 $foobar = $this->getDummyIterator(),
@@ -106,8 +101,8 @@ class Filter extends Test\Unit\Suite {
                     ->isEmpty();
     }
 
-    public function case_remove_none ( ) {
-
+    public function case_remove_none()
+    {
         $this
             ->given(
                 $foobar = $this->getDummyIterator(),
@@ -122,8 +117,8 @@ class Filter extends Test\Unit\Suite {
                     ->isEqualTo($filterResult);
     }
 
-    protected function getDummyIterator ( ) {
-
+    protected function getDummyIterator()
+    {
         return new LUT\Map(['f', 'o', 'o', 'b', 'a', 'r']);
     }
 }

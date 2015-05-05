@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2015, Ivan Enderlin. All rights reserved.
+ * Copyright © 2007-2015, Hoa community. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -45,13 +45,11 @@ namespace Hoa\Iterator;
  *
  * Inspired by hhvm://hphp/system/php/spl/iterators/RegexIterator.php
  *
- * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
- * @copyright  Copyright © 2007-2015 Ivan Enderlin.
+ * @copyright  Copyright © 2007-2015 Hoa community
  * @license    New BSD License
  */
-
-class RegularExpression extends Filter {
-
+class RegularExpression extends Filter
+{
     /**
      * Flag: match the entry key instead of the entry value.
      *
@@ -104,7 +102,7 @@ class RegularExpression extends Filter {
     /**
      * The regular expression to match.
      *
-     * @var \Hoa\Iterator\RegularExpression string
+     * @var string
      */
     protected $_regex     = null;
 
@@ -112,7 +110,7 @@ class RegularExpression extends Filter {
      * Operation mode, see the \RegexIterator::setMode method for a list of
      * modes.
      *
-     * @var \Hoa\Iterator\RegularExpression int
+     * @var int
      */
     protected $_mode      = 0;
 
@@ -120,35 +118,35 @@ class RegularExpression extends Filter {
      * Special flags, see the \RegexIterator::setFlag method for a list of
      * available flags.
      *
-     * @var \Hoa\Iterator\RegularExpression int
+     * @var int
      */
     protected $_flags     = 0;
 
     /**
      * The regular expression flags. See constants.
      *
-     * @var \Hoa\Iterator\RegularExpression int
+     * @var int
      */
     protected $_pregFlags = 0;
 
     /**
      * Current key.
      *
-     * @var \Hoa\Iterator\RegularExpression int
+     * @var int
      */
     protected $_key       = 0;
 
     /**
      * Current value.
      *
-     * @var \Hoa\Iterator\RegularExpression string
+     * @var string
      */
     protected $_current   = null;
 
     /**
      * Replacement.
      *
-     * @var \Hoa\Iterator\RegularExpression string
+     * @var string
      */
     public $replacement   = null;
 
@@ -157,7 +155,6 @@ class RegularExpression extends Filter {
     /**
      * Constructor.
      *
-     * @access  public
      * @param   \RecursiveIterator  $iterator     The recursive iterator to
      *                                            apply this regex filter to.
      * @param   string              $regex        The regular expression to
@@ -171,10 +168,13 @@ class RegularExpression extends Filter {
      *                                            \RegexIterator constants.
      * @return  void
      */
-    public function __construct ( \Iterator $iterator, $regex,
-                                  $mode = self::MATCH, $flags = 0,
-                                  $pregFlags = 0) {
-
+    public function __construct(
+        \Iterator $iterator,
+        $regex,
+        $mode      = self::MATCH,
+        $flags     = 0,
+        $pregFlags = 0
+    ) {
         parent::__construct($iterator);
 
         $this->_regex = $regex;
@@ -189,13 +189,13 @@ class RegularExpression extends Filter {
     /**
      * Get accept status.
      *
-     * @access  public
      * @return  bool
      */
-    public function accept ( ) {
-
-        if(is_array(parent::current()))
+    public function accept()
+    {
+        if (is_array(parent::current())) {
             return false;
+        }
 
         $this->_key     = parent::key();
         $this->_current = parent::current();
@@ -205,7 +205,7 @@ class RegularExpression extends Filter {
         $subject = $useKey ? $this->_key : $this->_current;
         $out     = false;
 
-        switch($this->_mode) {
+        switch ($this->_mode) {
 
             case self::MATCH:
                 $out = 0 !== preg_match(
@@ -214,7 +214,8 @@ class RegularExpression extends Filter {
                     $matches,
                     $this->_pregFlags
                 );
-              break;
+
+                break;
 
             case self::GET_MATCH:
                 $this->_current = [];
@@ -224,17 +225,19 @@ class RegularExpression extends Filter {
                     $this->_current,
                     $this->_pregFlags
                 );
-              break;
+
+                break;
 
             case self::ALL_MATCHES:
                 $this->_current = [];
-                $out = 0 < preg_match_all(
+                $out            = 0 < preg_match_all(
                     $this->_regex,
                     $subject,
                     $this->_current,
                     $this->_pregFlags
                 );
-              break;
+
+                break;
 
             case self::SPLIT:
                 $this->_current = preg_split(
@@ -244,9 +247,11 @@ class RegularExpression extends Filter {
                     $this->_pregFlags
                 );
 
-                $out =    is_array($this->_current)
-                       && 1 < count($this->_current);
-              break;
+                $out =
+                    is_array($this->_current) &&
+                    1 < count($this->_current);
+
+                break;
 
             case self::REPLACE:
                 $numberOfReplacement = 0;
@@ -258,14 +263,13 @@ class RegularExpression extends Filter {
                     $numberOfReplacement
                 );
 
-                if(null === $result || 0 === $numberOfReplacement) {
-
+                if (null === $result || 0 === $numberOfReplacement) {
                     $out = false;
+
                     break;
                 }
 
-                if(0 !== $useKey) {
-
+                if (0 !== $useKey) {
                     $this->_key = $result;
                     $out        = true;
 
@@ -274,15 +278,18 @@ class RegularExpression extends Filter {
 
                 $this->_current = $result;
                 $out            = true;
-              break;
+
+                break;
 
             default:
                 $out = false;
-              break;
+
+                break;
         }
 
-        if(0 !== ($this->_flags & self::INVERT_MATCH))
+        if (0 !== ($this->_flags & self::INVERT_MATCH)) {
             return false === $out;
+        }
 
         return $out;
     }
@@ -290,37 +297,36 @@ class RegularExpression extends Filter {
     /**
      * Get current key.
      *
-     * @access  public
      * @return  int
      */
-    public function key ( ) {
-
+    public function key()
+    {
         return $this->_key;
     }
 
     /**
      * Get current value.
      *
-     * @access  public
      * @return  string
      */
-    public function current ( ) {
-
+    public function current()
+    {
         return $this->_current;
     }
 
     /**
      * Set mode.
      *
-     * @access  public
      * @param   int  $mode   Mode.
      * @return  void
      */
-    public function setMode ( $mode ) {
-
-        if($mode < self::MATCH || $mode > self::REPLACE)
+    public function setMode($mode)
+    {
+        if ($mode < self::MATCH || $mode > self::REPLACE) {
             throw new \InvalidArgumentException(
-                'Illegal mode ' . $mode . '.');
+                'Illegal mode ' . $mode . '.'
+            );
+        }
 
         $this->_mode = $mode;
 
@@ -330,12 +336,11 @@ class RegularExpression extends Filter {
     /**
      * Set flags.
      *
-     * @access  public
      * @param   int  $flags    Flags.
      * @return  void
      */
-    public function setFlags ( $flags ) {
-
+    public function setFlags($flags)
+    {
         $this->_flags = $flags;
 
         return;
@@ -344,12 +349,11 @@ class RegularExpression extends Filter {
     /**
      * Set preg flags.
      *
-     * @access  public
      * @param   int  $pregFlags    Preg flags.
      * @return  void
      */
-    public function setPregFlags ( $pregFlags ) {
-
+    public function setPregFlags($pregFlags)
+    {
         $this->_pregFlags = $pregFlags;
 
         return;
@@ -358,44 +362,40 @@ class RegularExpression extends Filter {
     /**
      * Get regular expression.
      *
-     * @access  public
      * @return  string
      */
-    public function getRegex ( ) {
-
+    public function getRegex()
+    {
         return $this->_regex;
     }
 
     /**
      * Get mode.
      *
-     * @access  public
      * @return  int
      */
-    public function getMode ( ) {
-
+    public function getMode()
+    {
         return $this->_mode;
     }
 
     /**
      * Get flags.
      *
-     * @access  public
      * @return  int
      */
-    public function getFlags ( ) {
-
+    public function getFlags()
+    {
         return $this->_flags;
     }
 
     /**
      * Get preg flags.
      *
-     * @access  public
      * @return  int
      */
-    public function getPregFlags ( ) {
-
+    public function getPregFlags()
+    {
         return $this->_pregFlags;
     }
 }

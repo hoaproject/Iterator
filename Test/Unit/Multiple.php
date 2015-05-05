@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2015, Ivan Enderlin. All rights reserved.
+ * Copyright © 2007-2015, Hoa community. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -36,23 +36,21 @@
 
 namespace Hoa\Iterator\Test\Unit;
 
-use Hoa\Test;
 use Hoa\Iterator as LUT;
+use Hoa\Test;
 
 /**
  * Class \Hoa\Iterator\Test\Unit\Multiple.
  *
  * Test suite of the multiple iterator.
  *
- * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
- * @copyright  Copyright © 2007-2015 Ivan Enderlin.
+ * @copyright  Copyright © 2007-2015 Hoa community
  * @license    New BSD License
  */
-
-class Multiple extends Test\Unit\Suite {
-
-    public function case_classic ( ) {
-
+class Multiple extends Test\Unit\Suite
+{
+    public function case_classic()
+    {
         $this
             ->given(
                 $foo      = new LUT\Map(['f', 'o', 'o']),
@@ -74,8 +72,8 @@ class Multiple extends Test\Unit\Suite {
                     ]);
     }
 
-    public function case_default_value ( ) {
-
+    public function case_default_value()
+    {
         $this
             ->given(
                 $foobar   = new LUT\Map(['f', 'o', 'o', 'b', 'a', 'r']),
@@ -100,8 +98,8 @@ class Multiple extends Test\Unit\Suite {
                     ]);
     }
 
-    public function case_empty ( ) {
-
+    public function case_empty()
+    {
         $this
             ->given($multiple = new LUT\Multiple())
             ->when($result = iterator_to_array($multiple))

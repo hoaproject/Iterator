@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2015, Ivan Enderlin. All rights reserved.
+ * Copyright © 2007-2015, Hoa community. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -42,31 +42,29 @@ namespace Hoa\Iterator;
  * Demux result from another iterator.
  * This iterator is somehow the opposite of the Hoa\Iterator\Multiple iterator.
  *
- * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
- * @copyright  Copyright © 2007-2015 Ivan Enderlin.
+ * @copyright  Copyright © 2007-2015 Hoa community
  * @license    New BSD License
  */
-
-class Demultiplexer implements Iterator {
-
+class Demultiplexer implements Iterator
+{
     /**
      * Current iterator.
      *
-     * @var \Traversable object
+     * @var \Traversable
      */
     protected $_iterator = null;
 
     /**
      * Current computed value.
      *
-     * @var \Hoa\Iterator\Demultiplexer mixed
+     * @var mixed
      */
     protected $_current  = null;
 
     /**
      * Demuxer (callable to execute each time).
      *
-     * @var \Hoa\Iterator\Demultiplexer callable
+     * @var callable
      */
     protected $_demuxer  = null;
 
@@ -75,16 +73,16 @@ class Demultiplexer implements Iterator {
     /**
      * Constructor.
      *
-     * @access  public
      * @param   \Traversable  $iterator    Iterator.
      * @param   callable      $demuxer     Demuxer.
      * @return  void
-     * @throw   \Hoa\Iterator\Exception
+     * @throws  \Hoa\Iterator\Exception
      */
-    public function __construct ( \Traversable $iterator, $demuxer ) {
-
-        if($iterator instanceof \IteratorAggregate)
+    public function __construct(\Traversable $iterator, $demuxer)
+    {
+        if ($iterator instanceof \IteratorAggregate) {
             $iterator = $iterator->getIterator();
+        }
 
         $this->_iterator = $iterator;
         $this->_demuxer  = $demuxer;
@@ -95,13 +93,13 @@ class Demultiplexer implements Iterator {
     /**
      * Return the current element.
      *
-     * @access  public
      * @return  mixed
      */
-    public function current ( ) {
-
-        if(null !== $this->_current)
+    public function current()
+    {
+        if (null !== $this->_current) {
             return $this->_current;
+        }
 
         $demuxer = $this->_demuxer;
 
@@ -111,22 +109,20 @@ class Demultiplexer implements Iterator {
     /**
      * Return the key of the current element.
      *
-     * @access  public
      * @return  mixed
      */
-    public function key ( ) {
-
+    public function key()
+    {
         return $this->_iterator->key();
     }
 
     /**
      * Move forward to next element.
      *
-     * @access  public
      * @return  void
      */
-    public function next ( ) {
-
+    public function next()
+    {
         $this->_current = null;
 
         return $this->_iterator->next();
@@ -135,22 +131,20 @@ class Demultiplexer implements Iterator {
     /**
      * Rewind the iterator to the first element.
      *
-     * @access  public
      * @return  void
      */
-    public function rewind ( ) {
-
+    public function rewind()
+    {
         return $this->_iterator->rewind();
     }
 
     /**
      * Check if current position is valid.
      *
-     * @access  public
      * @return  bool
      */
-    public function valid ( ) {
-
+    public function valid()
+    {
         return $this->_iterator->valid();
     }
 }

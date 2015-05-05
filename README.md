@@ -70,8 +70,9 @@ extends [`OuterIterator`](http://php.net/outeriterator).
 ```php
 $foobar = new Hoa\Iterator\Map(['f', 'o', 'o', 'b', 'a', 'r']);
 
-foreach($foobar as $value)
+foreach ($foobar as $value) {
     echo $value;
+}
 
 /**
  * Will output:
@@ -89,14 +90,14 @@ content of an iterator. It extends
 ```php
 $filter = new Hoa\Iterator\CallbackFilter(
     $foobar,
-    function ( $value, $key, $iterator ) {
-
+    function ($value, $key, $iterator) {
         return false === in_array($value, ['a', 'e', 'i', 'o', 'u']);
     }
 );
 
-foreach($filter as $value)
+foreach ($filter as $value) {
     echo $value;
+}
 
 /**
  * Will output:
@@ -115,8 +116,9 @@ a specific offset. It extends [`LimitIterator`](http://php.net/limititerator).
 ```php
 $limit = new Hoa\Iterator\Limit($foobar, 2, 3);
 
-foreach($limit as $value)
+foreach ($limit as $value) {
     echo $value;
+}
 
 /**
  * Will output:
@@ -133,8 +135,9 @@ It extends [`InfiniteIterator`](http://php.net/infiniteiterator).
 $infinite = new Hoa\Iterator\Infinite($foobar);
 $limit    = new Hoa\Iterator\Limit($infinite, 0, 21);
 
-foreach($limit as $value)
+foreach ($limit as $value) {
     echo $value;
+}
 
 /**
  * Will output:
@@ -153,11 +156,14 @@ Also, `Hoa\Iterator\NoRewind` is an iterator that does not rewind. It extends
 $repeater = new Hoa\Iterator\Repeater(
     $foobar,
     3,
-    function ( $i ) { echo "\n"; }
+    function ($i) {
+        echo "\n";
+    }
 );
 
-foreach($repeater as $value)
+foreach ($repeater as $value) {
     echo $value;
+}
 
 /**
  * Will output:
@@ -175,8 +181,9 @@ $step)` loop.
 ```php
 $counter = new Hoa\Iterator\Counter(0, 12, 3);
 
-foreach($counter as $value)
+foreach ($counter as $value) {
     echo $value, ' ';
+}
 
 /**
  * Will output:
@@ -196,8 +203,9 @@ $append   = new Hoa\Iterator\Append();
 $append->append($counter1);
 $append->append($counter2);
 
-foreach($append as $value)
+foreach ($append as $value) {
     echo $value, ' ';
+}
 
 /**
  * Will output:
@@ -220,8 +228,9 @@ $multiple = new Hoa\Iterator\Multiple(
 $multiple->attachIterator($foobar, 'one', '!');
 $multiple->attachIterator($baz,    'two', '?');
 
-foreach($multiple as $iterators)
+foreach ($multiple as $iterators) {
     echo $iterators['one'], ' | ', $iterators['two'], "\n";
+}
 
 /**
  * Will output:
@@ -246,14 +255,14 @@ $multiple->attachIterator($counter);
 $multiple->attachIterator(clone $counter);
 $demultiplexer = new Hoa\Iterator\Demultiplexer(
     $multiple,
-    function ( $current ) {
-
+    function ($current) {
         return $current[0] * $current[1];
     }
 );
 
-foreach($demultiplexer as $value)
+foreach ($demultiplexer as $value) {
     echo $value, ' ';
+}
 
 /**
  * Will output:
@@ -273,8 +282,9 @@ They respectively extend
 ```php
 $directory = new Hoa\Iterator\Directory(resolve('hoa://Library/Iterator'));
 
-foreach($directory as $value)
+foreach ($directory as $value) {
     echo $value->getFilename(), "\n";
+}
 
 /**
  * Will output:
@@ -297,8 +307,9 @@ extends [`GlobIterator`](http://php.net/globiterator). Thus:
 ```php
 $glob = new Hoa\Iterator\Glob(resolve('hoa://Library/Iterator') . '/M*.php');
 
-foreach($glob as $value)
+foreach ($glob as $value) {
     echo $value->getFilename(), "\n";
+}
 
 /**
  * Will output:
@@ -316,12 +327,12 @@ foreach($glob as $value)
 $counter   = new Hoa\Iterator\Counter(0, 5, 1);
 $lookahead = new Hoa\Iterator\Lookahead($counter);
 
-foreach($lookahead as $value) {
-
+foreach ($lookahead as $value) {
     echo $value;
 
-    if(true === $lookahead->hasNext())
+    if (true === $lookahead->hasNext()) {
         echo ' (next: ', $lookahead->getNext(), ')';
+    }
 
     echo "\n";
 }
@@ -346,14 +357,14 @@ iterator. This is very useful when combined with other iterators, for instance
 with `Hoa\Iterator\Limit`:
 
 ```php
-$generator = new Hoa\Iterator\CallbackGenerator(function ( $key ) {
-
+$generator = new Hoa\Iterator\CallbackGenerator(function ($key) {
     return mt_rand($key, $key * 2);
 });
-$limit     = new Hoa\Iterator\Limit($generator, 0, 10);
+$limit = new Hoa\Iterator\Limit($generator, 0, 10);
 
-foreach($limit as $value)
+foreach ($limit as $value) {
     echo $value, ' ';
+}
 
 /**
  * Could output:

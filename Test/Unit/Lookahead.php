@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2015, Ivan Enderlin. All rights reserved.
+ * Copyright © 2007-2015, Hoa community. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -36,23 +36,21 @@
 
 namespace Hoa\Iterator\Test\Unit;
 
-use Hoa\Test;
 use Hoa\Iterator as LUT;
+use Hoa\Test;
 
 /**
  * Class \Hoa\Iterator\Test\Unit\Lookahead.
  *
  * Test suite of the look ahead iterator.
  *
- * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
- * @copyright  Copyright © 2007-2015 Ivan Enderlin.
+ * @copyright  Copyright © 2007-2015 Hoa community
  * @license    New BSD License
  */
-
-class Lookahead extends Test\Unit\Suite {
-
-    public function case_traverse ( ) {
-
+class Lookahead extends Test\Unit\Suite
+{
+    public function case_traverse()
+    {
         $this
             ->given(
                 $iterator  = new LUT\Map(['a', 'b', 'c']),
@@ -64,8 +62,8 @@ class Lookahead extends Test\Unit\Suite {
                     ->isEqualTo(['a', 'b', 'c']);
     }
 
-    public function case_check_ahead ( ) {
-
+    public function case_check_ahead()
+    {
         $this
             ->given(
                 $iterator  = new LUT\Map(['a', 'b', 'c']),
@@ -123,8 +121,8 @@ class Lookahead extends Test\Unit\Suite {
                     ->isNull();
     }
 
-    public function case_double_rewind ( ) {
-
+    public function case_double_rewind()
+    {
         $this
             ->given(
                 $iterator  = new LUT\Map(['a', 'b', 'c']),
@@ -165,8 +163,8 @@ class Lookahead extends Test\Unit\Suite {
                     ->isEqualTo('b');
     }
 
-    public function case_empty ( ) {
-
+    public function case_empty()
+    {
         $this
             ->given(
                 $iterator  = new LUT\Mock(),

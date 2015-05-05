@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2015, Ivan Enderlin. All rights reserved.
+ * Copyright © 2007-2015, Hoa community. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -41,24 +41,22 @@ namespace Hoa\Iterator;
  *
  * Enhance SplFileInfo implementation.
  *
- * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
- * @copyright  Copyright © 2007-2015 Ivan Enderlin.
+ * @copyright  Copyright © 2007-2015 Hoa community
  * @license    New BSD License
  */
-
-class SplFileInfo extends \SplFileInfo {
-
+class SplFileInfo extends \SplFileInfo
+{
     /**
      * Hash.
      *
-     * @var \Hoa\Iterator\SplFileInfo string
+     * @var string
      */
     protected $_hash         = null;
 
     /**
      * Relative path.
      *
-     * @var \Hoa\Iterator\SplFileInfo string
+     * @var string
      */
     protected $_relativePath = null;
 
@@ -67,17 +65,17 @@ class SplFileInfo extends \SplFileInfo {
     /**
      * Construct.
      *
-     * @access  public
      * @param   string  $filename        Filename.
      * @param   string  $relativePath    Relative path.
      * @return  void
      */
-    public function __construct ( $filename, $relativePath = null ) {
-
+    public function __construct($filename, $relativePath = null)
+    {
         parent::__construct($filename);
 
-        if(-1 !== $mtime = $this->getMTime())
+        if (-1 !== $mtime = $this->getMTime()) {
             $this->_hash = md5($this->getPathname() . $mtime);
+        }
 
         $this->_relativePath = $relativePath;
 
@@ -87,28 +85,23 @@ class SplFileInfo extends \SplFileInfo {
     /**
      * Get the hash.
      *
-     * @access  public
      * @return  string
      */
-    public function getHash ( ) {
-
+    public function getHash()
+    {
         return $this->_hash;
     }
 
     /**
      * Get the MTime.
      *
-     * @access  public
      * @return  int
      */
-    public function getMTime ( ) {
-
+    public function getMTime()
+    {
         try {
-
             return parent::getMTime();
-        }
-        catch ( \RuntimeException $e ) {
-
+        } catch (\RuntimeException $e) {
             return -1;
         }
     }
@@ -116,12 +109,11 @@ class SplFileInfo extends \SplFileInfo {
     /**
      * Set relative path.
      *
-     * @access  public
      * @param   string  $relativePath    Relative path.
      * @return  string
      */
-    public function setRelativePath ( $relativePath ) {
-
+    public function setRelativePath($relativePath)
+    {
         $old                 = $this->_relativePath;
         $this->_relativePath = $relativePath;
 
@@ -131,24 +123,23 @@ class SplFileInfo extends \SplFileInfo {
     /**
      * Get relative path (if given).
      *
-     * @access  public
      * @return  string
      */
-    public function getRelativePath ( ) {
-
+    public function getRelativePath()
+    {
         return $this->_relativePath;
     }
 
     /**
      * Get relative pathname (if possible).
      *
-     * @access  public
      * @return  string
      */
-    public function getRelativePathname ( ) {
-
-        if(null === $relative = $this->getRelativePath())
+    public function getRelativePathname()
+    {
+        if (null === $relative = $this->getRelativePath()) {
             return $this->getPathname();
+        }
 
         return substr($this->getPathname(), strlen($relative));
     }

@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2015, Ivan Enderlin. All rights reserved.
+ * Copyright © 2007-2015, Hoa community. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -41,45 +41,43 @@ namespace Hoa\Iterator;
  *
  * A counter.
  *
- * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
- * @copyright  Copyright © 2007-2015 Ivan Enderlin.
+ * @copyright  Copyright © 2007-2015 Hoa community
  * @license    New BSD License
  */
-
-class Counter implements Iterator {
-
+class Counter implements Iterator
+{
     /**
      * From (lower bound).
      *
-     * @var \Hoa\Iterator\Counter int
+     * @var int
      */
     protected $_from = 0;
 
     /**
      * Current key.
      *
-     * @var \Hoa\Iterator\Counter int
+     * @var int
      */
     protected $_key  = 0;
 
     /**
      * Current index.
      *
-     * @var \Hoa\Iterator\Counter int
+     * @var int
      */
     protected $_i    = 0;
 
     /**
      * To (upper bound).
      *
-     * @var \Hoa\Iterator\Counter int
+     * @var int
      */
     protected $_to   = 0;
 
     /**
      * Step.
      *
-     * @var \Hoa\Iterator\Counter int
+     * @var int
      */
     protected $_step = 0;
 
@@ -90,18 +88,21 @@ class Counter implements Iterator {
      * Equivalent to:
      *     for($i = $from; $i < $to; $i += $step)
      *
-     * @access  public
      * @param   int  $from    Start value.
      * @param   int  $to      Maximum value.
      * @param   int  $step    Step.
      * @return  void
-     * @throw   \Hoa\Iterator\Exception
+     * @throws  \Hoa\Iterator\Exception
      */
-    public function __construct ( $from, $to, $step ) {
-
-        if($step <= 0)
+    public function __construct($from, $to, $step)
+    {
+        if ($step <= 0) {
             throw new Exception(
-                'The step must be non-negative; given %d.', 0, $step);
+                'The step must be non-negative; given %d.',
+                0,
+                $step
+            );
+        }
 
         $this->_from = $from;
         $this->_to   = $to;
@@ -113,33 +114,30 @@ class Counter implements Iterator {
     /**
      * Return the current element.
      *
-     * @access  public
      * @return  int
      */
-    public function current ( ) {
-
+    public function current()
+    {
         return $this->_i;
     }
 
     /**
      * Return the key of the current element.
      *
-     * @access  public
      * @return  int
      */
-    public function key ( ) {
-
+    public function key()
+    {
         return $this->_key;
     }
 
     /**
      * Move forward to next element.
      *
-     * @access  public
      * @return  void
      */
-    public function next ( ) {
-
+    public function next()
+    {
         ++$this->_key;
         $this->_i += $this->_step;
 
@@ -149,11 +147,10 @@ class Counter implements Iterator {
     /**
      * Rewind the iterator to the first element.
      *
-     * @access  public
      * @return  void
      */
-    public function rewind ( ) {
-
+    public function rewind()
+    {
         $this->_key = 0;
         $this->_i   = $this->_from;
 
@@ -163,11 +160,10 @@ class Counter implements Iterator {
     /**
      * Check if current position is valid.
      *
-     * @access  public
      * @return  bool
      */
-    public function valid ( ) {
-
+    public function valid()
+    {
         return $this->_i < $this->_to;
     }
 }

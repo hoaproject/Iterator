@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2015, Ivan Enderlin. All rights reserved.
+ * Copyright © 2007-2015, Hoa community. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -47,19 +47,16 @@ use Hoa\Iterator;
  *
  * Inspired by hhvm://hphp/system/php/spl/iterators/RecursiveRegexIterator.php
  *
- * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
- * @copyright  Copyright © 2007-2015 Ivan Enderlin.
+ * @copyright  Copyright © 2007-2015 Hoa community
  * @license    New BSD License
  */
-
 class          RegularExpression
     extends    Iterator\RegularExpression
-    implements Recursive {
-
+    implements Recursive
+{
     /**
      * Constructor.
      *
-     * @access  public
      * @param   \RecursiveIterator  $iterator     The recursive iterator to
      *                                            apply this regex filter to.
      * @param   string              $regex        The regular expression to
@@ -73,10 +70,13 @@ class          RegularExpression
      *                                            \RegexIterator constants.
      * @return  void
      */
-    public function __construct( \RecursiveIterator $iterator, $regex,
-                                 $mode = self::MATCH, $flags = 0,
-                                 $pregFlags = 0) {
-
+    public function __construct(
+        \RecursiveIterator $iterator,
+        $regex,
+        $mode      = self::MATCH,
+        $flags     = 0,
+        $pregFlags = 0
+    ) {
         parent::__construct($iterator, $regex, $mode, $flags, $pregFlags);
 
         return;
@@ -85,23 +85,22 @@ class          RegularExpression
     /**
      * Get accept status.
      *
-     * @access  public
      * @return  bool
      */
-    public function accept ( ) {
-
-        return    true === $this->hasChildren()
-               || true === parent::accept();
+    public function accept()
+    {
+        return
+            true === $this->hasChildren() ||
+            true === parent::accept();
     }
 
     /**
      * Get an iterator for the current entry.
      *
-     * @access  public
      * @return  \Hoa\Iterator\Recursive\RegularExpression
      */
-    public function getChildren ( ) {
-
+    public function getChildren()
+    {
         return new static(
             true === $this->hasChildren()
                 ? $this->getInnerIterator()->getChildren()
@@ -116,11 +115,10 @@ class          RegularExpression
     /**
      * Check whether an iterator can be obtained for the current entry.
      *
-     * @access  public
      * @return  bool
      */
-    public function hasChildren ( ) {
-
+    public function hasChildren()
+    {
         return $this->getInnerIterator()->hasChildren();
     }
 }

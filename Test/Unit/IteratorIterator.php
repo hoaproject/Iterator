@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2015, Ivan Enderlin. All rights reserved.
+ * Copyright © 2007-2015, Hoa community. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -36,23 +36,21 @@
 
 namespace Hoa\Iterator\Test\Unit;
 
-use Hoa\Test;
 use Hoa\Iterator as LUT;
+use Hoa\Test;
 
 /**
  * Class \Hoa\Iterator\Test\Unit\IteratorIterator.
  *
  * Test suite of the iterator iterator iterator (;-)).
  *
- * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
- * @copyright  Copyright © 2007-2015 Ivan Enderlin.
+ * @copyright  Copyright © 2007-2015 Hoa community
  * @license    New BSD License
  */
-
-class IteratorIterator extends Test\Unit\Suite {
-
-    public function case_inner_iterator ( ) {
-
+class IteratorIterator extends Test\Unit\Suite
+{
+    public function case_inner_iterator()
+    {
         $this
             ->given(
                 $iterator         = new LUT\Map([]),
@@ -64,8 +62,8 @@ class IteratorIterator extends Test\Unit\Suite {
                     ->isIdenticalTo($iterator);
     }
 
-    public function case_traverse ( ) {
-
+    public function case_traverse()
+    {
         $this
             ->given(
                 $iterator         = new LUT\Map(['a', 'b', 'c']),
@@ -77,8 +75,8 @@ class IteratorIterator extends Test\Unit\Suite {
                     ->isEqualTo(['a', 'b', 'c']);
     }
 
-    public function case_recursive_leaves_only ( ) {
-
+    public function case_recursive_leaves_only()
+    {
         $this
             ->given(
                 $array = [
@@ -97,8 +95,8 @@ class IteratorIterator extends Test\Unit\Suite {
                     ->isEqualTo(['b', 'c', 'd', 'f', 'g', 'i']);
     }
 
-    public function case_recursive_self_first ( ) {
-
+    public function case_recursive_self_first()
+    {
         $this
             ->given(
                 $array = [
@@ -126,8 +124,8 @@ class IteratorIterator extends Test\Unit\Suite {
                     ]);
     }
 
-    public function case_recursive_child_first ( ) {
-
+    public function case_recursive_child_first()
+    {
         $this
             ->given(
                 $array = [

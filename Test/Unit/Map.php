@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2015, Ivan Enderlin. All rights reserved.
+ * Copyright © 2007-2015, Hoa community. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -36,27 +36,25 @@
 
 namespace Hoa\Iterator\Test\Unit;
 
-use Hoa\Test;
 use Hoa\Iterator as LUT;
+use Hoa\Test;
 
 /**
  * Class \Hoa\Iterator\Test\Unit\Map.
  *
  * Test suite of the map iterator.
  *
- * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
- * @copyright  Copyright © 2007-2015 Ivan Enderlin.
+ * @copyright  Copyright © 2007-2015 Hoa community
  * @license    New BSD License
  */
-
-class Map extends Test\Unit\Suite {
-
+class Map extends Test\Unit\Suite
+{
     private static $_dummyArray = ['f', 'o', 'o', 'b', 'a', 'r'];
 
 
 
-    public function case_classic ( ) {
-
+    public function case_classic()
+    {
         $this
             ->given($iterator = new LUT\Map(self::$_dummyArray))
             ->when($result = iterator_to_array($iterator))
@@ -65,8 +63,8 @@ class Map extends Test\Unit\Suite {
                     ->isEqualTo(self::$_dummyArray);
     }
 
-    public function case_empty ( ) {
-
+    public function case_empty()
+    {
         $this
             ->given($iterator = new LUT\Map())
             ->when($result = iterator_to_array($iterator))
@@ -75,8 +73,8 @@ class Map extends Test\Unit\Suite {
                     ->isEmpty();
     }
 
-    public function case_recursive ( ) {
-
+    public function case_recursive()
+    {
         $this
             ->given(
                 $array = [
@@ -86,11 +84,9 @@ class Map extends Test\Unit\Suite {
                 ],
                 $iterator = new LUT\Recursive\Map($array)
             )
-            ->when(function ( ) use ( $iterator ) {
-
-                foreach($iterator as $key => $value) {
-
-                    if('a' === $key)
+            ->when(function () use ($iterator) {
+                foreach ($iterator as $key => $value) {
+                    if ('a' === $key) {
                         $this
                             ->boolean($iterator->hasChildren())
                                 ->isTrue()
@@ -98,8 +94,7 @@ class Map extends Test\Unit\Suite {
                                 ->isInstanceOf('Hoa\Iterator\Recursive\Map')
                             ->array(iterator_to_array($children))
                                 ->isEqualTo(['b', 'c', 'd']);
-
-                    elseif('e' === $key)
+                    } elseif ('e' === $key) {
                         $this
                             ->boolean($iterator->hasChildren())
                                 ->isTrue()
@@ -107,11 +102,11 @@ class Map extends Test\Unit\Suite {
                                 ->isInstanceOf('Hoa\Iterator\Recursive\Map')
                             ->array(iterator_to_array($children))
                                 ->isEqualTo(['f', 'g', 'i']);
-
-                    elseif('k' === $value)
+                    } elseif ('k' === $value) {
                         $this
                             ->boolean($iterator->hasChildren())
                                 ->isFalse();
+                    }
                 }
             });
     }

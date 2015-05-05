@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2015, Ivan Enderlin. All rights reserved.
+ * Copyright © 2007-2015, Hoa community. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -36,23 +36,21 @@
 
 namespace Hoa\Iterator\Test\Unit;
 
-use Hoa\Test;
 use Hoa\Iterator as LUT;
+use Hoa\Test;
 
 /**
  * Class \Hoa\Iterator\Test\Unit\SplFileInfo.
  *
  * Test suite of the SplFileInfo class.
  *
- * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
- * @copyright  Copyright © 2007-2015 Ivan Enderlin.
+ * @copyright  Copyright © 2007-2015 Hoa community
  * @license    New BSD License
  */
-
-class SplFileInfo extends Test\Unit\Suite {
-
-    public function case_file ( ) {
-
+class SplFileInfo extends Test\Unit\Suite
+{
+    public function case_file()
+    {
         $this
             ->given($pathname = 'hoa://Test/Vfs/Foo.bar')
             ->when($result = new LUT\SplFileInfo($pathname))
@@ -63,8 +61,8 @@ class SplFileInfo extends Test\Unit\Suite {
                     ->isEqualTo('file');
     }
 
-    public function case_directory ( ) {
-
+    public function case_directory()
+    {
         $this
             ->given($pathname = 'hoa://Test/Vfs/Foo?type=directory')
             ->when($result = new LUT\SplFileInfo($pathname))
@@ -75,8 +73,8 @@ class SplFileInfo extends Test\Unit\Suite {
                     ->isEqualTo('dir');
     }
 
-    public function case_path_informations ( ) {
-
+    public function case_path_informations()
+    {
         $this
             ->given(
                 $relativePath     = 'hoa://Test/Vfs/A/B/',
@@ -101,8 +99,8 @@ class SplFileInfo extends Test\Unit\Suite {
                     ->isEqualTo($pathname);
     }
 
-    public function case_times ( ) {
-
+    public function case_times()
+    {
         $this
             ->given(
                 $timestamp  = $this->realdom->boundinteger(
@@ -129,8 +127,8 @@ class SplFileInfo extends Test\Unit\Suite {
                     ->isEqualTo($mtime);
     }
 
-    public function case_permissions ( ) {
-
+    public function case_permissions()
+    {
         $this
             ->given($pathname = 'hoa://Test/Vfs/Fo.bar?permissions=0744')
             ->when($result = new LUT\SplFileInfo($pathname))

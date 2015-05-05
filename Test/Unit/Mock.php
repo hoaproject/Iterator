@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2015, Ivan Enderlin. All rights reserved.
+ * Copyright © 2007-2015, Hoa community. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -36,23 +36,21 @@
 
 namespace Hoa\Iterator\Test\Unit;
 
-use Hoa\Test;
 use Hoa\Iterator as LUT;
+use Hoa\Test;
 
 /**
  * Class \Hoa\Iterator\Test\Unit\Mock.
  *
  * Test suite of the mock iterator.
  *
- * @author     Ivan Enderlin <ivan.enderlin@hoa-project.net>
- * @copyright  Copyright © 2007-2015 Ivan Enderlin.
+ * @copyright  Copyright © 2007-2015 Hoa community
  * @license    New BSD License
  */
-
-class Mock extends Test\Unit\Suite {
-
-    public function case_classic ( ) {
-
+class Mock extends Test\Unit\Suite
+{
+    public function case_classic()
+    {
         $this
             ->given($iterator = new LUT\Mock())
             ->when($result = iterator_to_array($iterator))
@@ -61,8 +59,8 @@ class Mock extends Test\Unit\Suite {
                     ->isEmpty();
     }
 
-    public function case_recursive_mock_mock ( ) {
-
+    public function case_recursive_mock_mock()
+    {
         $this
             ->when($iterator = new LUT\Recursive\Mock(new LUT\Mock()))
             ->then
@@ -72,8 +70,8 @@ class Mock extends Test\Unit\Suite {
                     ->isFalse();
     }
 
-    public function case_recursive ( ) {
-
+    public function case_recursive()
+    {
         $this
             ->given(
                 $map              = new LUT\Map(['a', 'b', 'c']),
