@@ -36,7 +36,7 @@
 
 namespace Hoa\Iterator;
 
-use Hoa\Core;
+use Hoa\Consistency;
 
 /**
  * Interface \Hoa\Iterator.
@@ -53,4 +53,4 @@ interface Iterator extends \Iterator
 /**
  * Flex entity.
  */
-Core\Consistency::flexEntity('Hoa\Iterator\Iterator');
+Consistency::flexEntity('Hoa\Iterator\Iterator');
