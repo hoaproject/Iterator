@@ -18,7 +18,7 @@ dependencies, you need to require
 ```json
 {
     "require": {
-        "hoa/iterator": "~1.0"
+        "hoa/iterator": "~2.0"
     }
 }
 ```
