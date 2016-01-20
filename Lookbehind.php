@@ -51,7 +51,7 @@ class          Lookbehind
     /**
      * Current iterator.
      *
-     * @var \Hoa\Iterator\Lookbehind
+     * @var \Iterator
      */
     protected $_iterator        = null;
 

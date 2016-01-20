@@ -51,7 +51,7 @@ class          Lookahead
     /**
      * Current iterator.
      *
-     * @var \Hoa\Iterator\Lookahead
+     * @var \Iterator
      */
     protected $_iterator = null;
 
