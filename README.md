@@ -28,7 +28,7 @@ install](http://hoa-project.net/Source.html).
 
 ## Quick usage
 
-We propose a quick overview of the list all iterators.
+We propose a quick overview of all iterators.
 
 ### The One
 
@@ -349,6 +349,39 @@ foreach ($lookahead as $value) {
 
 The `Hoa\Iterator\Lookbehind` also exists and allows to look behind for the
 previous element.
+
+### Buffer
+
+`Hoa\Iterator\Buffer` allows to move forward as usual but also backward up to a
+given buffer size over another iterator:
+
+```php
+$abcde  = new Hoa\Iterator\Map(['a', 'b', 'c', 'd', 'e']);
+$buffer = new Hoa\Iterator\Buffer($abcde, 3);
+
+$buffer->rewind();
+echo $buffer->current(); // a
+
+$buffer->next();
+echo $buffer->current(); // b
+
+$buffer->next();
+echo $buffer->current(); // c
+
+$buffer->previous();
+echo $buffer->current(); // b
+
+$buffer->previous();
+echo $buffer->current(); // a
+
+$buffer->next();
+echo $buffer->current(); // b
+
+/**
+ * Will output:
+ *     abcbab
+ */
+```
 
 ### Callback generator
 
