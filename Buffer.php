@@ -138,9 +138,7 @@ class          Buffer
      */
     public function current()
     {
-        $current = $this->getBuffer()->current();
-
-        return $current[self::BUFFER_VALUE];
+        return $this->getBuffer()->current()[self::BUFFER_VALUE];
     }
 
     /**
@@ -150,9 +148,7 @@ class          Buffer
      */
     public function key()
     {
-        $current = $this->getBuffer()->current();
-
-        return $current[self::BUFFER_KEY];
+        return $this->getBuffer()->current()[self::BUFFER_KEY];
     }
 
     /**
