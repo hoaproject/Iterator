@@ -1,3 +1,11 @@
+# 2.16.03.15
+
+  * Buffer: Make `current` & `key` methods inlinable. (Ivan Enderlin, 2016-02-22T12:01:39+01:00)
+  * README: Illustrate `Hoa\Iterator\Buffer`. (Ivan Enderlin, 2016-01-21T01:09:38+01:00)
+  * Test: Write test suite of `Hoa\Iterator\Buffer`. (Ivan Enderlin, 2016-01-21T01:01:32+01:00)
+  * Iterator: New `Buffer` iterator. (Ivan Enderlin, 2016-01-21T00:55:07+01:00)
+  * Documentation: Update API annotation. (Ivan Enderlin, 2016-01-20T22:18:30+01:00)
+
 # 2.16.01.11
 
   * Quality: Drop PHP5.4. (Ivan Enderlin, 2016-01-11T09:15:26+01:00)
