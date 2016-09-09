@@ -91,7 +91,7 @@ class Map extends Test\Unit\Suite
                             ->boolean($iterator->hasChildren())
                                 ->isTrue()
                             ->object($children = $iterator->getChildren())
-                                ->isInstanceOf('Hoa\Iterator\Recursive\Map')
+                                ->isInstanceOf(LUT\Recursive\Map::class)
                             ->array(iterator_to_array($children))
                                 ->isEqualTo(['b', 'c', 'd']);
                     } elseif ('e' === $key) {
@@ -99,7 +99,7 @@ class Map extends Test\Unit\Suite
                             ->boolean($iterator->hasChildren())
                                 ->isTrue()
                             ->object($children = $iterator->getChildren())
-                                ->isInstanceOf('Hoa\Iterator\Recursive\Map')
+                                ->isInstanceOf(LUT\Recursive\Map::class)
                             ->array(iterator_to_array($children))
                                 ->isEqualTo(['f', 'g', 'i']);
                     } elseif ('k' === $value) {

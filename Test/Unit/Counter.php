@@ -75,7 +75,7 @@ class Counter extends Test\Unit\Suite
             ->exception(function () {
                 new LUT\Counter(0, 0, 0);
             })
-                ->isInstanceOf('Hoa\Iterator\Exception');
+                ->isInstanceOf(LUT\Exception::class);
     }
 
     public function case_too_big()

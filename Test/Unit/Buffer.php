@@ -65,7 +65,7 @@ class Buffer extends Test\Unit\Suite
                     ->isEqualTo($bufferSize)
                 ->let($buffer = $this->invoke($result)->getBuffer())
                 ->object($buffer)
-                    ->isInstanceOf('SplDoublyLinkedList')
+                    ->isInstanceOf(\SplDoublyLinkedList::class)
                 ->boolean($buffer->isEmpty())
                     ->isTrue();
     }

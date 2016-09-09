@@ -115,7 +115,7 @@ class RegularExpression extends Test\Unit\Suite
             ->when($result = $iterator->getChildren())
             ->then
                 ->object($result)
-                    ->isInstanceOf('Hoa\Iterator\Recursive\RegularExpression')
+                    ->isInstanceOf(LUT\Recursive\RegularExpression::class)
                 ->integer($result->getMode())
                     ->isEqualTo($mode)
                 ->integer($result->getFlags())

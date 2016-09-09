@@ -66,7 +66,7 @@ class Directory extends Test\Unit\Suite
 
                     $this
                         ->object($file)
-                            ->isInstanceOf('Hoa\Iterator\Directory');
+                            ->isInstanceOf(LUT\Directory::class);
                 }
             })
             ->then
