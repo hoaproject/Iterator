@@ -3,7 +3,7 @@
     "description": "The Hoa\\Iterator library.",
     "type"       : "library",
     "keywords"   : ["library", "iterator"],
-    "homepage"   : "http://hoa-project.net/",
+    "homepage"   : "https://hoa-project.net/",
     "license"    : "BSD-3-Clause",
     "authors"    : [
         {
@@ -12,13 +12,13 @@
         },
         {
             "name"    : "Hoa community",
-            "homepage": "http://hoa-project.net/"
+            "homepage": "https://hoa-project.net/"
         }
     ],
     "support": {
         "email" : "support@hoa-project.net",
         "irc"   : "irc://chat.freenode.net/hoaproject",
-        "forum" : "http://users.hoa-project.net/",
+        "forum" : "https://users.hoa-project.net/",
         "docs"  : "https://central.hoa-project.net/Documentation/Library/Iterator",
         "source": "https://central.hoa-project.net/Resource/Library/Iterator"
     },
