@@ -1,3 +1,10 @@
+# 2.16.11.19
+
+  * Documentation: New `README.md` file. (Ivan Enderlin, 2016-10-18T15:52:39+02:00)
+  * Documentation: Use HTTPS in `composer.json`. (Ivan Enderlin, 2016-10-07T07:56:41+02:00)
+  * Documentation: Update support properties. (Alexis von Glasow, 2016-10-06T19:17:39+02:00)
+  * Test: Use the `::class` constant. (Ivan Enderlin, 2016-09-09T09:29:43+02:00)
+
 # 2.16.03.15
 
   * Buffer: Make `current` & `key` methods inlinable. (Ivan Enderlin, 2016-02-22T12:01:39+01:00)
