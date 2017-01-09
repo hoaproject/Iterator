@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2016, Hoa community. All rights reserved.
+ * Copyright © 2007-2017, Hoa community. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -42,7 +42,7 @@ namespace Hoa\Iterator;
  * Demux result from another iterator.
  * This iterator is somehow the opposite of the Hoa\Iterator\Multiple iterator.
  *
- * @copyright  Copyright © 2007-2016 Hoa community
+ * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class Demultiplexer implements Iterator
@@ -75,7 +75,6 @@ class Demultiplexer implements Iterator
      *
      * @param   \Traversable  $iterator    Iterator.
      * @param   callable      $demuxer     Demuxer.
-     * @return  void
      * @throws  \Hoa\Iterator\Exception
      */
     public function __construct(\Traversable $iterator, $demuxer)

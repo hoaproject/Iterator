@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2016, Hoa community. All rights reserved.
+ * Copyright © 2007-2017, Hoa community. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -45,7 +45,7 @@ namespace Hoa\Iterator;
  *
  * Inspired by hhvm://hphp/system/php/spl/iterators/RegexIterator.php
  *
- * @copyright  Copyright © 2007-2016 Hoa community
+ * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class RegularExpression extends Filter
@@ -166,7 +166,6 @@ class RegularExpression extends Filter
      * @param   int                 $pregFlags    Regular expression flags,
      *                                            please see
      *                                            \RegexIterator constants.
-     * @return  void
      */
     public function __construct(
         \Iterator $iterator,

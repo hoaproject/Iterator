@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2016, Hoa community. All rights reserved.
+ * Copyright © 2007-2017, Hoa community. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -47,12 +47,10 @@ use Hoa\Iterator;
  *
  * Inspired by hhvm://hphp/system/php/spl/iterators/RecursiveRegexIterator.php
  *
- * @copyright  Copyright © 2007-2016 Hoa community
+ * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
-class          RegularExpression
-    extends    Iterator\RegularExpression
-    implements Recursive
+class RegularExpression extends Iterator\RegularExpression implements Recursive
 {
     /**
      * Constructor.
@@ -68,7 +66,6 @@ class          RegularExpression
      * @param   int                 $pregFlags    Regular expression flags,
      *                                            please see
      *                                            \RegexIterator constants.
-     * @return  void
      */
     public function __construct(
         \RecursiveIterator $iterator,

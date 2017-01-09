@@ -8,7 +8,7 @@
  *
  * New BSD License
  *
- * Copyright © 2007-2016, Hoa community. All rights reserved.
+ * Copyright © 2007-2017, Hoa community. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -41,12 +41,10 @@ namespace Hoa\Iterator;
  *
  * Look ahead iterator.
  *
- * @copyright  Copyright © 2007-2016 Hoa community
+ * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
-class          Lookahead
-    extends    IteratorIterator
-    implements Outer
+class Lookahead extends IteratorIterator implements Outer
 {
     /**
      * Current iterator.
@@ -82,7 +80,6 @@ class          Lookahead
      * Construct.
      *
      * @param   \Iterator  $iterator    Iterator.
-     * @return  void
      */
     public function __construct(\Iterator $iterator)
     {
