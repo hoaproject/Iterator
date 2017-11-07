@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -44,12 +46,11 @@ use Hoa\Test;
  *
  * Test suite of the SplFileInfo class.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class SplFileInfo extends Test\Unit\Suite
 {
-    public function case_file()
+    public function case_file(): void
     {
         $this
             ->given($pathname = 'hoa://Test/Vfs/Foo.bar?type=file')
@@ -61,7 +62,7 @@ class SplFileInfo extends Test\Unit\Suite
                     ->isEqualTo('file');
     }
 
-    public function case_directory()
+    public function case_directory(): void
     {
         $this
             ->given($pathname = 'hoa://Test/Vfs/Foo?type=directory')
@@ -73,7 +74,7 @@ class SplFileInfo extends Test\Unit\Suite
                     ->isEqualTo('dir');
     }
 
-    public function case_path_informations()
+    public function case_path_informations(): void
     {
         $this
             ->given(
@@ -99,7 +100,7 @@ class SplFileInfo extends Test\Unit\Suite
                     ->isEqualTo($pathname . '?type=file');
     }
 
-    public function case_times()
+    public function case_times(): void
     {
         $this
             ->given(
@@ -129,7 +130,7 @@ class SplFileInfo extends Test\Unit\Suite
                     ->isEqualTo($mtime);
     }
 
-    public function case_permissions()
+    public function case_permissions(): void
     {
         $this
             ->given($pathname = 'hoa://Test/Vfs/Fo.bar?type=file&permissions=0744')

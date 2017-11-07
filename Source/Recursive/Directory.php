@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -41,7 +43,6 @@ namespace Hoa\Iterator\Recursive;
  *
  * Extending the SPL RecursiveDirectoryIterator class.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class Directory extends \RecursiveDirectoryIterator
@@ -78,7 +79,7 @@ class Directory extends \RecursiveDirectoryIterator
      * @param   int     $flags               Flags.
      * @param   string  $splFileInfoClass    SplFileInfo classname.
      */
-    public function __construct($path, $flags = null, $splFileInfoClass = null)
+    public function __construct(string $path, int $flags = null, string $splFileInfoClass = null)
     {
         if (null === $flags) {
             parent::__construct($path);
@@ -145,7 +146,7 @@ class Directory extends \RecursiveDirectoryIterator
      * @param   string  $splFileInfoClass    SplFileInfo classname.
      * @return  void
      */
-    public function setSplFileInfoClass($splFileInfoClass)
+    public function setSplFileInfoClass(string $splFileInfoClass): void
     {
         $this->_splFileInfoClass = $splFileInfoClass;
 
@@ -157,7 +158,7 @@ class Directory extends \RecursiveDirectoryIterator
      *
      * @return  string
      */
-    public function getRelativePath()
+    public function getRelativePath(): string
     {
         return $this->_relativePath;
     }

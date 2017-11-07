@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -41,7 +43,6 @@ namespace Hoa\Iterator;
  *
  * Extending the SPL DirectoryIterator class.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class Directory extends \DirectoryIterator
@@ -70,7 +71,7 @@ class Directory extends \DirectoryIterator
      * @param   string  $path                Path.
      * @param   string  $splFileInfoClass    SplFileInfo classname.
      */
-    public function __construct($path, $splFileInfoClass = null)
+    public function __construct(string $path, string $splFileInfoClass = null)
     {
         $this->_splFileInfoClass = $splFileInfoClass;
         parent::__construct($path);
@@ -108,7 +109,7 @@ class Directory extends \DirectoryIterator
      * @param   string  $relativePath    Relative path.
      * @return  string
      */
-    protected function setRelativePath($path)
+    protected function setRelativePath($path): string
     {
         $old                 = $this->_relativePath;
         $this->_relativePath = $path;
@@ -121,7 +122,7 @@ class Directory extends \DirectoryIterator
      *
      * @return  string
      */
-    public function getRelativePath()
+    public function getRelativePath(): string
     {
         return $this->_relativePath;
     }

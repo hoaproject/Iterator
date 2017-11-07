@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -41,7 +43,6 @@ namespace Hoa\Iterator;
  *
  * Yield a value based on a callback.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class CallbackGenerator implements Iterator
@@ -108,7 +109,7 @@ class CallbackGenerator implements Iterator
      *
      * @return  void
      */
-    public function next()
+    public function next(): void
     {
         ++$this->_key;
 
@@ -120,7 +121,7 @@ class CallbackGenerator implements Iterator
      *
      * @return  void
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->_key     = 0;
         $this->_current = null;
@@ -133,7 +134,7 @@ class CallbackGenerator implements Iterator
      *
      * @return  bool
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }

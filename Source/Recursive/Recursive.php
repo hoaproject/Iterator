@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -43,7 +45,6 @@ use Hoa\Consistency;
  *
  * Extending the SPL RecursiveIterator interface.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 interface Recursive extends \RecursiveIterator

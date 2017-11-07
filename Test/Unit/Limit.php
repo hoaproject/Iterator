@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -44,7 +46,6 @@ use Hoa\Test;
  *
  * Test suite of the limit iterator.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class Limit extends Test\Unit\Suite
@@ -53,7 +54,7 @@ class Limit extends Test\Unit\Suite
 
 
 
-    public function case_classic()
+    public function case_classic(): void
     {
         $this
             ->given(
@@ -70,24 +71,24 @@ class Limit extends Test\Unit\Suite
                     ]);
     }
 
-    public function case_negative_offset()
+    public function case_negative_offset(): void
     {
         $this
             ->given($iterator = new LUT\Map(self::$_dummyArray))
-            ->exception(function () use ($iterator) {
+            ->exception(function () use ($iterator): void {
                 new LUT\Limit($iterator, -2, 3);
             })
                 ->isInstanceOf(\OutOfRangeException::class);
     }
 
-    public function case_empty()
+    public function case_empty(): void
     {
         $this
             ->given(
                 $iterator = new LUT\Map(self::$_dummyArray),
                 $limit    = new LUT\Limit($iterator, 0, 0)
             )
-            ->exception(function () use ($limit) {
+            ->exception(function () use ($limit): void {
                 iterator_to_array($limit);
             })
                 ->isInstanceOf(\OutOfBoundsException::class);

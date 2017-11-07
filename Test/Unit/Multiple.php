@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -44,12 +46,11 @@ use Hoa\Test;
  *
  * Test suite of the multiple iterator.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class Multiple extends Test\Unit\Suite
 {
-    public function case_classic()
+    public function case_classic(): void
     {
         $this
             ->given(
@@ -72,7 +73,7 @@ class Multiple extends Test\Unit\Suite
                     ]);
     }
 
-    public function case_default_value()
+    public function case_default_value(): void
     {
         $this
             ->given(
@@ -83,7 +84,7 @@ class Multiple extends Test\Unit\Suite
                   | LUT\Multiple::MIT_KEYS_ASSOC
                 ),
                 $multiple->attachIterator($foobar, 'one', '!'),
-                $multiple->attachIterator($baz,    'two', '?')
+                $multiple->attachIterator($baz, 'two', '?')
             )
             ->when($result = iterator_to_array($multiple, false))
             ->then
@@ -98,7 +99,7 @@ class Multiple extends Test\Unit\Suite
                     ]);
     }
 
-    public function case_empty()
+    public function case_empty(): void
     {
         $this
             ->given($multiple = new LUT\Multiple())

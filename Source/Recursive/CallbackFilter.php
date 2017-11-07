@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -41,7 +43,6 @@ namespace Hoa\Iterator\Recursive;
  *
  * Extending the SPL RecursiveCallbackFilterIterator class.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class CallbackFilter extends \RecursiveCallbackFilterIterator

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -41,7 +43,6 @@ namespace Hoa\Iterator;
  *
  * Extending the SPL MultipleIterator class.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class Multiple extends \MultipleIterator
@@ -86,7 +87,7 @@ class Multiple extends \MultipleIterator
      *
      * @return  array
      */
-    public function current()
+    public function current(): array
     {
         $out = parent::current();
 

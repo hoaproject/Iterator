@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -44,12 +46,11 @@ use Hoa\Test;
  *
  * Test suite of the look ahead iterator.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class Lookahead extends Test\Unit\Suite
 {
-    public function case_traverse()
+    public function case_traverse(): void
     {
         $this
             ->given(
@@ -62,7 +63,7 @@ class Lookahead extends Test\Unit\Suite
                     ->isEqualTo(['a', 'b', 'c']);
     }
 
-    public function case_check_ahead()
+    public function case_check_ahead(): void
     {
         $this
             ->given(
@@ -121,7 +122,7 @@ class Lookahead extends Test\Unit\Suite
                     ->isNull();
     }
 
-    public function case_double_rewind()
+    public function case_double_rewind(): void
     {
         $this
             ->given(
@@ -163,7 +164,7 @@ class Lookahead extends Test\Unit\Suite
                     ->isEqualTo('b');
     }
 
-    public function case_empty()
+    public function case_empty(): void
     {
         $this
             ->given(

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -42,7 +44,6 @@ namespace Hoa\Iterator\Recursive;
  * Mock a recursive iterator with no children.
  * It allows to use regular iterators with a recursive iterator iterator.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class Mock implements Recursive
@@ -117,7 +118,7 @@ class Mock implements Recursive
      *
      * @return  bool
      */
-    public function valid()
+    public function valid(): bool
     {
         return $this->_iterator->valid();
     }
@@ -139,7 +140,7 @@ class Mock implements Recursive
      *
      * @return  bool
      */
-    public function hasChildren()
+    public function hasChildren(): bool
     {
         return false;
     }

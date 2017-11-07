@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -44,7 +46,6 @@ use Hoa\Test;
  *
  * Basic filter.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class MyFilter extends LUT\Filter
@@ -60,12 +61,11 @@ class MyFilter extends LUT\Filter
  *
  * Test suite of the filter iterator.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class Filter extends Test\Unit\Suite
 {
-    public function case_classic()
+    public function case_classic(): void
     {
         $this
             ->given(
@@ -87,7 +87,7 @@ class Filter extends Test\Unit\Suite
                     ]);
     }
 
-    public function case_remove_all()
+    public function case_remove_all(): void
     {
         $this
             ->given(
@@ -101,7 +101,7 @@ class Filter extends Test\Unit\Suite
                     ->isEmpty();
     }
 
-    public function case_remove_none()
+    public function case_remove_none(): void
     {
         $this
             ->given(

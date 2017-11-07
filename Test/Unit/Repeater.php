@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -44,7 +46,6 @@ use Hoa\Test;
  *
  * Test suite of the repeater iterator.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class Repeater extends Test\Unit\Suite
@@ -53,7 +54,7 @@ class Repeater extends Test\Unit\Suite
 
 
 
-    public function case_classic()
+    public function case_classic(): void
     {
         $this
             ->given(
@@ -70,7 +71,7 @@ class Repeater extends Test\Unit\Suite
                     );
     }
 
-    public function case_with_body()
+    public function case_with_body(): void
     {
         $self = $this;
 
@@ -81,13 +82,14 @@ class Repeater extends Test\Unit\Suite
                 $repeater = new LUT\Repeater(
                     $iterator,
                     3,
-                    function ($repetition) use ($self, &$count) {
+                    function ($repetition) use ($self, &$count): void {
                         $this
                             ->integer($repetition)
                                 ->isEqualTo($count + 1);
 
                         ++$count;
-                    })
+                    }
+                )
             )
             ->when($result = iterator_to_array($repeater))
             ->then

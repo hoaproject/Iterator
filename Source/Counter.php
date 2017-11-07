@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -41,7 +43,6 @@ namespace Hoa\Iterator;
  *
  * A counter.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class Counter implements Iterator
@@ -93,7 +94,7 @@ class Counter implements Iterator
      * @param   int  $step    Step.
      * @throws  \Hoa\Iterator\Exception
      */
-    public function __construct($from, $to, $step)
+    public function __construct(int $from, int $to, int $step)
     {
         if ($step <= 0) {
             throw new Exception(
@@ -115,7 +116,7 @@ class Counter implements Iterator
      *
      * @return  int
      */
-    public function current()
+    public function current(): int
     {
         return $this->_i;
     }
@@ -125,7 +126,7 @@ class Counter implements Iterator
      *
      * @return  int
      */
-    public function key()
+    public function key(): int
     {
         return $this->_key;
     }
@@ -135,7 +136,7 @@ class Counter implements Iterator
      *
      * @return  void
      */
-    public function next()
+    public function next(): void
     {
         ++$this->_key;
         $this->_i += $this->_step;
@@ -148,7 +149,7 @@ class Counter implements Iterator
      *
      * @return  void
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->_key = 0;
         $this->_i   = $this->_from;
@@ -161,7 +162,7 @@ class Counter implements Iterator
      *
      * @return  bool
      */
-    public function valid()
+    public function valid(): bool
     {
         return $this->_i < $this->_to;
     }

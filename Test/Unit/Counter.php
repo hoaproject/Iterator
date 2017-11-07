@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -44,12 +46,11 @@ use Hoa\Test;
  *
  * Test suite of the counter iterator.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class Counter extends Test\Unit\Suite
 {
-    public function case_classic()
+    public function case_classic(): void
     {
         $this
             ->given($iterator = new LUT\Counter(0, 12, 3))
@@ -59,7 +60,7 @@ class Counter extends Test\Unit\Suite
                     ->isEqualTo([0, 3, 6, 9]);
     }
 
-    public function case_offset()
+    public function case_offset(): void
     {
         $this
             ->given($iterator = new LUT\Counter(6, 12, 3))
@@ -69,16 +70,16 @@ class Counter extends Test\Unit\Suite
                     ->isEqualTo([6, 9]);
     }
 
-    public function case_too_small()
+    public function case_too_small(): void
     {
         $this
-            ->exception(function () {
+            ->exception(function (): void {
                 new LUT\Counter(0, 0, 0);
             })
                 ->isInstanceOf(LUT\Exception::class);
     }
 
-    public function case_too_big()
+    public function case_too_big(): void
     {
         $this
             ->given($iterator = new LUT\Counter(0, 12, 13))

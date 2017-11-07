@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -47,7 +49,6 @@ use Hoa\Iterator;
  *
  * Inspired by hhvm://hphp/system/php/spl/iterators/RecursiveRegexIterator.php
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class RegularExpression extends Iterator\RegularExpression implements Recursive
@@ -69,10 +70,10 @@ class RegularExpression extends Iterator\RegularExpression implements Recursive
      */
     public function __construct(
         \RecursiveIterator $iterator,
-        $regex,
-        $mode      = self::MATCH,
-        $flags     = 0,
-        $pregFlags = 0
+        string $regex,
+        int $mode      = self::MATCH,
+        int $flags     = 0,
+        int $pregFlags = 0
     ) {
         parent::__construct($iterator, $regex, $mode, $flags, $pregFlags);
 
@@ -84,7 +85,7 @@ class RegularExpression extends Iterator\RegularExpression implements Recursive
      *
      * @return  bool
      */
-    public function accept()
+    public function accept(): bool
     {
         return
             true === $this->hasChildren() ||
@@ -96,7 +97,7 @@ class RegularExpression extends Iterator\RegularExpression implements Recursive
      *
      * @return  \Hoa\Iterator\Recursive\RegularExpression
      */
-    public function getChildren()
+    public function getChildren(): RegularExpression
     {
         return new static(
             true === $this->hasChildren()
@@ -114,7 +115,7 @@ class RegularExpression extends Iterator\RegularExpression implements Recursive
      *
      * @return  bool
      */
-    public function hasChildren()
+    public function hasChildren(): bool
     {
         return $this->getInnerIterator()->hasChildren();
     }

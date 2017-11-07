@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -41,7 +43,6 @@ namespace Hoa\Iterator;
  *
  * Repeat an iterator n-times.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class Repeater implements Iterator
@@ -84,7 +85,7 @@ class Repeater implements Iterator
      * @param   callable      $body        Body.
      * @throws  \Hoa\Iterator\Exception
      */
-    public function __construct(\Traversable $iterator, $n, $body = null)
+    public function __construct(\Traversable $iterator, int $n, callable $body = null)
     {
         if (0 >= $n) {
             throw new Exception(
@@ -150,7 +151,7 @@ class Repeater implements Iterator
      *
      * @return  bool
      */
-    public function valid()
+    public function valid(): bool
     {
         $valid = $this->_iterator->valid();
 

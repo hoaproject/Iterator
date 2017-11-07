@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -44,7 +46,6 @@ use Hoa\Test;
  *
  * Test suite of the map iterator.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class Map extends Test\Unit\Suite
@@ -53,7 +54,7 @@ class Map extends Test\Unit\Suite
 
 
 
-    public function case_classic()
+    public function case_classic(): void
     {
         $this
             ->given($iterator = new LUT\Map(self::$_dummyArray))
@@ -63,7 +64,7 @@ class Map extends Test\Unit\Suite
                     ->isEqualTo(self::$_dummyArray);
     }
 
-    public function case_empty()
+    public function case_empty(): void
     {
         $this
             ->given($iterator = new LUT\Map())
@@ -73,7 +74,7 @@ class Map extends Test\Unit\Suite
                     ->isEmpty();
     }
 
-    public function case_recursive()
+    public function case_recursive(): void
     {
         $this
             ->given(
@@ -84,7 +85,7 @@ class Map extends Test\Unit\Suite
                 ],
                 $iterator = new LUT\Recursive\Map($array)
             )
-            ->when(function () use ($iterator) {
+            ->when(function () use ($iterator): void {
                 foreach ($iterator as $key => $value) {
                     if ('a' === $key) {
                         $this

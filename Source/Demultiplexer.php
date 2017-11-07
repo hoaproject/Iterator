@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -42,7 +44,6 @@ namespace Hoa\Iterator;
  * Demux result from another iterator.
  * This iterator is somehow the opposite of the Hoa\Iterator\Multiple iterator.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class Demultiplexer implements Iterator
@@ -77,7 +78,7 @@ class Demultiplexer implements Iterator
      * @param   callable      $demuxer     Demuxer.
      * @throws  \Hoa\Iterator\Exception
      */
-    public function __construct(\Traversable $iterator, $demuxer)
+    public function __construct(\Traversable $iterator, callable $demuxer)
     {
         if ($iterator instanceof \IteratorAggregate) {
             $iterator = $iterator->getIterator();
@@ -142,7 +143,7 @@ class Demultiplexer implements Iterator
      *
      * @return  bool
      */
-    public function valid()
+    public function valid(): bool
     {
         return $this->_iterator->valid();
     }

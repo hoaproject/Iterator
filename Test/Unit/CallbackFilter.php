@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -44,12 +46,11 @@ use Hoa\Test;
  *
  * Test suite of the callback filter iterator.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class CallbackFilter extends Test\Unit\Suite
 {
-    public function case_classic()
+    public function case_classic(): void
     {
         $this
             ->given(
@@ -71,7 +72,7 @@ class CallbackFilter extends Test\Unit\Suite
                     ]);
     }
 
-    public function case_all_callback_parameters()
+    public function case_all_callback_parameters(): void
     {
         $self = $this;
 
@@ -111,7 +112,7 @@ class CallbackFilter extends Test\Unit\Suite
                     ->isEqualTo(iterator_to_array($foobar));
     }
 
-    public function case_remove_all()
+    public function case_remove_all(): void
     {
         $this
             ->given(
@@ -129,7 +130,7 @@ class CallbackFilter extends Test\Unit\Suite
                     ->isEmpty();
     }
 
-    public function case_remove_none()
+    public function case_remove_none(): void
     {
         $this
             ->given(
@@ -150,7 +151,7 @@ class CallbackFilter extends Test\Unit\Suite
                     ->isEqualTo($filterResult);
     }
 
-    public function case_recursive()
+    public function case_recursive(): void
     {
         $this
             ->given(
@@ -173,7 +174,7 @@ class CallbackFilter extends Test\Unit\Suite
                     ]);
     }
 
-    public function case_recursive_remove_all()
+    public function case_recursive_remove_all(): void
     {
         $this
             ->given(
@@ -192,7 +193,7 @@ class CallbackFilter extends Test\Unit\Suite
                     ->isEmpty();
     }
 
-    public function case_recursive_remove_none()
+    public function case_recursive_remove_none(): void
     {
         $this
             ->given(

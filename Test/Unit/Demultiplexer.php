@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -44,12 +46,11 @@ use Hoa\Test;
  *
  * Test suite of the demultiplexer iterator.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class Demultiplexer extends Test\Unit\Suite
 {
-    public function case_classic()
+    public function case_classic(): void
     {
         $this
             ->given(
@@ -81,7 +82,7 @@ class Demultiplexer extends Test\Unit\Suite
                     ]);
     }
 
-    public function case_associative_keys()
+    public function case_associative_keys(): void
     {
         $this
             ->given(
@@ -90,7 +91,7 @@ class Demultiplexer extends Test\Unit\Suite
                     LUT\Multiple::MIT_NEED_ANY
                   | LUT\Multiple::MIT_KEYS_ASSOC
                 ),
-                $multiple->attachIterator($counter,       'one'),
+                $multiple->attachIterator($counter, 'one'),
                 $multiple->attachIterator(clone $counter, 'two'),
                 $demultiplexer = new LUT\Demultiplexer(
                     $multiple,

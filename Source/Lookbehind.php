@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -41,7 +43,6 @@ namespace Hoa\Iterator;
  *
  * Look behind iterator.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class Lookbehind extends IteratorIterator implements Outer
@@ -86,7 +87,7 @@ class Lookbehind extends IteratorIterator implements Outer
      *
      * @return  \Iterator
      */
-    public function getInnerIterator()
+    public function getInnerIterator(): \Iterator
     {
         return $this->_iterator;
     }
@@ -142,7 +143,7 @@ class Lookbehind extends IteratorIterator implements Outer
      *
      * @return  bool
      */
-    public function valid()
+    public function valid(): bool
     {
         return $this->getInnerIterator()->valid();
     }
@@ -152,7 +153,7 @@ class Lookbehind extends IteratorIterator implements Outer
      *
      * @return  bool
      */
-    public function hasPrevious()
+    public function hasPrevious(): bool
     {
         return -1 !== $this->_previousKey;
     }

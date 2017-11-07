@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -44,12 +46,11 @@ use Hoa\Test;
  *
  * Test suite of the iterator iterator iterator (;-)).
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class IteratorIterator extends Test\Unit\Suite
 {
-    public function case_inner_iterator()
+    public function case_inner_iterator(): void
     {
         $this
             ->given(
@@ -62,7 +63,7 @@ class IteratorIterator extends Test\Unit\Suite
                     ->isIdenticalTo($iterator);
     }
 
-    public function case_traverse()
+    public function case_traverse(): void
     {
         $this
             ->given(
@@ -75,7 +76,7 @@ class IteratorIterator extends Test\Unit\Suite
                     ->isEqualTo(['a', 'b', 'c']);
     }
 
-    public function case_recursive_leaves_only()
+    public function case_recursive_leaves_only(): void
     {
         $this
             ->given(
@@ -95,7 +96,7 @@ class IteratorIterator extends Test\Unit\Suite
                     ->isEqualTo(['b', 'c', 'd', 'f', 'g', 'i']);
     }
 
-    public function case_recursive_self_first()
+    public function case_recursive_self_first(): void
     {
         $this
             ->given(
@@ -124,7 +125,7 @@ class IteratorIterator extends Test\Unit\Suite
                     ]);
     }
 
-    public function case_recursive_child_first()
+    public function case_recursive_child_first(): void
     {
         $this
             ->given(

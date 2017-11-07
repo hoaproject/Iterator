@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -44,12 +46,11 @@ use Hoa\Test;
  *
  * Test suite of the directory iterator.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class Directory extends Test\Unit\Suite
 {
-    public function case_classic()
+    public function case_classic(): void
     {
         $this
             ->given(
@@ -60,7 +61,7 @@ class Directory extends Test\Unit\Suite
                 $iterator = new LUT\Directory($root),
                 $result   = []
             )
-            ->when(function () use ($iterator, &$result) {
+            ->when(function () use ($iterator, &$result): void {
                 foreach ($iterator as $key => $file) {
                     $result[$key] = $file->getFilename();
 
@@ -78,7 +79,7 @@ class Directory extends Test\Unit\Suite
                     ]);
     }
 
-    public function case_seek_and_dots()
+    public function case_seek_and_dots(): void
     {
         $this
             ->given(
@@ -119,7 +120,7 @@ class Directory extends Test\Unit\Suite
                     ->isEqualTo('Skip');
     }
 
-    public function case_recursive()
+    public function case_recursive(): void
     {
         $this
             ->given(
@@ -139,7 +140,7 @@ class Directory extends Test\Unit\Suite
                 $iterator  = new LUT\Recursive\Iterator($directory),
                 $result    = []
             )
-            ->when(function () use ($iterator, &$result) {
+            ->when(function () use ($iterator, &$result): void {
                 foreach ($iterator as $file) {
                     $result[] = $file->getFilename();
                 }
@@ -159,7 +160,7 @@ class Directory extends Test\Unit\Suite
                     ]);
     }
 
-    public function case_splFileClassInfo()
+    public function case_splFileClassInfo(): void
     {
         $this
             ->given(
@@ -177,7 +178,7 @@ class Directory extends Test\Unit\Suite
                 ),
                 $result   = []
             )
-            ->when(function () use ($iterator, $splFileInfo, &$result) {
+            ->when(function () use ($iterator, $splFileInfo, &$result): void {
                 foreach ($iterator as $file) {
                     $this
                         ->object($file)
@@ -198,7 +199,7 @@ class Directory extends Test\Unit\Suite
                     ]);
     }
 
-    public function case_recursive_splFileClassInfo()
+    public function case_recursive_splFileClassInfo(): void
     {
         $this
             ->given(
@@ -221,7 +222,7 @@ class Directory extends Test\Unit\Suite
                 $iterator  = new LUT\Recursive\Iterator($directory),
                 $result    = []
             )
-            ->when(function () use ($iterator, $splFileInfo, &$result) {
+            ->when(function () use ($iterator, $splFileInfo, &$result): void {
                 foreach ($iterator as $file) {
                     $this
                         ->object($file)

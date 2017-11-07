@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -45,12 +47,11 @@ use Hoa\Test;
  *
  * Test suite of the buffer iterator.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class Buffer extends Test\Unit\Suite
 {
-    public function case_constructor()
+    public function case_constructor(): void
     {
         $this
             ->given(
@@ -70,7 +71,7 @@ class Buffer extends Test\Unit\Suite
                     ->isTrue();
     }
 
-    public function case_negative_buffer_size()
+    public function case_negative_buffer_size(): void
     {
         $this
             ->given(
@@ -83,7 +84,7 @@ class Buffer extends Test\Unit\Suite
                     ->isEqualTo(1);
     }
 
-    public function case_null_buffer_size()
+    public function case_null_buffer_size(): void
     {
         $this
             ->given(
@@ -96,7 +97,7 @@ class Buffer extends Test\Unit\Suite
                     ->isEqualTo(1);
     }
 
-    public function case_fast_forward()
+    public function case_fast_forward(): void
     {
         $this
             ->given($iterator = new SUT($this->getInnerIterator(), 3))
@@ -121,7 +122,7 @@ class Buffer extends Test\Unit\Suite
                     ]);
     }
 
-    public function case_fast_forward_with_too_big_buffer()
+    public function case_fast_forward_with_too_big_buffer(): void
     {
         $this
             ->given($iterator = new SUT($this->getInnerIterator(), 10))
@@ -158,7 +159,7 @@ class Buffer extends Test\Unit\Suite
                     ]);
     }
 
-    public function case_fast_forward_with_smallest_buffer()
+    public function case_fast_forward_with_smallest_buffer(): void
     {
         $this
             ->given($iterator = new SUT($this->getInnerIterator(), 1))
@@ -175,7 +176,7 @@ class Buffer extends Test\Unit\Suite
                     ]);
     }
 
-    public function case_forward_forward_forward()
+    public function case_forward_forward_forward(): void
     {
         $this
             ->when($result = new SUT(new LUT\Map(['a', 'b', 'c']), 2))
@@ -217,7 +218,7 @@ class Buffer extends Test\Unit\Suite
                     ->isNull();
     }
 
-    public function case_forward_forward_backward_backward_forward_forward_forward_step_by_step()
+    public function case_forward_forward_backward_backward_forward_forward_forward_step_by_step(): void
     {
         $this
             ->when($result = new SUT(new LUT\Map(['a', 'b', 'c']), 3))
@@ -404,7 +405,7 @@ class Buffer extends Test\Unit\Suite
                     ->isNull();
     }
 
-    public function case_backward_out_of_buffer()
+    public function case_backward_out_of_buffer(): void
     {
         $this
             ->when($result = new SUT(new LUT\Map(['a', 'b', 'c']), 1))
@@ -433,7 +434,7 @@ class Buffer extends Test\Unit\Suite
                     ->isFalse();
     }
 
-    public function case_rewind_rewind()
+    public function case_rewind_rewind(): void
     {
         $this
             ->when($result = new SUT(new LUT\Map(['a', 'b']), 3))

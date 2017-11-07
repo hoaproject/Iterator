@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -44,12 +46,11 @@ use Hoa\Test;
  *
  * Test suite of the mock iterator.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class Mock extends Test\Unit\Suite
 {
-    public function case_classic()
+    public function case_classic(): void
     {
         $this
             ->given($iterator = new LUT\Mock())
@@ -59,7 +60,7 @@ class Mock extends Test\Unit\Suite
                     ->isEmpty();
     }
 
-    public function case_recursive_mock_mock()
+    public function case_recursive_mock_mock(): void
     {
         $this
             ->when($iterator = new LUT\Recursive\Mock(new LUT\Mock()))
@@ -70,7 +71,7 @@ class Mock extends Test\Unit\Suite
                     ->isFalse();
     }
 
-    public function case_recursive()
+    public function case_recursive(): void
     {
         $this
             ->given(

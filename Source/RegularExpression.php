@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -45,7 +47,6 @@ namespace Hoa\Iterator;
  *
  * Inspired by hhvm://hphp/system/php/spl/iterators/RegexIterator.php
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class RegularExpression extends Filter
@@ -55,49 +56,49 @@ class RegularExpression extends Filter
      *
      * @const int
      */
-    const USE_KEY      = 1;
+    public const USE_KEY      = 1;
 
     /**
      * Flag: invert match.
      *
      * @const int
      */
-    const INVERT_MATCH = 2;
+    public const INVERT_MATCH = 2;
 
     /**
      * Mode and preg flag: only execute match (filter) for the current entry.
      *
      * @const int
      */
-    const MATCH        = 0;
+    public const MATCH        = 0;
 
     /**
      * Mode and preg flag: first match for the current entry.
      *
      * @const int
      */
-    const GET_MATCH    = 1;
+    public const GET_MATCH    = 1;
 
     /**
      * Mode and preg flag: all matches for the current entry.
      *
      * @const int
      */
-    const ALL_MATCHES  = 2;
+    public const ALL_MATCHES  = 2;
 
     /**
      * Mode and preg flag: split values for the current entry.
      *
      * @const int
      */
-    const SPLIT        = 3;
+    public const SPLIT        = 3;
 
     /**
      * Mode and preg flag: replace the current entry.
      *
      * @const int
      */
-    const REPLACE      = 4;
+    public const REPLACE      = 4;
 
     /**
      * The regular expression to match.
@@ -169,10 +170,10 @@ class RegularExpression extends Filter
      */
     public function __construct(
         \Iterator $iterator,
-        $regex,
-        $mode      = self::MATCH,
-        $flags     = 0,
-        $pregFlags = 0
+        string $regex,
+        int $mode      = self::MATCH,
+        int $flags     = 0,
+        int $pregFlags = 0
     ) {
         parent::__construct($iterator);
 
@@ -190,7 +191,7 @@ class RegularExpression extends Filter
      *
      * @return  bool
      */
-    public function accept()
+    public function accept(): bool
     {
         if (is_array(parent::current())) {
             return false;
@@ -298,7 +299,7 @@ class RegularExpression extends Filter
      *
      * @return  int
      */
-    public function key()
+    public function key(): int
     {
         return $this->_key;
     }
@@ -308,7 +309,7 @@ class RegularExpression extends Filter
      *
      * @return  string
      */
-    public function current()
+    public function current(): string
     {
         return $this->_current;
     }
@@ -319,7 +320,7 @@ class RegularExpression extends Filter
      * @param   int  $mode   Mode.
      * @return  void
      */
-    public function setMode($mode)
+    public function setMode(int $mode): void
     {
         if ($mode < self::MATCH || $mode > self::REPLACE) {
             throw new \InvalidArgumentException(
@@ -338,7 +339,7 @@ class RegularExpression extends Filter
      * @param   int  $flags    Flags.
      * @return  void
      */
-    public function setFlags($flags)
+    public function setFlags(int $flags): void
     {
         $this->_flags = $flags;
 
@@ -351,7 +352,7 @@ class RegularExpression extends Filter
      * @param   int  $pregFlags    Preg flags.
      * @return  void
      */
-    public function setPregFlags($pregFlags)
+    public function setPregFlags(int $pregFlags): void
     {
         $this->_pregFlags = $pregFlags;
 
@@ -363,7 +364,7 @@ class RegularExpression extends Filter
      *
      * @return  string
      */
-    public function getRegex()
+    public function getRegex(): string
     {
         return $this->_regex;
     }
@@ -373,7 +374,7 @@ class RegularExpression extends Filter
      *
      * @return  int
      */
-    public function getMode()
+    public function getMode(): int
     {
         return $this->_mode;
     }
@@ -383,7 +384,7 @@ class RegularExpression extends Filter
      *
      * @return  int
      */
-    public function getFlags()
+    public function getFlags(): int
     {
         return $this->_flags;
     }
@@ -393,7 +394,7 @@ class RegularExpression extends Filter
      *
      * @return  int
      */
-    public function getPregFlags()
+    public function getPregFlags(): int
     {
         return $this->_pregFlags;
     }

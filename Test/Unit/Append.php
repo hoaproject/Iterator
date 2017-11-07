@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -44,12 +46,11 @@ use Hoa\Test;
  *
  * Test suite of the repeater iterator.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class Append extends Test\Unit\Suite
 {
-    public function case_classic()
+    public function case_classic(): void
     {
         $this
             ->given(
@@ -75,7 +76,7 @@ class Append extends Test\Unit\Suite
                     ]);
     }
 
-    public function case_singleton()
+    public function case_singleton(): void
     {
         $this
             ->given(
@@ -94,7 +95,7 @@ class Append extends Test\Unit\Suite
                     ]);
     }
 
-    public function case_empty()
+    public function case_empty(): void
     {
         $this
             ->given($append = new LUT\Append())

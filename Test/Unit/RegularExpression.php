@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -44,12 +46,11 @@ use Hoa\Test;
  *
  * Test suite of the regular expression iterator.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class RegularExpression extends Test\Unit\Suite
 {
-    public function case_classic()
+    public function case_classic(): void
     {
         $this
             ->given(
@@ -72,7 +73,7 @@ class RegularExpression extends Test\Unit\Suite
                     ]);
     }
 
-    public function case_recursive()
+    public function case_recursive(): void
     {
         $this
             ->given(
@@ -93,7 +94,7 @@ class RegularExpression extends Test\Unit\Suite
                     ]);
     }
 
-    public function case_recursive_children_flags()
+    public function case_recursive_children_flags(): void
     {
         $this
             ->given(

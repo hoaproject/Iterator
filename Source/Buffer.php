@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -41,7 +43,6 @@ namespace Hoa\Iterator;
  *
  * Buffer iterator: Can go backward up to a certain limit, and forward.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class Buffer extends IteratorIterator implements Outer
@@ -51,14 +52,14 @@ class Buffer extends IteratorIterator implements Outer
      *
      * @const int
      */
-    const BUFFER_KEY   = 0;
+    public const BUFFER_KEY   = 0;
 
     /**
      * Buffer value index.
      *
      * @const int
      */
-    const BUFFER_VALUE = 1;
+    public const BUFFER_VALUE = 1;
 
     /**
      * Current iterator.
@@ -89,7 +90,7 @@ class Buffer extends IteratorIterator implements Outer
      * @param   \Iterator  $iterator      Iterator.
      * @param   int        $bufferSize    Buffer size.
      */
-    public function __construct(\Iterator $iterator, $bufferSize)
+    public function __construct(\Iterator $iterator, int $bufferSize)
     {
         $this->_iterator   = $iterator;
         $this->_bufferSize = max($bufferSize, 1);
@@ -103,7 +104,7 @@ class Buffer extends IteratorIterator implements Outer
      *
      * @return  \Iterator
      */
-    public function getInnerIterator()
+    public function getInnerIterator(): \Iterator
     {
         return $this->_iterator;
     }
@@ -113,7 +114,7 @@ class Buffer extends IteratorIterator implements Outer
      *
      * @return  \SplDoublyLinkedList
      */
-    protected function getBuffer()
+    protected function getBuffer(): \SplDoublyLinkedList
     {
         return $this->_buffer;
     }
@@ -123,7 +124,7 @@ class Buffer extends IteratorIterator implements Outer
      *
      * @return  int
      */
-    public function getBufferSize()
+    public function getBufferSize(): int
     {
         return $this->_bufferSize;
     }
@@ -153,7 +154,7 @@ class Buffer extends IteratorIterator implements Outer
      *
      * @return  void
      */
-    public function next()
+    public function next(): void
     {
         $innerIterator = $this->getInnerIterator();
         $buffer        = $this->getBuffer();
@@ -192,7 +193,7 @@ class Buffer extends IteratorIterator implements Outer
      *
      * @return  void
      */
-    public function previous()
+    public function previous(): void
     {
         $this->getBuffer()->prev();
 
@@ -204,7 +205,7 @@ class Buffer extends IteratorIterator implements Outer
      *
      * @return  void
      */
-    public function rewind()
+    public function rewind(): void
     {
         $innerIterator = $this->getInnerIterator();
         $buffer        = $this->getBuffer();
@@ -228,7 +229,7 @@ class Buffer extends IteratorIterator implements Outer
      *
      * @return  bool
      */
-    public function valid()
+    public function valid(): bool
     {
         return
             $this->getBuffer()->valid() &&

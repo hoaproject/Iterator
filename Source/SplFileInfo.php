@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -41,7 +43,6 @@ namespace Hoa\Iterator;
  *
  * Enhance SplFileInfo implementation.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class SplFileInfo extends \SplFileInfo
@@ -68,7 +69,7 @@ class SplFileInfo extends \SplFileInfo
      * @param   string  $filename        Filename.
      * @param   string  $relativePath    Relative path.
      */
-    public function __construct($filename, $relativePath = null)
+    public function __construct(string $filename, string $relativePath = null)
     {
         parent::__construct($filename);
 
@@ -86,7 +87,7 @@ class SplFileInfo extends \SplFileInfo
      *
      * @return  string
      */
-    public function getHash()
+    public function getHash(): string
     {
         return $this->_hash;
     }
@@ -96,7 +97,7 @@ class SplFileInfo extends \SplFileInfo
      *
      * @return  int
      */
-    public function getMTime()
+    public function getMTime(): int
     {
         try {
             return parent::getMTime();
@@ -111,7 +112,7 @@ class SplFileInfo extends \SplFileInfo
      * @param   string  $relativePath    Relative path.
      * @return  string
      */
-    public function setRelativePath($relativePath)
+    public function setRelativePath(string $relativePath): string
     {
         $old                 = $this->_relativePath;
         $this->_relativePath = $relativePath;
@@ -124,7 +125,7 @@ class SplFileInfo extends \SplFileInfo
      *
      * @return  string
      */
-    public function getRelativePath()
+    public function getRelativePath(): string
     {
         return $this->_relativePath;
     }
@@ -134,7 +135,7 @@ class SplFileInfo extends \SplFileInfo
      *
      * @return  string
      */
-    public function getRelativePathname()
+    public function getRelativePathname(): string
     {
         if (null === $relative = $this->getRelativePath()) {
             return $this->getPathname();

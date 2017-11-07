@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Hoa
  *
@@ -44,12 +46,11 @@ use Hoa\Test;
  *
  * Test suite of the filesystem iterator.
  *
- * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
 class FileSystem extends Test\Unit\Suite
 {
-    public function case_classic()
+    public function case_classic(): void
     {
         $this
             ->given(
@@ -61,7 +62,7 @@ class FileSystem extends Test\Unit\Suite
                 $iterator = new LUT\FileSystem($root),
                 $result   = []
             )
-            ->when(function () use ($iterator, &$result) {
+            ->when(function () use ($iterator, &$result): void {
                 foreach ($iterator as $pathname => $file) {
                     $this
                         ->object($file)
@@ -77,7 +78,7 @@ class FileSystem extends Test\Unit\Suite
                 ]);
     }
 
-    public function case_splFileClassInfo()
+    public function case_splFileClassInfo(): void
     {
         $this
             ->given(
@@ -96,7 +97,7 @@ class FileSystem extends Test\Unit\Suite
                 ),
                 $result   = []
             )
-            ->when(function () use ($iterator, $splFileInfo, &$result) {
+            ->when(function () use ($iterator, $splFileInfo, &$result): void {
                 foreach ($iterator as $file) {
                     $this
                         ->object($file)
