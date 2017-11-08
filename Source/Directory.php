@@ -42,22 +42,16 @@ namespace Hoa\Iterator;
  * Class \Hoa\Iterator\Directory.
  *
  * Extending the SPL DirectoryIterator class.
- *
- * @license    New BSD License
  */
 class Directory extends \DirectoryIterator
 {
     /**
      * SplFileInfo classname.
-     *
-     * @var string
      */
     protected $_splFileInfoClass = null;
 
     /**
      * Relative path.
-     *
-     * @var string
      */
     protected $_relativePath     = null;
 
@@ -67,9 +61,6 @@ class Directory extends \DirectoryIterator
      * Constructor.
      * Please, see \DirectoryIterator::__construct() method.
      * We add the $splFileInfoClass parameter.
-     *
-     * @param   string  $path                Path.
-     * @param   string  $splFileInfoClass    SplFileInfo classname.
      */
     public function __construct(string $path, string $splFileInfoClass = null)
     {
@@ -83,8 +74,6 @@ class Directory extends \DirectoryIterator
     /**
      * Current.
      * Please, see \DirectoryIterator::current() method.
-     *
-     * @return  mixed
      */
     public function current()
     {
@@ -95,7 +84,7 @@ class Directory extends \DirectoryIterator
             $out->setInfoClass($this->_splFileInfoClass);
             $out = $out->getFileInfo();
 
-            if ($out instanceof \Hoa\Iterator\SplFileInfo) {
+            if ($out instanceof SplFileInfo) {
                 $out->setRelativePath($this->getRelativePath());
             }
         }
@@ -105,11 +94,8 @@ class Directory extends \DirectoryIterator
 
     /**
      * Set relative path.
-     *
-     * @param   string  $relativePath    Relative path.
-     * @return  string
      */
-    protected function setRelativePath($path): string
+    protected function setRelativePath($path): ?string
     {
         $old                 = $this->_relativePath;
         $this->_relativePath = $path;
@@ -119,8 +105,6 @@ class Directory extends \DirectoryIterator
 
     /**
      * Get relative path (if given).
-     *
-     * @return  string
      */
     public function getRelativePath(): string
     {

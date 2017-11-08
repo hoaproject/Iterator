@@ -42,8 +42,6 @@ namespace Hoa\Iterator\Recursive;
  * Class \Hoa\Iterator\Recursive\Map.
  *
  * Extending the SPL RecursiveArrayIterator class.
- *
- * @license    New BSD License
  */
 class Map extends \RecursiveArrayIterator
 {

@@ -44,8 +44,6 @@ use Hoa\Consistency;
  * Class \Hoa\Iterator\Recursive.
  *
  * Extending the SPL RecursiveIterator interface.
- *
- * @license    New BSD License
  */
 interface Recursive extends \RecursiveIterator
 {
@@ -54,4 +52,4 @@ interface Recursive extends \RecursiveIterator
 /**
  * Flex entity.
  */
-Consistency::flexEntity('Hoa\Iterator\Recursive\Recursive');
+Consistency::flexEntity(Recursive::class);

@@ -44,8 +44,6 @@ use Hoa\Consistency;
  * Interface \Hoa\Iterator.
  *
  * Extending the SPL Iterator interface.
- *
- * @license    New BSD License
  */
 interface Iterator extends \Iterator
 {
@@ -54,4 +52,4 @@ interface Iterator extends \Iterator
 /**
  * Flex entity.
  */
-Consistency::flexEntity('Hoa\Iterator\Iterator');
+Consistency::flexEntity(Iterator::class);

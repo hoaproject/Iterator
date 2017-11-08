@@ -43,15 +43,11 @@ namespace Hoa\Iterator\Recursive;
  *
  * Mock a recursive iterator with no children.
  * It allows to use regular iterators with a recursive iterator iterator.
- *
- * @license    New BSD License
  */
 class Mock implements Recursive
 {
     /**
      * Current iterator.
-     *
-     * @var \Traversable
      */
     protected $_iterator = null;
 
@@ -59,10 +55,8 @@ class Mock implements Recursive
 
     /**
      * Constructor.
-     *
-     * @param   \Traversable  $iterator    Iterator.
      */
-    public function __construct(\Traversable $iterator)
+    public function __construct(iterable $iterator)
     {
         if ($iterator instanceof \IteratorAggregate) {
             $iterator = $iterator->getIterator();
@@ -75,8 +69,6 @@ class Mock implements Recursive
 
     /**
      * Return the current element.
-     *
-     * @return  mixed
      */
     public function current()
     {
@@ -85,8 +77,6 @@ class Mock implements Recursive
 
     /**
      * Return the key of the current element.
-     *
-     * @return  mixed
      */
     public function key()
     {
@@ -95,22 +85,18 @@ class Mock implements Recursive
 
     /**
      * Move forward to next element.
-     *
-     * @return  void
      */
-    public function next()
+    public function next(): void
     {
-        return $this->_iterator->next();
+        $this->_iterator->next();
     }
 
     /**
      * Rewind the iterator to the first element.
-     *
-     * @return  void
      */
-    public function rewind()
+    public function rewind(): void
     {
-        return $this->_iterator->rewind();
+        $this->_iterator->rewind();
     }
 
     /**
@@ -126,8 +112,6 @@ class Mock implements Recursive
     /**
      * Return an iterator for the current entry.
      * It's a fake, we return null.
-     *
-     * @return  void
      */
     public function getChildren()
     {
@@ -137,8 +121,6 @@ class Mock implements Recursive
     /**
      * Return if an iterator can be created for the current entry.
      * It's a fake, we return false.
-     *
-     * @return  bool
      */
     public function hasChildren(): bool
     {

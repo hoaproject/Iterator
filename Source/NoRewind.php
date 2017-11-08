@@ -42,8 +42,6 @@ namespace Hoa\Iterator;
  * Class \Hoa\Iterator\NoRewind.
  *
  * Extending the SPL NoRewindIterator class.
- *
- * @license    New BSD License
  */
 class NoRewind extends \NoRewindIterator
 {

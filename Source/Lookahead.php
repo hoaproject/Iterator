@@ -42,36 +42,26 @@ namespace Hoa\Iterator;
  * Class \Hoa\Iterator\Lookahead.
  *
  * Look ahead iterator.
- *
- * @license    New BSD License
  */
 class Lookahead extends IteratorIterator implements Outer
 {
     /**
      * Current iterator.
-     *
-     * @var \Iterator
      */
     protected $_iterator = null;
 
     /**
      * Current key.
-     *
-     * @var mixed
      */
     protected $_key      = 0;
 
     /**
      * Current value.
-     *
-     * @var mixed
      */
     protected $_current  = null;
 
     /**
      * Whether the current element is valid or not.
-     *
-     * @var bool
      */
     protected $_valid    = false;
 
@@ -79,10 +69,8 @@ class Lookahead extends IteratorIterator implements Outer
 
     /**
      * Construct.
-     *
-     * @param   \Iterator  $iterator    Iterator.
      */
-    public function __construct(\Iterator $iterator)
+    public function __construct(iterable $iterator)
     {
         $this->_iterator = $iterator;
 
@@ -91,18 +79,14 @@ class Lookahead extends IteratorIterator implements Outer
 
     /**
      * Get inner iterator.
-     *
-     * @return  \Iterator
      */
-    public function getInnerIterator(): \Iterator
+    public function getInnerIterator(): iterable
     {
         return $this->_iterator;
     }
 
     /**
      * Return the current element.
-     *
-     * @return  mixed
      */
     public function current()
     {
@@ -111,8 +95,6 @@ class Lookahead extends IteratorIterator implements Outer
 
     /**
      * Return the key of the current element.
-     *
-     * @return  mixed
      */
     public function key()
     {
@@ -121,10 +103,8 @@ class Lookahead extends IteratorIterator implements Outer
 
     /**
      * Move forward to next element.
-     *
-     * @return  void
      */
-    public function next()
+    public function next(): void
     {
         $innerIterator = $this->getInnerIterator();
         $this->_valid  = $innerIterator->valid();
@@ -136,26 +116,20 @@ class Lookahead extends IteratorIterator implements Outer
         $this->_key     = $innerIterator->key();
         $this->_current = $innerIterator->current();
 
-        return $innerIterator->next();
+        $innerIterator->next();
     }
 
     /**
      * Rewind the iterator to the first element.
-     *
-     * @return  void
      */
-    public function rewind()
+    public function rewind(): void
     {
-        $out = $this->getInnerIterator()->rewind();
+        $this->getInnerIterator()->rewind();
         $this->next();
-
-        return $out;
     }
 
     /**
      * Check if current position is valid.
-     *
-     * @return  bool
      */
     public function valid(): bool
     {
@@ -164,8 +138,6 @@ class Lookahead extends IteratorIterator implements Outer
 
     /**
      * Check whether there is a next element.
-     *
-     * @return  bool
      */
     public function hasNext(): bool
     {
@@ -174,8 +146,6 @@ class Lookahead extends IteratorIterator implements Outer
 
     /**
      * Get next value.
-     *
-     * @return  mixed
      */
     public function getNext()
     {
@@ -184,8 +154,6 @@ class Lookahead extends IteratorIterator implements Outer
 
     /**
      * Get next key.
-     *
-     * @return  mixed
      */
     public function getNextKey()
     {

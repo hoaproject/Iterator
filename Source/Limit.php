@@ -42,8 +42,6 @@ namespace Hoa\Iterator;
  * Class \Hoa\Iterator\Limit.
  *
  * Extending the SPL LimitIterator class.
- *
- * @license    New BSD License
  */
 class Limit extends \LimitIterator
 {

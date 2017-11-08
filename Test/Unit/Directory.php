@@ -39,6 +39,7 @@ declare(strict_types=1);
 namespace Hoa\Iterator\Test\Unit;
 
 use Hoa\Iterator as LUT;
+use Hoa\Protocol;
 use Hoa\Test;
 
 /**
@@ -54,10 +55,10 @@ class Directory extends Test\Unit\Suite
     {
         $this
             ->given(
-                $root = resolve('hoa://Test/Vfs/Root?type=directory'),
-                resolve('hoa://Test/Vfs/Root/A?type=file'),
-                resolve('hoa://Test/Vfs/Root/Aa?type=file'),
-                resolve('hoa://Test/Vfs/Root/Aaa?type=file'),
+                $root = $this->resolve('hoa://Test/Vfs/Root?type=directory'),
+                $this->resolve('hoa://Test/Vfs/Root/A?type=file'),
+                $this->resolve('hoa://Test/Vfs/Root/Aa?type=file'),
+                $this->resolve('hoa://Test/Vfs/Root/Aaa?type=file'),
                 $iterator = new LUT\Directory($root),
                 $result   = []
             )
@@ -83,11 +84,11 @@ class Directory extends Test\Unit\Suite
     {
         $this
             ->given(
-                $root = resolve('hoa://Test/Vfs/Root?type=directory'),
-                resolve('hoa://Test/Vfs/Root/.?type=directory'),
-                resolve('hoa://Test/Vfs/Root/..?type=directory'),
-                resolve('hoa://Test/Vfs/Root/Skip?type=file'),
-                resolve('hoa://Test/Vfs/Root/Gotcha?type=file'),
+                $root = $this->resolve('hoa://Test/Vfs/Root?type=directory'),
+                $this->resolve('hoa://Test/Vfs/Root/.?type=directory'),
+                $this->resolve('hoa://Test/Vfs/Root/..?type=directory'),
+                $this->resolve('hoa://Test/Vfs/Root/Skip?type=file'),
+                $this->resolve('hoa://Test/Vfs/Root/Gotcha?type=file'),
                 $iterator = new LUT\Directory($root)
             )
             ->when($result = $iterator->current())
@@ -124,18 +125,18 @@ class Directory extends Test\Unit\Suite
     {
         $this
             ->given(
-                $root = resolve('hoa://Test/Vfs/Root?type=directory'),
-                resolve('hoa://Test/Vfs/Root/A?type=file'),
-                resolve('hoa://Test/Vfs/Root/Aa?type=file'),
-                resolve('hoa://Test/Vfs/Root/Aaa?type=file'),
-                resolve('hoa://Test/Vfs/Root/Foo?type=directory'),
-                resolve('hoa://Test/Vfs/Root/Foo/Bar?type=directory'),
-                resolve('hoa://Test/Vfs/Root/Foo/Bar/B?type=file'),
-                resolve('hoa://Test/Vfs/Root/Foo/Bar/Bb?type=file'),
-                resolve('hoa://Test/Vfs/Root/Foo/Bar/Bbb?type=file'),
-                resolve('hoa://Test/Vfs/Root/Foo/C?type=file'),
-                resolve('hoa://Test/Vfs/Root/Foo/Cc?type=file'),
-                resolve('hoa://Test/Vfs/Root/Foo/Ccc?type=file'),
+                $root = $this->resolve('hoa://Test/Vfs/Root?type=directory'),
+                $this->resolve('hoa://Test/Vfs/Root/A?type=file'),
+                $this->resolve('hoa://Test/Vfs/Root/Aa?type=file'),
+                $this->resolve('hoa://Test/Vfs/Root/Aaa?type=file'),
+                $this->resolve('hoa://Test/Vfs/Root/Foo?type=directory'),
+                $this->resolve('hoa://Test/Vfs/Root/Foo/Bar?type=directory'),
+                $this->resolve('hoa://Test/Vfs/Root/Foo/Bar/B?type=file'),
+                $this->resolve('hoa://Test/Vfs/Root/Foo/Bar/Bb?type=file'),
+                $this->resolve('hoa://Test/Vfs/Root/Foo/Bar/Bbb?type=file'),
+                $this->resolve('hoa://Test/Vfs/Root/Foo/C?type=file'),
+                $this->resolve('hoa://Test/Vfs/Root/Foo/Cc?type=file'),
+                $this->resolve('hoa://Test/Vfs/Root/Foo/Ccc?type=file'),
                 $directory = new LUT\Recursive\Directory($root),
                 $iterator  = new LUT\Recursive\Iterator($directory),
                 $result    = []
@@ -165,13 +166,13 @@ class Directory extends Test\Unit\Suite
         $this
             ->given(
                 $splFileInfo = 'Hoa\Iterator\SplFileInfo',
-                $root        = resolve('hoa://Test/Vfs/Root?type=directory'),
-                resolve('hoa://Test/Vfs/Root/a?type=file'),
-                resolve('hoa://Test/Vfs/Root/b?type=file'),
-                resolve('hoa://Test/Vfs/Root/c?type=file'),
-                resolve('hoa://Test/Vfs/Root/d?type=file'),
-                resolve('hoa://Test/Vfs/Root/e?type=file'),
-                resolve('hoa://Test/Vfs/Root/f?type=file'),
+                $root        = $this->resolve('hoa://Test/Vfs/Root?type=directory'),
+                $this->resolve('hoa://Test/Vfs/Root/a?type=file'),
+                $this->resolve('hoa://Test/Vfs/Root/b?type=file'),
+                $this->resolve('hoa://Test/Vfs/Root/c?type=file'),
+                $this->resolve('hoa://Test/Vfs/Root/d?type=file'),
+                $this->resolve('hoa://Test/Vfs/Root/e?type=file'),
+                $this->resolve('hoa://Test/Vfs/Root/f?type=file'),
                 $iterator = new LUT\Directory(
                     $root,
                     $splFileInfo
@@ -204,16 +205,16 @@ class Directory extends Test\Unit\Suite
         $this
             ->given(
                 $splFileInfo = 'Hoa\Iterator\SplFileInfo',
-                $root        = resolve('hoa://Test/Vfs/Root?type=directory'),
-                resolve('hoa://Test/Vfs/Root/A?type=directory'),
-                resolve('hoa://Test/Vfs/Root/A/a?type=file'),
-                resolve('hoa://Test/Vfs/Root/A/b?type=file'),
-                resolve('hoa://Test/Vfs/Root/A/c?type=file'),
-                resolve('hoa://Test/Vfs/Root/B?type=directory'),
-                resolve('hoa://Test/Vfs/Root/B/d?type=file'),
-                resolve('hoa://Test/Vfs/Root/B/e?type=file'),
-                resolve('hoa://Test/Vfs/Root/B/c?type=directory'),
-                resolve('hoa://Test/Vfs/Root/B/c/f?type=file'),
+                $root        = $this->resolve('hoa://Test/Vfs/Root?type=directory'),
+                $this->resolve('hoa://Test/Vfs/Root/A?type=directory'),
+                $this->resolve('hoa://Test/Vfs/Root/A/a?type=file'),
+                $this->resolve('hoa://Test/Vfs/Root/A/b?type=file'),
+                $this->resolve('hoa://Test/Vfs/Root/A/c?type=file'),
+                $this->resolve('hoa://Test/Vfs/Root/B?type=directory'),
+                $this->resolve('hoa://Test/Vfs/Root/B/d?type=file'),
+                $this->resolve('hoa://Test/Vfs/Root/B/e?type=file'),
+                $this->resolve('hoa://Test/Vfs/Root/B/c?type=directory'),
+                $this->resolve('hoa://Test/Vfs/Root/B/c/f?type=file'),
                 $directory = new LUT\Recursive\Directory(
                     $root,
                     LUT\FileSystem::CURRENT_AS_FILEINFO,
@@ -241,5 +242,10 @@ class Directory extends Test\Unit\Suite
                         'e',
                         'f'
                     ]);
+    }
+
+    private function resolve(string $path)
+    {
+        return Protocol\Protocol::getInstance()->resolve($path);
     }
 }

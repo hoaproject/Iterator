@@ -42,8 +42,6 @@ namespace Hoa\Iterator;
  * Class \Hoa\Iterator\CallbackFilter.
  *
  * Extending the SPL CallbackFilterIterator class.
- *
- * @license    New BSD License
  */
 class CallbackFilter extends \CallbackFilterIterator
 {

@@ -42,8 +42,6 @@ namespace Hoa\Iterator;
  * Interface \Hoa\Iterator\Aggregate.
  *
  * Extending the SPL IteratorAggregate interface.
- *
- * @license    New BSD License
  */
 interface Aggregate extends \IteratorAggregate
 {

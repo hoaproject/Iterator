@@ -48,25 +48,11 @@ use Hoa\Iterator;
  * scratch without extending the existing class.
  *
  * Inspired by hhvm://hphp/system/php/spl/iterators/RecursiveRegexIterator.php
- *
- * @license    New BSD License
  */
 class RegularExpression extends Iterator\RegularExpression implements Recursive
 {
     /**
      * Constructor.
-     *
-     * @param   \RecursiveIterator  $iterator     The recursive iterator to
-     *                                            apply this regex filter to.
-     * @param   string              $regex        The regular expression to
-     *                                            match.
-     * @param   int                 $mode         Operation mode, please see the
-     *                                            \RegexIterator::setMode method.
-     * @param   int                 $flags        Special flags, please see the
-     *                                            \RegexIterator::setFlags method.
-     * @param   int                 $pregFlags    Regular expression flags,
-     *                                            please see
-     *                                            \RegexIterator constants.
      */
     public function __construct(
         \RecursiveIterator $iterator,
@@ -82,8 +68,6 @@ class RegularExpression extends Iterator\RegularExpression implements Recursive
 
     /**
      * Get accept status.
-     *
-     * @return  bool
      */
     public function accept(): bool
     {
@@ -94,10 +78,8 @@ class RegularExpression extends Iterator\RegularExpression implements Recursive
 
     /**
      * Get an iterator for the current entry.
-     *
-     * @return  \Hoa\Iterator\Recursive\RegularExpression
      */
-    public function getChildren(): RegularExpression
+    public function getChildren(): self
     {
         return new static(
             true === $this->hasChildren()
@@ -112,8 +94,6 @@ class RegularExpression extends Iterator\RegularExpression implements Recursive
 
     /**
      * Check whether an iterator can be obtained for the current entry.
-     *
-     * @return  bool
      */
     public function hasChildren(): bool
     {

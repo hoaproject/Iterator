@@ -42,43 +42,31 @@ namespace Hoa\Iterator;
  * Class \Hoa\Iterator\Buffer.
  *
  * Buffer iterator: Can go backward up to a certain limit, and forward.
- *
- * @license    New BSD License
  */
 class Buffer extends IteratorIterator implements Outer
 {
     /**
      * Buffer key index.
-     *
-     * @const int
      */
-    public const BUFFER_KEY   = 0;
+    protected const BUFFER_KEY   = 0;
 
     /**
      * Buffer value index.
-     *
-     * @const int
      */
-    public const BUFFER_VALUE = 1;
+    protected const BUFFER_VALUE = 1;
 
     /**
      * Current iterator.
-     *
-     * @var \Iterator
      */
     protected $_iterator   = null;
 
     /**
      * Buffer.
-     *
-     * @var \SplDoublyLinkedList
      */
     protected $_buffer     = null;
 
     /**
      * Maximum buffer size.
-     *
-     * @var int
      */
     protected $_bufferSize = 1;
 
@@ -86,11 +74,8 @@ class Buffer extends IteratorIterator implements Outer
 
     /**
      * Construct.
-     *
-     * @param   \Iterator  $iterator      Iterator.
-     * @param   int        $bufferSize    Buffer size.
      */
-    public function __construct(\Iterator $iterator, int $bufferSize)
+    public function __construct(iterable $iterator, int $bufferSize)
     {
         $this->_iterator   = $iterator;
         $this->_bufferSize = max($bufferSize, 1);
@@ -101,18 +86,14 @@ class Buffer extends IteratorIterator implements Outer
 
     /**
      * Get inner iterator.
-     *
-     * @return  \Iterator
      */
-    public function getInnerIterator(): \Iterator
+    public function getInnerIterator(): iterable
     {
         return $this->_iterator;
     }
 
     /**
      * Get buffer.
-     *
-     * @return  \SplDoublyLinkedList
      */
     protected function getBuffer(): \SplDoublyLinkedList
     {
@@ -121,8 +102,6 @@ class Buffer extends IteratorIterator implements Outer
 
     /**
      * Get buffer size.
-     *
-     * @return  int
      */
     public function getBufferSize(): int
     {
@@ -131,8 +110,6 @@ class Buffer extends IteratorIterator implements Outer
 
     /**
      * Return the current element.
-     *
-     * @return  mixed
      */
     public function current()
     {
@@ -141,8 +118,6 @@ class Buffer extends IteratorIterator implements Outer
 
     /**
      * Return the key of the current element.
-     *
-     * @return  mixed
      */
     public function key()
     {
@@ -151,8 +126,6 @@ class Buffer extends IteratorIterator implements Outer
 
     /**
      * Move forward to next element.
-     *
-     * @return  void
      */
     public function next(): void
     {
@@ -184,26 +157,18 @@ class Buffer extends IteratorIterator implements Outer
             $buffer->rewind();
             $buffer->setIteratorMode($buffer::IT_MODE_FIFO | $buffer::IT_MODE_KEEP);
         }
-
-        return;
     }
 
     /**
      * Move backward to previous element.
-     *
-     * @return  void
      */
     public function previous(): void
     {
         $this->getBuffer()->prev();
-
-        return;
     }
 
     /**
      * Rewind the iterator to the first element.
-     *
-     * @return  void
      */
     public function rewind(): void
     {
@@ -226,8 +191,6 @@ class Buffer extends IteratorIterator implements Outer
 
     /**
      * Check if current position is valid.
-     *
-     * @return  bool
      */
     public function valid(): bool
     {

@@ -42,8 +42,6 @@ namespace Hoa\Iterator;
  * Class \Hoa\Iterator\Infinite.
  *
  * Extending the SPL InfiniteIterator class.
- *
- * @license    New BSD License
  */
 class Infinite extends \InfiniteIterator
 {

@@ -42,8 +42,6 @@ namespace Hoa\Iterator;
  * Class \Hoa\Iterator\Glob.
  *
  * Extending the SPL GlobIterator class.
- *
- * @license    New BSD License
  */
 class Glob extends \GlobIterator
 {

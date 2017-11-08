@@ -42,8 +42,6 @@ namespace Hoa\Iterator;
  * Class \Hoa\Iterator\IteratorIterator.
  *
  * Extending the SPL IteratorIterator class.
- *
- * @license    New BSD License
  */
 class IteratorIterator extends \IteratorIterator
 {

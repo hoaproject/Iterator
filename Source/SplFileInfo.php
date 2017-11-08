@@ -42,22 +42,16 @@ namespace Hoa\Iterator;
  * Class \Hoa\Iterator\SplFileInfo.
  *
  * Enhance SplFileInfo implementation.
- *
- * @license    New BSD License
  */
 class SplFileInfo extends \SplFileInfo
 {
     /**
      * Hash.
-     *
-     * @var string
      */
     protected $_hash         = null;
 
     /**
      * Relative path.
-     *
-     * @var string
      */
     protected $_relativePath = null;
 
@@ -65,9 +59,6 @@ class SplFileInfo extends \SplFileInfo
 
     /**
      * Construct.
-     *
-     * @param   string  $filename        Filename.
-     * @param   string  $relativePath    Relative path.
      */
     public function __construct(string $filename, string $relativePath = null)
     {
@@ -84,8 +75,6 @@ class SplFileInfo extends \SplFileInfo
 
     /**
      * Get the hash.
-     *
-     * @return  string
      */
     public function getHash(): string
     {
@@ -94,8 +83,6 @@ class SplFileInfo extends \SplFileInfo
 
     /**
      * Get the MTime.
-     *
-     * @return  int
      */
     public function getMTime(): int
     {
@@ -108,11 +95,8 @@ class SplFileInfo extends \SplFileInfo
 
     /**
      * Set relative path.
-     *
-     * @param   string  $relativePath    Relative path.
-     * @return  string
      */
-    public function setRelativePath(string $relativePath): string
+    public function setRelativePath(string $relativePath): ?string
     {
         $old                 = $this->_relativePath;
         $this->_relativePath = $relativePath;
@@ -122,18 +106,14 @@ class SplFileInfo extends \SplFileInfo
 
     /**
      * Get relative path (if given).
-     *
-     * @return  string
      */
-    public function getRelativePath(): string
+    public function getRelativePath(): ?string
     {
         return $this->_relativePath;
     }
 
     /**
      * Get relative pathname (if possible).
-     *
-     * @return  string
      */
     public function getRelativePathname(): string
     {

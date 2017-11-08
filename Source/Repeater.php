@@ -42,36 +42,26 @@ namespace Hoa\Iterator;
  * Class \Hoa\Iterator\Repeater.
  *
  * Repeat an iterator n-times.
- *
- * @license    New BSD License
  */
 class Repeater implements Iterator
 {
     /**
      * Current iterator.
-     *
-     * @var \Traversable
      */
     protected $_iterator = null;
 
     /**
      * Maximum repetition.
-     *
-     * @var int
      */
     protected $_n        = 1;
 
     /**
      * Current repetition.
-     *
-     * @var int
      */
     protected $_i        = 1;
 
     /**
      * Body (callable to execute each time).
-     *
-     * @var callable
      */
     protected $_body     = null;
 
@@ -79,13 +69,8 @@ class Repeater implements Iterator
 
     /**
      * Constructor.
-     *
-     * @param   \Traversable  $iterator    Iterator.
-     * @param   int           $n           Repeat $n-times.
-     * @param   callable      $body        Body.
-     * @throws  \Hoa\Iterator\Exception
      */
-    public function __construct(\Traversable $iterator, int $n, callable $body = null)
+    public function __construct(iterable $iterator, int $n, callable $body = null)
     {
         if (0 >= $n) {
             throw new Exception(
@@ -108,8 +93,6 @@ class Repeater implements Iterator
 
     /**
      * Return the current element.
-     *
-     * @return  mixed
      */
     public function current()
     {
@@ -118,8 +101,6 @@ class Repeater implements Iterator
 
     /**
      * Return the key of the current element.
-     *
-     * @return  mixed
      */
     public function key()
     {
@@ -128,28 +109,22 @@ class Repeater implements Iterator
 
     /**
      * Move forward to next element.
-     *
-     * @return  void
      */
-    public function next()
+    public function next(): void
     {
-        return $this->_iterator->next();
+        $this->_iterator->next();
     }
 
     /**
      * Rewind the iterator to the first element.
-     *
-     * @return  void
      */
-    public function rewind()
+    public function rewind(): void
     {
-        return $this->_iterator->rewind();
+        $this->_iterator->rewind();
     }
 
     /**
      * Check if current position is valid.
-     *
-     * @return  bool
      */
     public function valid(): bool
     {

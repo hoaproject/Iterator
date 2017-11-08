@@ -42,8 +42,6 @@ namespace Hoa\Iterator;
  * Class \Hoa\Iterator\Append.
  *
  * Extending the SPL AppendIterator class.
- *
- * @license    New BSD License
  */
 class Append extends \AppendIterator
 {

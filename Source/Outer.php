@@ -42,8 +42,6 @@ namespace Hoa\Iterator;
  * Interface \Hoa\Iterator\Outer.
  *
  * Extending the SPL OuterIterator interface.
- *
- * @license    New BSD License
  */
 interface Outer extends \OuterIterator
 {

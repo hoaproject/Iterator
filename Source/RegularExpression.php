@@ -46,108 +46,78 @@ namespace Hoa\Iterator;
  * scratch without extending the existing class.
  *
  * Inspired by hhvm://hphp/system/php/spl/iterators/RegexIterator.php
- *
- * @license    New BSD License
  */
 class RegularExpression extends Filter
 {
     /**
      * Flag: match the entry key instead of the entry value.
-     *
-     * @const int
      */
     public const USE_KEY      = 1;
 
     /**
      * Flag: invert match.
-     *
-     * @const int
      */
     public const INVERT_MATCH = 2;
 
     /**
      * Mode and preg flag: only execute match (filter) for the current entry.
-     *
-     * @const int
      */
     public const MATCH        = 0;
 
     /**
      * Mode and preg flag: first match for the current entry.
-     *
-     * @const int
      */
     public const GET_MATCH    = 1;
 
     /**
      * Mode and preg flag: all matches for the current entry.
-     *
-     * @const int
      */
     public const ALL_MATCHES  = 2;
 
     /**
      * Mode and preg flag: split values for the current entry.
-     *
-     * @const int
      */
     public const SPLIT        = 3;
 
     /**
      * Mode and preg flag: replace the current entry.
-     *
-     * @const int
      */
     public const REPLACE      = 4;
 
     /**
      * The regular expression to match.
-     *
-     * @var string
      */
     protected $_regex     = null;
 
     /**
      * Operation mode, see the \RegexIterator::setMode method for a list of
      * modes.
-     *
-     * @var int
      */
     protected $_mode      = 0;
 
     /**
      * Special flags, see the \RegexIterator::setFlag method for a list of
      * available flags.
-     *
-     * @var int
      */
     protected $_flags     = 0;
 
     /**
      * The regular expression flags. See constants.
-     *
-     * @var int
      */
     protected $_pregFlags = 0;
 
     /**
      * Current key.
-     *
-     * @var int
      */
     protected $_key       = 0;
 
     /**
      * Current value.
-     *
-     * @var string
      */
     protected $_current   = null;
 
     /**
      * Replacement.
-     *
-     * @var string
      */
     public $replacement   = null;
 
@@ -155,21 +125,9 @@ class RegularExpression extends Filter
 
     /**
      * Constructor.
-     *
-     * @param   \RecursiveIterator  $iterator     The recursive iterator to
-     *                                            apply this regex filter to.
-     * @param   string              $regex        The regular expression to
-     *                                            match.
-     * @param   int                 $mode         Operation mode, please see the
-     *                                            \RegexIterator::setMode method.
-     * @param   int                 $flags        Special flags, please see the
-     *                                            \RegexIterator::setFlags method.
-     * @param   int                 $pregFlags    Regular expression flags,
-     *                                            please see
-     *                                            \RegexIterator constants.
      */
     public function __construct(
-        \Iterator $iterator,
+        iterable $iterator,
         string $regex,
         int $mode      = self::MATCH,
         int $flags     = 0,
@@ -188,8 +146,6 @@ class RegularExpression extends Filter
 
     /**
      * Get accept status.
-     *
-     * @return  bool
      */
     public function accept(): bool
     {
@@ -296,8 +252,6 @@ class RegularExpression extends Filter
 
     /**
      * Get current key.
-     *
-     * @return  int
      */
     public function key(): int
     {
@@ -306,8 +260,6 @@ class RegularExpression extends Filter
 
     /**
      * Get current value.
-     *
-     * @return  string
      */
     public function current(): string
     {
@@ -316,9 +268,6 @@ class RegularExpression extends Filter
 
     /**
      * Set mode.
-     *
-     * @param   int  $mode   Mode.
-     * @return  void
      */
     public function setMode(int $mode): void
     {
@@ -329,50 +278,34 @@ class RegularExpression extends Filter
         }
 
         $this->_mode = $mode;
-
-        return;
     }
 
     /**
      * Set flags.
-     *
-     * @param   int  $flags    Flags.
-     * @return  void
      */
     public function setFlags(int $flags): void
     {
         $this->_flags = $flags;
-
-        return;
     }
 
     /**
      * Set preg flags.
-     *
-     * @param   int  $pregFlags    Preg flags.
-     * @return  void
      */
     public function setPregFlags(int $pregFlags): void
     {
         $this->_pregFlags = $pregFlags;
-
-        return;
     }
 
     /**
      * Get regular expression.
-     *
-     * @return  string
      */
-    public function getRegex(): string
+    public function getRegex(): ?string
     {
         return $this->_regex;
     }
 
     /**
      * Get mode.
-     *
-     * @return  int
      */
     public function getMode(): int
     {
@@ -381,8 +314,6 @@ class RegularExpression extends Filter
 
     /**
      * Get flags.
-     *
-     * @return  int
      */
     public function getFlags(): int
     {
@@ -391,8 +322,6 @@ class RegularExpression extends Filter
 
     /**
      * Get preg flags.
-     *
-     * @return  int
      */
     public function getPregFlags(): int
     {

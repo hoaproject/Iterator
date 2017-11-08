@@ -42,8 +42,6 @@ namespace Hoa\Iterator\Recursive;
  * Class \Hoa\Iterator\Recursive\Iterator.
  *
  * Extending the SPL RecursiveIteratorIterator class.
- *
- * @license    New BSD License
  */
 class Iterator extends \RecursiveIteratorIterator
 {

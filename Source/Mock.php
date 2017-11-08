@@ -42,8 +42,6 @@ namespace Hoa\Iterator;
  * Class \Hoa\Iterator\Mock.
  *
  * Extending the SPL EmptyIterator class.
- *
- * @license    New BSD License
  */
 class Mock extends \EmptyIterator
 {

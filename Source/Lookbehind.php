@@ -42,29 +42,21 @@ namespace Hoa\Iterator;
  * Class \Hoa\Iterator\Lookbehind.
  *
  * Look behind iterator.
- *
- * @license    New BSD License
  */
 class Lookbehind extends IteratorIterator implements Outer
 {
     /**
      * Current iterator.
-     *
-     * @var \Iterator
      */
     protected $_iterator        = null;
 
     /**
      * Previous key.
-     *
-     * @var mixed
      */
     protected $_previousKey     = -1;
 
     /**
      * Previous value.
-     *
-     * @var mixed
      */
     protected $_previousCurrent = null;
 
@@ -72,10 +64,8 @@ class Lookbehind extends IteratorIterator implements Outer
 
     /**
      * Construct.
-     *
-     * @param   \Iterator  $iterator    Iterator.
      */
-    public function __construct(\Iterator $iterator)
+    public function __construct(iterable $iterator)
     {
         $this->_iterator = $iterator;
 
@@ -84,18 +74,14 @@ class Lookbehind extends IteratorIterator implements Outer
 
     /**
      * Get inner iterator.
-     *
-     * @return  \Iterator
      */
-    public function getInnerIterator(): \Iterator
+    public function getInnerIterator(): iterable
     {
         return $this->_iterator;
     }
 
     /**
      * Return the current element.
-     *
-     * @return  mixed
      */
     public function current()
     {
@@ -104,8 +90,6 @@ class Lookbehind extends IteratorIterator implements Outer
 
     /**
      * Return the key of the current element.
-     *
-     * @return  mixed
      */
     public function key()
     {
@@ -114,34 +98,28 @@ class Lookbehind extends IteratorIterator implements Outer
 
     /**
      * Move forward to next element.
-     *
-     * @return  void
      */
-    public function next()
+    public function next(): void
     {
         $this->_previousKey     = $this->key();
         $this->_previousCurrent = $this->current();
 
-        return $this->getInnerIterator()->next();
+        $this->getInnerIterator()->next();
     }
 
     /**
      * Rewind the iterator to the first element.
-     *
-     * @return  void
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->_previousKey     = -1;
         $this->_previousCurrent = null;
 
-        return $this->getInnerIterator()->rewind();
+        $this->getInnerIterator()->rewind();
     }
 
     /**
      * Check if current position is valid.
-     *
-     * @return  bool
      */
     public function valid(): bool
     {
@@ -150,8 +128,6 @@ class Lookbehind extends IteratorIterator implements Outer
 
     /**
      * Check whether there is a previous element.
-     *
-     * @return  bool
      */
     public function hasPrevious(): bool
     {
@@ -160,8 +136,6 @@ class Lookbehind extends IteratorIterator implements Outer
 
     /**
      * Get previous value.
-     *
-     * @return  mixed
      */
     public function getPrevious()
     {
@@ -170,8 +144,6 @@ class Lookbehind extends IteratorIterator implements Outer
 
     /**
      * Get previous key.
-     *
-     * @return  mixed
      */
     public function getPreviousKey()
     {

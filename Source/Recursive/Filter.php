@@ -42,8 +42,6 @@ namespace Hoa\Iterator\Recursive;
  * Class \Hoa\Iterator\Recursive\Filter.
  *
  * Extending the SPL RecursiveFilterIterator class.
- *
- * @license    New BSD License
  */
 abstract class Filter extends \RecursiveFilterIterator
 {

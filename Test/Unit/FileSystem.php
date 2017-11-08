@@ -39,6 +39,7 @@ declare(strict_types=1);
 namespace Hoa\Iterator\Test\Unit;
 
 use Hoa\Iterator as LUT;
+use Hoa\Protocol;
 use Hoa\Test;
 
 /**
@@ -54,11 +55,11 @@ class FileSystem extends Test\Unit\Suite
     {
         $this
             ->given(
-                $root = resolve('hoa://Test/Vfs/Root?type=directory'),
-                resolve('hoa://Test/Vfs/Root/.?type=directory'),
-                resolve('hoa://Test/Vfs/Root/..?type=directory'),
-                resolve('hoa://Test/Vfs/Root/A?type=file'),
-                resolve('hoa://Test/Vfs/Root/B?type=file'),
+                $root = $this->resolve('hoa://Test/Vfs/Root?type=directory'),
+                $this->resolve('hoa://Test/Vfs/Root/.?type=directory'),
+                $this->resolve('hoa://Test/Vfs/Root/..?type=directory'),
+                $this->resolve('hoa://Test/Vfs/Root/A?type=file'),
+                $this->resolve('hoa://Test/Vfs/Root/B?type=file'),
                 $iterator = new LUT\FileSystem($root),
                 $result   = []
             )
@@ -83,13 +84,13 @@ class FileSystem extends Test\Unit\Suite
         $this
             ->given(
                 $splFileInfo = 'Hoa\Iterator\SplFileInfo',
-                $root        = resolve('hoa://Test/Vfs/Root?type=directory'),
-                resolve('hoa://Test/Vfs/Root/a?type=file'),
-                resolve('hoa://Test/Vfs/Root/b?type=file'),
-                resolve('hoa://Test/Vfs/Root/c?type=file'),
-                resolve('hoa://Test/Vfs/Root/d?type=file'),
-                resolve('hoa://Test/Vfs/Root/e?type=file'),
-                resolve('hoa://Test/Vfs/Root/f?type=file'),
+                $root        = $this->resolve('hoa://Test/Vfs/Root?type=directory'),
+                $this->resolve('hoa://Test/Vfs/Root/a?type=file'),
+                $this->resolve('hoa://Test/Vfs/Root/b?type=file'),
+                $this->resolve('hoa://Test/Vfs/Root/c?type=file'),
+                $this->resolve('hoa://Test/Vfs/Root/d?type=file'),
+                $this->resolve('hoa://Test/Vfs/Root/e?type=file'),
+                $this->resolve('hoa://Test/Vfs/Root/f?type=file'),
                 $iterator = new LUT\FileSystem(
                     $root,
                     LUT\FileSystem::CURRENT_AS_FILEINFO,
@@ -116,5 +117,10 @@ class FileSystem extends Test\Unit\Suite
                         'e',
                         'f'
                     ]);
+    }
+
+    private function resolve(string $path)
+    {
+        return Protocol\Protocol::getInstance()->resolve($path);
     }
 }

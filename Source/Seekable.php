@@ -42,8 +42,6 @@ namespace Hoa\Iterator;
  * Interface \Hoa\IteratorSeekable.
  *
  * Extending the SPL SeekableIterator interface.
- *
- * @license    New BSD License
  */
 interface Seekable extends \SeekableIterator
 {

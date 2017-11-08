@@ -42,15 +42,11 @@ namespace Hoa\Iterator;
  * Class \Hoa\Iterator\Multiple.
  *
  * Extending the SPL MultipleIterator class.
- *
- * @license    New BSD License
  */
 class Multiple extends \MultipleIterator
 {
     /**
      * Default value for each $infos.
-     *
-     * @var array
      */
     protected $_infos = [];
 
@@ -60,11 +56,6 @@ class Multiple extends \MultipleIterator
      * Attach iterator informations.
      * Add the $default argument that will be use when the iterator has reached
      * its end.
-     *
-     * @param   \Iterator  $iterator    Iterator.
-     * @param   string     $infos       Informations to attach.
-     * @param   mixed      $default     Default value.
-     * @return  void
      */
     public function attachIterator(
         \Iterator $iterator,
@@ -84,8 +75,6 @@ class Multiple extends \MultipleIterator
 
     /**
      * Get the registered iterator instances.
-     *
-     * @return  array
      */
     public function current(): array
     {

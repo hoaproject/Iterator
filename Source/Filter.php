@@ -42,8 +42,6 @@ namespace Hoa\Iterator;
  * Class \Hoa\Iterator\Filter.
  *
  * Extending the SPL FilterIterator class.
- *
- * @license    New BSD License
  */
 abstract class Filter extends \FilterIterator
 {

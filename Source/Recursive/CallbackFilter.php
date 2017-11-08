@@ -42,8 +42,6 @@ namespace Hoa\Iterator\Recursive;
  * Class \Hoa\Iterator\Recursive\CallbackFilter.
  *
  * Extending the SPL RecursiveCallbackFilterIterator class.
- *
- * @license    New BSD License
  */
 class CallbackFilter extends \RecursiveCallbackFilterIterator
 {

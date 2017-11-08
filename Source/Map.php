@@ -42,8 +42,6 @@ namespace Hoa\Iterator;
  * Class \Hoa\Iterator\Map.
  *
  * Extending the SPL ArrayIterator class.
- *
- * @license    New BSD License
  */
 class Map extends \ArrayIterator
 {
